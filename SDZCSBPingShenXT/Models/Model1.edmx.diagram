@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e1950415d914a7cbd61e2d67d160cfb" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Basis" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Declare" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Experience" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_WorkResult" Width="1.5" PointX="6.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_AchievementGrade" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_BelongIndustry" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Category" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_CodeAnswer" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareBelong" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareGrade" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareMode" Width="1.5" PointX="6.875" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclarePost" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareQualification" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareSeries" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareStatus" Width="1.5" PointX="21.125" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_DeclareYear" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Education" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_ExamCase" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_ExamineResult" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_ForeignLanguageRank" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_MajorsGrade" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_MajorsPost" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_MajorsSeries" Width="1.5" PointX="4.375" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Sortlevel" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Subjection" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_UnitNature" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_UserRegister" Width="1.5" PointX="18.875" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_UserState" Width="1.5" PointX="6.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Major" Width="1.5" PointX="14.875" PointY="0.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Achievement" Width="1.875" PointX="2.5" PointY="0.875" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Production" Width="1.875" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_UnitRegister" Width="1.75" PointX="16.875" PointY="11.875" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Basic" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_CheckPersonnel" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Role" Width="1.5" PointX="17.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_Sex" Width="1.5" PointX="17.5" PointY="6.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_WorkPersonnel" Width="1.5" PointX="14.75" PointY="12" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_UnitDeclare" Width="1.5" PointX="2.625" PointY="5.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_DeclarePath" Width="1.5" PointX="4.75" PointY="9.5" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_CommittedState" Width="1.5" PointX="17" PointY="9.875" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Audit" Width="1.5" PointX="19" PointY="9.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_AuditAppear" Width="1.5" PointX="21.25" PointY="11.875" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_SeriesGrade" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_Notice" Width="1.5" PointX="19.375" PointY="4" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_NoticeType" Width="1.5" PointX="21" PointY="4" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_PromulgatorUnit" Width="3.25" PointX="19.375" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.B_File" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SDZCSBPingShenXTModel.S_FileType" Width="1.5" PointX="2.75" PointY="15.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

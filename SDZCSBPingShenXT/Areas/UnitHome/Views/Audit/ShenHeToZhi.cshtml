@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShenHeToZhi</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+            /*outline:none; 去除按钮外边框
+            border-radius:37px; 按钮圆角*/
+        }
+        .tuot {
+            background-color: #74abd4;
+            /*-webkit- google*/
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+            /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+        #FormMail input{
+            height:38px;
+        }
+        #FormMail label{
+            padding:9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;background-color:#64b6ed;">
+                    <h4><i class="glyphicon glyphicon-envelope"></i> 审核通知</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="background-color:#f5f5f5; height:550px;">
+                    <form class="form-horizontal reset" method="post" id="FormMail" action="/UnitHome/Audit/SendMails">
+                        <div class="form-group" style="margin-top:20px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">QQ号码</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="EmailName" name="EmailName" />
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">邮箱密码</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="password" class="form-control" id="EmailPassword" name="EmailPassword"/>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">邮箱账号</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="如:1172983516@qq.com" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:20px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">接收邮箱</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="email" class="form-control" id="Emails" name="Emails" placeholder="如:1172983516@qq.com" />
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">主题标题</label>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <input type="text" class="form-control" id="EmailPostbox" name="EmailPostbox"/>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:20px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">邮件内容</label>
+                            <div class="col-lg-11 col-md-11 col-sm-11">
+                                <textarea class="form-control" id="EmailContent" name="EmailContent" style="height:100px;width:990px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:20px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">邮件模板</label>
+                            <div class="col-lg-11 col-md-11 col-sm-11" style="background-color:#e5e5d9;width:990px;height:200px; margin-left:15px;border:3px solid #f4f5cb">
+                                <p class="text-left">
+                                    主题标题：山东省专业技术人员职称评审申报--审核通知<br />
+                                    <br />
+                                    邮件内容：刘先生(李小姐)，您好！恭喜您！！！您所申报的职称--高级工程师，已通过本单位审核！请您多多留意最终审核结果。<br />
+                                    <br />
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;如需要咨询请联系我们：0537-2376032<br />
+                                    <br />
+                                    邮件内容：刘先生(李小姐)，您好！很抱歉！！！您所申报的职称--高级工程师，未通过本单位审核！请您完善资料，期待您下次的到来。<br />
+                                    <br />
+                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;如需要咨询请联系我们：0537-2376032 ;&emsp;QQ：1150102516@qq.com&emsp;&emsp;fctvhvvkbrwshcaj<br />
+                                    <br />
+                                </p>
+                            </div>
+                        </div>
+                        <button type="reset" hidden>重置</button>
+                    </form>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info" id="btnFaSong" style="background-color:#dfeffc;color:#34759b;font-weight:bold;">
+                                <img src="~/image/anniu.PNG" /> 发送</button>
+                            @*<button type="submit" class="btn btn-danger" id="btnFaSong" style="width:46px; height:46px; outline:none; border:hidden; padding:2px; color:white;font-family:华文新魏;font-size:18px; background-image:url(../../../../image/fangsong.png) ">发送</button>*@                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>   
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        //发送按钮  1150102516@qq.com   fctvhvvkbrwshcaj
+        $("#btnFaSong").click(function () {
+            var EmailName = $('#FormMail [name="EmailName"]').val();
+            var EmailPassword = $('#FormMail [name="EmailPassword"]').val();
+            var EmailContent = $('#FormMail [name="EmailContent"]').val();
+            var EmailPostbox = $('#FormMail [name="EmailPostbox"]').val();
+            var Email = $('#FormMail [name="Email"]').val();
+            var Emails = $('#FormMail [name="Emails"]').val();
+            if (EmailName != '' && EmailPassword != '' && EmailContent != '' && EmailPostbox != '' && Email != '' && Emails != '') {
+                var layerIndex = layer.load(0);                                                                                                     
+                $("#FormMail").ajaxSubmit(function (msg) {
+                    if (msg == true) {
+                        layer.alert("发送成功", { icon: 1, title: '提示' });
+                        //$('#FormMail [type="reset"]').click();//重置
+                        layer.close(layerIndex);
+                    } else {
+                        layer.alert("发送失败", { icon: 2, title: '提示' });
+                        layer.close(layerIndex);
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

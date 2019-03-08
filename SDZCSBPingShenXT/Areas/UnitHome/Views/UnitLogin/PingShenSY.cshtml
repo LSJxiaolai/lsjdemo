@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>山东省专业技术人员职称申报评审系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ace-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/ace-skins.min.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      .navigation {
+            background-color: #E0ECFF;
+            /*-webkit- google*/
+            /*background: -webkit-linear-gradient(top,#a1d4f1 0,#90c7e6 10%,#71b2d6 30% ,#0783c9 50% ,#0693e2 70%,#139eeb 90% , #00a3ff 100%);*/
+            background: -webkit-linear-gradient(top,#2eb4f3 0,#24a5e7 40%,#29a5eb 70%,#1a8cd2 100%);
+            /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#50c377 0,#48b86c 10%,#39a45c 30%,#378e63 50%,#379364 70%,#4dad7c 90%, #57b884 100%);
+            /*-o- OPERA*/
+            background: -o-linear-gradient(top,#50c377 0,#48b86c 10%,#39a45c 30%,#378e63 50%,#379364 70%,#4dad7c 90%, #57b884 100%);
+            background: linear-gradient(top,#50c377 0,#48b86c 10%,#39a45c 30%,#378e63 50%,#379364 70%,#4dad7c 90%, #57b884 100%);
+            background-repeat: repeat-x;
+            /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#659cdd,endColorstr=#80aee9,GradientType=0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid navigation" style="padding-left:0;padding-right:0;">
+                <a href="#" class="brand">
+                    <small style="font-family:华文行楷;font-size:26px;">
+                        <img src="~/image/Zhutitu.png" />
+                        山东省专业技术人员职称申报评审系统
+                    </small>
+                </a><!--标题-->
+                <ul class="nav ace-nav pull-right" style="margin-right:10px;margin-top:12px;">
+                    <li class="light-blue" style="background-color:#25a5e8">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/image/100.bmp" />@*头像*@
+                            <span class="user-info">
+                                <small>欢迎,</small>
+                                超级管理员
+                            </span>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-cog"></i>
+                                    设置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>
+                                    资料
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" id="btnTuiChu">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--用户信息-->
+            </div>
+        </div>
+    </div>
+    <div class="main-container container-fluid">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn-info navigation" style="width:188px;height:40px;"><i class="icon-folder-open"></i>菜单栏</button>
+                </div>
+            </div>
+            <ul class="nav nav-list">
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-group"></i>
+                        <span class="menu-text"> 单位用户管理 </span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="DanWeiXinXiWeiHu">
+                                <i class="icon-double-angle-right" style="color:green;"></i>
+                                单位信息维护
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" id="ShenHeRenYuanGuanLi">
+                                <i class="icon-double-angle-right" style="color:green;"></i>
+                                审核人员管理
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" id="GongZuoRenYuanGuanLi">
+                                <i class="icon-double-angle-right" style="color:green;"></i>
+                                工作人员管理
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" id="XiuGaiMiMa">
+                                <i class="icon-double-angle-right" style="color:green;"></i>
+                                修改密码
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-desktop"></i>
+                        <span class="menu-text"> 单位申报系列 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="DanWeiShenBaoXiLie">
+                                <i class="icon-double-angle-right"></i>
+                                单位申报系列
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-retweet"></i>
+                        <span class="menu-text"> 设置申报路径 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="ShenBaoLuJingShenQing">
+                                <i class="icon-double-angle-right"></i>
+                                申报路径申请
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="DaiLiLuJingShenQing">
+                                <i class="icon-double-angle-right"></i>
+                                代理路径申请
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="ShenBaoLuJingShenHe">
+                                <i class="icon-double-angle-right"></i>
+                                申报路径审核
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="DaiLiLuJingShenHe">
+                                <i class="icon-double-angle-right"></i>
+                                代理路径审核
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class=" icon-cloud-upload"></i>
+                        <span class="menu-text">数据审核上报 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="ShenHeShangBao">
+                                <i class="icon-double-angle-right"></i>
+                                审核上报
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="btnqqEmail">
+                                <i class="icon-double-angle-right"></i>
+                                审核通知
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class=" icon-bullhorn"></i>
+                        <span class="menu-text">发布公告 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="ToZhiGoGao">
+                                <i class="icon-double-angle-right"></i>
+                                通知公告
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-cogs"></i>
+                        <span class="menu-text"> 系统设置 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" id="btnTuiChuXT">
+                                <i class="icon-double-angle-right"></i>
+                                退出系统
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left"></i>
+            </div>
+        </div>
+
+        <!--右边部件-->
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <!--时间显示-->
+                        <input class="form-control" id="IdentityCode" style="height:20px;width:500px; margin-left:200px; color:red; border:hidden; background-color:#f5f5f5" />
+                        <span class="input-icon">
+                            <input type="text" placeholder="搜索..." class="input-small nav-search-input" id="nav-search-input" style="border:20px;" autocomplete="off" />
+                            <i class="icon-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div>                   
+            </div>
+            <div class="page-content">
+                <iframe id="content" style=" width:100%;height:700px;border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Content/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Content/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/assets/js/jquery.easy-pie-chart.min.js"></script>
+    <script src="~/Content/assets/js/jquery.sparkline.min.js"></script>
+    <script src="~/Content/assets/js/ace-elements.min.js"></script>
+    <script src="~/Content/assets/js/ace.min.js"></script>
+    <script>
+        //$("#content").attr("src", "/UnitHome/UnitLogin/DanWeiXinXiWH");//单位维护跟随主页面同时打开显示
+        //单位信息维护
+        $("#DanWeiXinXiWeiHu").click(function () {
+            $("#content").attr("src", "/UnitHome/UnitLogin/DanWeiXinXiWH");
+        });
+
+        //审核人员管理
+        $("#ShenHeRenYuanGuanLi").click(function () {
+            $("#content").attr("src", "/UnitHome/UnitLogin/ShenHeRenYuanGL");
+        });
+
+        //工作人员管理
+        $("#GongZuoRenYuanGuanLi").click(function () {
+            $("#content").attr("src", "/UnitHome/UnitLogin/GongZuoRenYuanGL");
+        });
+
+        //修改密码
+        $("#XiuGaiMiMa").click(function () {
+            $("#content").attr("src", "/UnitHome/UnitLogin/XiuGaiMM");
+        });
+
+        //单位申报系列
+        $("#DanWeiShenBaoXiLie").click(function () {
+            $("#content").attr("src", "/UnitHome/UnitLogin/DanWeiShenBaoXiLie");
+        });
+
+        //申报路径申请
+        $("#ShenBaoLuJingShenQing").click(function () {
+            $("#content").attr("src", "/UnitHome/SetWay/ShenBaoLuJing");
+        });
+
+        //代理路径申请
+        $("#DaiLiLuJingShenQing").click(function () {
+            $("#content").attr("src", "/UnitHome/SetWay/DaiLiLuJing");
+        });
+
+        //申报路径审核
+        $("#ShenBaoLuJingShenHe").click(function () {
+            $("#content").attr("src", "/UnitHome/SetWay/LuJingShenHe");
+        });
+        //代理路径审核
+        $("#DaiLiLuJingShenHe").click(function () {
+            $("#content").attr("src", "/UnitHome/SetWay/DaiLiLuJingSH");
+        });
+        //审核上报
+        $("#ShenHeShangBao").click(function () {
+            $("#content").attr("src", "/UnitHome/Audit/ShenHeShangBao");
+        });
+        //审核通知
+        $("#btnqqEmail").click(function () {
+            $("#content").attr("src", "/UnitHome/Audit/ShenHeToZhi");
+        });
+        //通知公告
+        $("#ToZhiGoGao").click(function () {
+            $("#content").attr("src", "/UnitHome/Notice/ToZhiGoGao");
+        });
+        //退出
+        $("#btnTuiChu").click(function () {
+            window.location.href = "/Main/Declares";
+        });
+        //退出系统
+        $("#btnTuiChuXT").click(function () {
+            window.location.href = "/Main/Declares";
+        });
+
+        //时间
+        setInterval(function () {
+            var date = new Date();//实例化一个日期
+            var SplitDate = date.toString().split(" ", 5);//分割日期
+            var Month = 0;
+            var i = 0;
+            var j = 0;
+            var MonthArray = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");//英文月数组
+            var WeekArray = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");//英文星期数组
+            var ChinaWeekArra = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");//中文星期数组
+            var Week = "";
+            $.each(MonthArray, function (i) {//遍历返回来的英文星期是否与数组中的相等那一个值
+                if (SplitDate[1] == MonthArray[i]) {
+                    Month = i + 1;
+                }
+            });
+
+            $.each(WeekArray, function (i) {
+                if (SplitDate[0] == WeekArray[i]) {
+                    Week = ChinaWeekArra[i];
+                }
+            });
+            $("#IdentityCode").val("现在是： " + SplitDate[3] + "   年   " + Month + "   月   " + SplitDate[2] + "   日   " + " 北京时间：" + SplitDate[4] + "  " + Week);
+        }, 1000);
+    </script>
+</body>
+</html>

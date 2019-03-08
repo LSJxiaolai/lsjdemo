@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataYiLanBiao" targetNamespace="http://tempuri.org/DataYiLanBiao.xsd" xmlns:mstns="http://tempuri.org/DataYiLanBiao.xsd" xmlns="http://tempuri.org/DataYiLanBiao.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SDZCShenBaoPingShenXTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SDZCShenBaoPingShenXTConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SDZCShenBaoPingShenXTConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_BasicxtTableAdapter" GeneratorDataComponentClassName="B_BasicxtTableAdapter" Name="B_Basicxt" UserDataComponentName="B_BasicxtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   S_DeclareGrade.DeclareGrade, S_DeclareSeries.DeclareSeries, S_DeclareQualification.DeclareQualification, 
+                B_Basic.FormTime, B_Basic.Name, S_Sex.Sex, B_Basic.Birthday, B_Basic.PlaceUnit, S_Education.Education, 
+                B_Basic.GraduateTime, B_Basic.GraduateSchool, S_Major.Major, S_Education_1.Education AS Expr1, 
+                B_Basic.GraduateTime1, B_Basic.GraduateSchool1, S_Major_1.Major AS Expr2, S_MajorsPost.MajorsPost, 
+                B_Basic.GainedQualificationTime, B_Basic.EngageTime, B_Basic.EngageYear, B_Basic.Major AS Expr3, 
+                B_Basic.MajorYear, B_Basic.TakeOffice, B_Basic.TakeOfficeTime, B_Basic.JoinWorkTime, B_Basic.ForeignLanguage, 
+                S_ForeignLanguageRank.ForeignLanguageRank, B_Basic.ForeignLanguageResult, S_DeclareMode.DeclareMode, 
+                B_Basic.QuantityScore, S_ExamCase.ExamCase, B_Basic.ExamResult, S_DeclareYear.DeclareYear, 
+                S_ExamineResult.ExamineResult, S_DeclareYear_1.DeclareYear AS Expr4, 
+                S_ExamineResult_1.ExamineResult AS Expr5, S_DeclareYear_2.DeclareYear AS Expr6, 
+                S_ExamineResult_2.ExamineResult AS Expr7, S_ExamineResult_3.ExamineResult AS Expr8
+FROM      B_Basic INNER JOIN
+                S_DeclareGrade ON B_Basic.DeclareGradeID = S_DeclareGrade.DeclareGradeID INNER JOIN
+                S_DeclareSeries ON B_Basic.DeclareSeriesID = S_DeclareSeries.DeclareSeriesID INNER JOIN
+                S_DeclareQualification ON B_Basic.DeclareQualificationID = S_DeclareQualification.DeclareQualificationID INNER JOIN
+                S_Sex ON B_Basic.SexID = S_Sex.SexID INNER JOIN
+                S_Education ON B_Basic.EducationID = S_Education.EducationID INNER JOIN
+                S_Major ON B_Basic.MajorID = S_Major.MajorID INNER JOIN
+                S_Education AS S_Education_1 ON B_Basic.JudgeEducationID = S_Education_1.EducationID INNER JOIN
+                S_Major AS S_Major_1 ON B_Basic.MajorID1 = S_Major_1.MajorID INNER JOIN
+                S_MajorsPost ON B_Basic.MajorsPostID = S_MajorsPost.MajorsPostID INNER JOIN
+                S_ForeignLanguageRank ON 
+                B_Basic.ForeignLanguageRankID = S_ForeignLanguageRank.ForeignLanguageRankID INNER JOIN
+                S_DeclareMode ON B_Basic.DeclareModeID = S_DeclareMode.DeclareModeID INNER JOIN
+                S_ExamCase ON B_Basic.ExamCaseID = S_ExamCase.ExamCaseID INNER JOIN
+                S_DeclareYear ON B_Basic.DeclareYearID = S_DeclareYear.DeclareYearID INNER JOIN
+                S_ExamineResult ON B_Basic.ExamineResultID = S_ExamineResult.ExamineResultID INNER JOIN
+                S_DeclareYear AS S_DeclareYear_1 ON B_Basic.DeclareYearID1 = S_DeclareYear_1.DeclareYearID INNER JOIN
+                S_ExamineResult AS S_ExamineResult_1 ON 
+                B_Basic.ExamineResultID1 = S_ExamineResult_1.ExamineResultID INNER JOIN
+                S_DeclareYear AS S_DeclareYear_2 ON B_Basic.DeclareYearID2 = S_DeclareYear_2.DeclareYearID INNER JOIN
+                S_ExamineResult AS S_ExamineResult_2 ON 
+                B_Basic.ExamineResultID2 = S_ExamineResult_2.ExamineResultID INNER JOIN
+                S_ExamineResult AS S_ExamineResult_3 ON B_Basic.ExamineResultID3 = S_ExamineResult_3.ExamineResultID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DeclareGrade" DataSetColumn="DeclareGrade" />
+              <Mapping SourceColumn="DeclareSeries" DataSetColumn="DeclareSeries" />
+              <Mapping SourceColumn="DeclareQualification" DataSetColumn="DeclareQualification" />
+              <Mapping SourceColumn="FormTime" DataSetColumn="FormTime" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Sex" DataSetColumn="Sex" />
+              <Mapping SourceColumn="Birthday" DataSetColumn="Birthday" />
+              <Mapping SourceColumn="PlaceUnit" DataSetColumn="PlaceUnit" />
+              <Mapping SourceColumn="Education" DataSetColumn="Education" />
+              <Mapping SourceColumn="GraduateTime" DataSetColumn="GraduateTime" />
+              <Mapping SourceColumn="GraduateSchool" DataSetColumn="GraduateSchool" />
+              <Mapping SourceColumn="Major" DataSetColumn="Major" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Education2" />
+              <Mapping SourceColumn="GraduateTime1" DataSetColumn="GraduateTime1" />
+              <Mapping SourceColumn="GraduateSchool1" DataSetColumn="GraduateSchool1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Major2" />
+              <Mapping SourceColumn="MajorsPost" DataSetColumn="MajorsPost" />
+              <Mapping SourceColumn="GainedQualificationTime" DataSetColumn="GainedQualificationTime" />
+              <Mapping SourceColumn="EngageTime" DataSetColumn="EngageTime" />
+              <Mapping SourceColumn="EngageYear" DataSetColumn="EngageYear" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Majors" />
+              <Mapping SourceColumn="MajorYear" DataSetColumn="MajorYear" />
+              <Mapping SourceColumn="TakeOffice" DataSetColumn="TakeOffice" />
+              <Mapping SourceColumn="TakeOfficeTime" DataSetColumn="TakeOfficeTime" />
+              <Mapping SourceColumn="JoinWorkTime" DataSetColumn="JoinWorkTime" />
+              <Mapping SourceColumn="ForeignLanguage" DataSetColumn="ForeignLanguage" />
+              <Mapping SourceColumn="ForeignLanguageRank" DataSetColumn="ForeignLanguageRank" />
+              <Mapping SourceColumn="ForeignLanguageResult" DataSetColumn="ForeignLanguageResult" />
+              <Mapping SourceColumn="DeclareMode" DataSetColumn="DeclareMode" />
+              <Mapping SourceColumn="QuantityScore" DataSetColumn="QuantityScore" />
+              <Mapping SourceColumn="ExamCase" DataSetColumn="ExamCase" />
+              <Mapping SourceColumn="ExamResult" DataSetColumn="ExamResult" />
+              <Mapping SourceColumn="DeclareYear" DataSetColumn="DeclareYear" />
+              <Mapping SourceColumn="ExamineResult" DataSetColumn="ExamineResult" />
+              <Mapping SourceColumn="Expr4" DataSetColumn="DeclareYear2" />
+              <Mapping SourceColumn="Expr5" DataSetColumn="ExamineResult3" />
+              <Mapping SourceColumn="Expr6" DataSetColumn="DeclareYear3" />
+              <Mapping SourceColumn="Expr7" DataSetColumn="ExamineResult4" />
+              <Mapping SourceColumn="Expr8" DataSetColumn="ExamineResult5" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_BasisxtTableAdapter" GeneratorDataComponentClassName="B_BasisxtTableAdapter" Name="B_Basisxt" UserDataComponentName="B_BasisxtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectName="SDZCSBPingShenXT.dbo.B_Basis" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [B_Basis] ([RecordUnit]) VALUES (@RecordUnit)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@RecordUnit" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="RecordUnit" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT  RecordUnit
+FROM      B_Basis</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RecordUnit" DataSetColumn="RecordUnit" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_ExperiencextTableAdapter" GeneratorDataComponentClassName="B_ExperiencextTableAdapter" Name="B_Experiencext" UserDataComponentName="B_ExperiencextTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectName="SDZCSBPingShenXT.dbo.B_Experience" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [B_Experience] ([Experience]) VALUES (@Experience)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Experience" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Experience" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   Experience
+FROM      B_Experience</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Experience" DataSetColumn="Experience" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_WorkResultxtTableAdapter" GeneratorDataComponentClassName="B_WorkResultxtTableAdapter" Name="B_WorkResultxt" UserDataComponentName="B_WorkResultxtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectName="SDZCSBPingShenXT.dbo.B_WorkResult" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [B_WorkResult] ([WorkResult]) VALUES (@WorkResult)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@WorkResult" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="WorkResult" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   WorkResult
+FROM      B_WorkResult</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="WorkResult" DataSetColumn="WorkResult" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_AchievementxtTableAdapter" GeneratorDataComponentClassName="B_AchievementxtTableAdapter" Name="B_Achievementxt" UserDataComponentName="B_AchievementxtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   B_Achievement.Timers, B_Achievement.Item, S_AchievementGrade.AchievementGrade, B_Achievement.SituateNextrs, 
+                B_Achievement.RatifySection, B_Achievement.Accessoryrs
+FROM      B_Achievement INNER JOIN
+                S_AchievementGrade ON B_Achievement.AchievementGradeID = S_AchievementGrade.AchievementGradeID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Timers" DataSetColumn="Timers" />
+              <Mapping SourceColumn="Item" DataSetColumn="Item" />
+              <Mapping SourceColumn="AchievementGrade" DataSetColumn="AchievementGrade" />
+              <Mapping SourceColumn="SituateNextrs" DataSetColumn="SituateNextrs" />
+              <Mapping SourceColumn="RatifySection" DataSetColumn="RatifySection" />
+              <Mapping SourceColumn="Accessoryrs" DataSetColumn="Accessoryrs" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="B_ProductionxtTableAdapter" GeneratorDataComponentClassName="B_ProductionxtTableAdapter" Name="B_Productionxt" UserDataComponentName="B_ProductionxtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SDZCShenBaoPingShenXTConnectionString (Web.config)" DbObjectName="SDZCSBPingShenXT.dbo.B_Production" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [B_Production] ([Timery], [Title], [SituateNextry], [PeriodicalPublishing], [Accessoryry]) VALUES (@Timery, @Title, @SituateNextry, @PeriodicalPublishing, @Accessoryry)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Timery" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Timery" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Title" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@SituateNextry" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="SituateNextry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@PeriodicalPublishing" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="PeriodicalPublishing" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Accessoryry" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Accessoryry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT   Timery, Title, SituateNextry, PeriodicalPublishing, Accessoryry
+FROM      B_Production</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Timery" DataSetColumn="Timery" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+              <Mapping SourceColumn="SituateNextry" DataSetColumn="SituateNextry" />
+              <Mapping SourceColumn="PeriodicalPublishing" DataSetColumn="PeriodicalPublishing" />
+              <Mapping SourceColumn="Accessoryry" DataSetColumn="Accessoryry" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataYiLanBiao" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataYiLanBiao" msprop:Generator_UserDSName="DataYiLanBiao">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="B_Basicxt" msprop:Generator_TableClassName="B_BasicxtDataTable" msprop:Generator_TableVarName="tableB_Basicxt" msprop:Generator_RowChangedName="B_BasicxtRowChanged" msprop:Generator_TablePropName="B_Basicxt" msprop:Generator_RowDeletingName="B_BasicxtRowDeleting" msprop:Generator_RowChangingName="B_BasicxtRowChanging" msprop:Generator_RowEvHandlerName="B_BasicxtRowChangeEventHandler" msprop:Generator_RowDeletedName="B_BasicxtRowDeleted" msprop:Generator_RowClassName="B_BasicxtRow" msprop:Generator_UserTableName="B_Basicxt" msprop:Generator_RowEvArgName="B_BasicxtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeclareGrade" msprop:Generator_ColumnVarNameInTable="columnDeclareGrade" msprop:Generator_ColumnPropNameInRow="DeclareGrade" msprop:Generator_ColumnPropNameInTable="DeclareGradeColumn" msprop:Generator_UserColumnName="DeclareGrade" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareSeries" msprop:Generator_ColumnVarNameInTable="columnDeclareSeries" msprop:Generator_ColumnPropNameInRow="DeclareSeries" msprop:Generator_ColumnPropNameInTable="DeclareSeriesColumn" msprop:Generator_UserColumnName="DeclareSeries" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareQualification" msprop:Generator_ColumnVarNameInTable="columnDeclareQualification" msprop:Generator_ColumnPropNameInRow="DeclareQualification" msprop:Generator_ColumnPropNameInTable="DeclareQualificationColumn" msprop:Generator_UserColumnName="DeclareQualification" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FormTime" msprop:Generator_ColumnVarNameInTable="columnFormTime" msprop:Generator_ColumnPropNameInRow="FormTime" msprop:Generator_ColumnPropNameInTable="FormTimeColumn" msprop:Generator_UserColumnName="FormTime" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sex" msprop:Generator_ColumnVarNameInTable="columnSex" msprop:Generator_ColumnPropNameInRow="Sex" msprop:Generator_ColumnPropNameInTable="SexColumn" msprop:Generator_UserColumnName="Sex" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Birthday" msprop:Generator_ColumnVarNameInTable="columnBirthday" msprop:Generator_ColumnPropNameInRow="Birthday" msprop:Generator_ColumnPropNameInTable="BirthdayColumn" msprop:Generator_UserColumnName="Birthday" type="xs:string" minOccurs="0" />
+              <xs:element name="PlaceUnit" msprop:Generator_ColumnVarNameInTable="columnPlaceUnit" msprop:Generator_ColumnPropNameInRow="PlaceUnit" msprop:Generator_ColumnPropNameInTable="PlaceUnitColumn" msprop:Generator_UserColumnName="PlaceUnit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Education" msprop:Generator_ColumnVarNameInTable="columnEducation" msprop:Generator_ColumnPropNameInRow="Education" msprop:Generator_ColumnPropNameInTable="EducationColumn" msprop:Generator_UserColumnName="Education" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GraduateTime" msprop:Generator_ColumnVarNameInTable="columnGraduateTime" msprop:Generator_ColumnPropNameInRow="GraduateTime" msprop:Generator_ColumnPropNameInTable="GraduateTimeColumn" msprop:Generator_UserColumnName="GraduateTime" type="xs:string" minOccurs="0" />
+              <xs:element name="GraduateSchool" msprop:Generator_ColumnVarNameInTable="columnGraduateSchool" msprop:Generator_ColumnPropNameInRow="GraduateSchool" msprop:Generator_ColumnPropNameInTable="GraduateSchoolColumn" msprop:Generator_UserColumnName="GraduateSchool" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Major" msprop:Generator_ColumnVarNameInTable="columnMajor" msprop:Generator_ColumnPropNameInRow="Major" msprop:Generator_ColumnPropNameInTable="MajorColumn" msprop:Generator_UserColumnName="Major" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Education2" msprop:Generator_ColumnVarNameInTable="columnEducation2" msprop:Generator_ColumnPropNameInRow="Education2" msprop:Generator_ColumnPropNameInTable="Education2Column" msprop:Generator_UserColumnName="Education2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GraduateTime1" msprop:Generator_ColumnVarNameInTable="columnGraduateTime1" msprop:Generator_ColumnPropNameInRow="GraduateTime1" msprop:Generator_ColumnPropNameInTable="GraduateTime1Column" msprop:Generator_UserColumnName="GraduateTime1" type="xs:string" minOccurs="0" />
+              <xs:element name="GraduateSchool1" msprop:Generator_ColumnVarNameInTable="columnGraduateSchool1" msprop:Generator_ColumnPropNameInRow="GraduateSchool1" msprop:Generator_ColumnPropNameInTable="GraduateSchool1Column" msprop:Generator_UserColumnName="GraduateSchool1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Major2" msprop:Generator_ColumnVarNameInTable="columnMajor2" msprop:Generator_ColumnPropNameInRow="Major2" msprop:Generator_ColumnPropNameInTable="Major2Column" msprop:Generator_UserColumnName="Major2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MajorsPost" msprop:Generator_ColumnVarNameInTable="columnMajorsPost" msprop:Generator_ColumnPropNameInRow="MajorsPost" msprop:Generator_ColumnPropNameInTable="MajorsPostColumn" msprop:Generator_UserColumnName="MajorsPost" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GainedQualificationTime" msprop:Generator_ColumnVarNameInTable="columnGainedQualificationTime" msprop:Generator_ColumnPropNameInRow="GainedQualificationTime" msprop:Generator_ColumnPropNameInTable="GainedQualificationTimeColumn" msprop:Generator_UserColumnName="GainedQualificationTime" type="xs:string" minOccurs="0" />
+              <xs:element name="EngageTime" msprop:Generator_ColumnVarNameInTable="columnEngageTime" msprop:Generator_ColumnPropNameInRow="EngageTime" msprop:Generator_ColumnPropNameInTable="EngageTimeColumn" msprop:Generator_UserColumnName="EngageTime" type="xs:string" minOccurs="0" />
+              <xs:element name="EngageYear" msprop:Generator_ColumnVarNameInTable="columnEngageYear" msprop:Generator_ColumnPropNameInRow="EngageYear" msprop:Generator_ColumnPropNameInTable="EngageYearColumn" msprop:Generator_UserColumnName="EngageYear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Majors" msprop:Generator_ColumnVarNameInTable="columnMajors" msprop:Generator_ColumnPropNameInRow="Majors" msprop:Generator_ColumnPropNameInTable="MajorsColumn" msprop:Generator_UserColumnName="Majors" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MajorYear" msprop:Generator_ColumnVarNameInTable="columnMajorYear" msprop:Generator_ColumnPropNameInRow="MajorYear" msprop:Generator_ColumnPropNameInTable="MajorYearColumn" msprop:Generator_UserColumnName="MajorYear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TakeOffice" msprop:Generator_ColumnVarNameInTable="columnTakeOffice" msprop:Generator_ColumnPropNameInRow="TakeOffice" msprop:Generator_ColumnPropNameInTable="TakeOfficeColumn" msprop:Generator_UserColumnName="TakeOffice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TakeOfficeTime" msprop:Generator_ColumnVarNameInTable="columnTakeOfficeTime" msprop:Generator_ColumnPropNameInRow="TakeOfficeTime" msprop:Generator_ColumnPropNameInTable="TakeOfficeTimeColumn" msprop:Generator_UserColumnName="TakeOfficeTime" type="xs:string" minOccurs="0" />
+              <xs:element name="JoinWorkTime" msprop:Generator_ColumnVarNameInTable="columnJoinWorkTime" msprop:Generator_ColumnPropNameInRow="JoinWorkTime" msprop:Generator_ColumnPropNameInTable="JoinWorkTimeColumn" msprop:Generator_UserColumnName="JoinWorkTime" type="xs:string" minOccurs="0" />
+              <xs:element name="ForeignLanguage" msprop:Generator_ColumnVarNameInTable="columnForeignLanguage" msprop:Generator_ColumnPropNameInRow="ForeignLanguage" msprop:Generator_ColumnPropNameInTable="ForeignLanguageColumn" msprop:Generator_UserColumnName="ForeignLanguage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ForeignLanguageRank" msprop:Generator_ColumnVarNameInTable="columnForeignLanguageRank" msprop:Generator_ColumnPropNameInRow="ForeignLanguageRank" msprop:Generator_ColumnPropNameInTable="ForeignLanguageRankColumn" msprop:Generator_UserColumnName="ForeignLanguageRank" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ForeignLanguageResult" msprop:Generator_ColumnVarNameInTable="columnForeignLanguageResult" msprop:Generator_ColumnPropNameInRow="ForeignLanguageResult" msprop:Generator_ColumnPropNameInTable="ForeignLanguageResultColumn" msprop:Generator_UserColumnName="ForeignLanguageResult" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareMode" msprop:Generator_ColumnVarNameInTable="columnDeclareMode" msprop:Generator_ColumnPropNameInRow="DeclareMode" msprop:Generator_ColumnPropNameInTable="DeclareModeColumn" msprop:Generator_UserColumnName="DeclareMode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QuantityScore" msprop:Generator_ColumnVarNameInTable="columnQuantityScore" msprop:Generator_ColumnPropNameInRow="QuantityScore" msprop:Generator_ColumnPropNameInTable="QuantityScoreColumn" msprop:Generator_UserColumnName="QuantityScore" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamCase" msprop:Generator_ColumnVarNameInTable="columnExamCase" msprop:Generator_ColumnPropNameInRow="ExamCase" msprop:Generator_ColumnPropNameInTable="ExamCaseColumn" msprop:Generator_UserColumnName="ExamCase" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamResult" msprop:Generator_ColumnVarNameInTable="columnExamResult" msprop:Generator_ColumnPropNameInRow="ExamResult" msprop:Generator_ColumnPropNameInTable="ExamResultColumn" msprop:Generator_UserColumnName="ExamResult" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareYear" msprop:Generator_ColumnVarNameInTable="columnDeclareYear" msprop:Generator_ColumnPropNameInRow="DeclareYear" msprop:Generator_ColumnPropNameInTable="DeclareYearColumn" msprop:Generator_UserColumnName="DeclareYear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamineResult" msprop:Generator_ColumnVarNameInTable="columnExamineResult" msprop:Generator_ColumnPropNameInRow="ExamineResult" msprop:Generator_ColumnPropNameInTable="ExamineResultColumn" msprop:Generator_UserColumnName="ExamineResult" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareYear2" msprop:Generator_ColumnVarNameInTable="columnDeclareYear2" msprop:Generator_ColumnPropNameInRow="DeclareYear2" msprop:Generator_ColumnPropNameInTable="DeclareYear2Column" msprop:Generator_UserColumnName="DeclareYear2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamineResult3" msprop:Generator_ColumnVarNameInTable="columnExamineResult3" msprop:Generator_ColumnPropNameInRow="ExamineResult3" msprop:Generator_ColumnPropNameInTable="ExamineResult3Column" msprop:Generator_UserColumnName="ExamineResult3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeclareYear3" msprop:Generator_ColumnVarNameInTable="columnDeclareYear3" msprop:Generator_ColumnPropNameInRow="DeclareYear3" msprop:Generator_ColumnPropNameInTable="DeclareYear3Column" msprop:Generator_UserColumnName="DeclareYear3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamineResult4" msprop:Generator_ColumnVarNameInTable="columnExamineResult4" msprop:Generator_ColumnPropNameInRow="ExamineResult4" msprop:Generator_ColumnPropNameInTable="ExamineResult4Column" msprop:Generator_UserColumnName="ExamineResult4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExamineResult5" msprop:Generator_ColumnVarNameInTable="columnExamineResult5" msprop:Generator_ColumnPropNameInRow="ExamineResult5" msprop:Generator_ColumnPropNameInTable="ExamineResult5Column" msprop:Generator_UserColumnName="ExamineResult5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="B_Basisxt" msprop:Generator_TableClassName="B_BasisxtDataTable" msprop:Generator_TableVarName="tableB_Basisxt" msprop:Generator_RowChangedName="B_BasisxtRowChanged" msprop:Generator_TablePropName="B_Basisxt" msprop:Generator_RowDeletingName="B_BasisxtRowDeleting" msprop:Generator_RowChangingName="B_BasisxtRowChanging" msprop:Generator_RowEvHandlerName="B_BasisxtRowChangeEventHandler" msprop:Generator_RowDeletedName="B_BasisxtRowDeleted" msprop:Generator_RowClassName="B_BasisxtRow" msprop:Generator_UserTableName="B_Basisxt" msprop:Generator_RowEvArgName="B_BasisxtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RecordUnit" msprop:Generator_ColumnVarNameInTable="columnRecordUnit" msprop:Generator_ColumnPropNameInRow="RecordUnit" msprop:Generator_ColumnPropNameInTable="RecordUnitColumn" msprop:Generator_UserColumnName="RecordUnit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="B_Experiencext" msprop:Generator_TableClassName="B_ExperiencextDataTable" msprop:Generator_TableVarName="tableB_Experiencext" msprop:Generator_RowChangedName="B_ExperiencextRowChanged" msprop:Generator_TablePropName="B_Experiencext" msprop:Generator_RowDeletingName="B_ExperiencextRowDeleting" msprop:Generator_RowChangingName="B_ExperiencextRowChanging" msprop:Generator_RowEvHandlerName="B_ExperiencextRowChangeEventHandler" msprop:Generator_RowDeletedName="B_ExperiencextRowDeleted" msprop:Generator_RowClassName="B_ExperiencextRow" msprop:Generator_UserTableName="B_Experiencext" msprop:Generator_RowEvArgName="B_ExperiencextRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Experience" msprop:Generator_ColumnVarNameInTable="columnExperience" msprop:Generator_ColumnPropNameInRow="Experience" msprop:Generator_ColumnPropNameInTable="ExperienceColumn" msprop:Generator_UserColumnName="Experience" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="B_WorkResultxt" msprop:Generator_TableClassName="B_WorkResultxtDataTable" msprop:Generator_TableVarName="tableB_WorkResultxt" msprop:Generator_RowChangedName="B_WorkResultxtRowChanged" msprop:Generator_TablePropName="B_WorkResultxt" msprop:Generator_RowDeletingName="B_WorkResultxtRowDeleting" msprop:Generator_RowChangingName="B_WorkResultxtRowChanging" msprop:Generator_RowEvHandlerName="B_WorkResultxtRowChangeEventHandler" msprop:Generator_RowDeletedName="B_WorkResultxtRowDeleted" msprop:Generator_RowClassName="B_WorkResultxtRow" msprop:Generator_UserTableName="B_WorkResultxt" msprop:Generator_RowEvArgName="B_WorkResultxtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="WorkResult" msprop:Generator_ColumnVarNameInTable="columnWorkResult" msprop:Generator_ColumnPropNameInRow="WorkResult" msprop:Generator_ColumnPropNameInTable="WorkResultColumn" msprop:Generator_UserColumnName="WorkResult" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="B_Achievementxt" msprop:Generator_TableClassName="B_AchievementxtDataTable" msprop:Generator_TableVarName="tableB_Achievementxt" msprop:Generator_RowChangedName="B_AchievementxtRowChanged" msprop:Generator_TablePropName="B_Achievementxt" msprop:Generator_RowDeletingName="B_AchievementxtRowDeleting" msprop:Generator_RowChangingName="B_AchievementxtRowChanging" msprop:Generator_RowEvHandlerName="B_AchievementxtRowChangeEventHandler" msprop:Generator_RowDeletedName="B_AchievementxtRowDeleted" msprop:Generator_RowClassName="B_AchievementxtRow" msprop:Generator_UserTableName="B_Achievementxt" msprop:Generator_RowEvArgName="B_AchievementxtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Timers" msprop:Generator_ColumnVarNameInTable="columnTimers" msprop:Generator_ColumnPropNameInRow="Timers" msprop:Generator_ColumnPropNameInTable="TimersColumn" msprop:Generator_UserColumnName="Timers" type="xs:string" minOccurs="0" />
+              <xs:element name="Item" msprop:Generator_ColumnVarNameInTable="columnItem" msprop:Generator_ColumnPropNameInRow="Item" msprop:Generator_ColumnPropNameInTable="ItemColumn" msprop:Generator_UserColumnName="Item" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AchievementGrade" msprop:Generator_ColumnVarNameInTable="columnAchievementGrade" msprop:Generator_ColumnPropNameInRow="AchievementGrade" msprop:Generator_ColumnPropNameInTable="AchievementGradeColumn" msprop:Generator_UserColumnName="AchievementGrade" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SituateNextrs" msprop:Generator_ColumnVarNameInTable="columnSituateNextrs" msprop:Generator_ColumnPropNameInRow="SituateNextrs" msprop:Generator_ColumnPropNameInTable="SituateNextrsColumn" msprop:Generator_UserColumnName="SituateNextrs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RatifySection" msprop:Generator_ColumnVarNameInTable="columnRatifySection" msprop:Generator_ColumnPropNameInRow="RatifySection" msprop:Generator_ColumnPropNameInTable="RatifySectionColumn" msprop:Generator_UserColumnName="RatifySection" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Accessoryrs" msprop:Generator_ColumnVarNameInTable="columnAccessoryrs" msprop:Generator_ColumnPropNameInRow="Accessoryrs" msprop:Generator_ColumnPropNameInTable="AccessoryrsColumn" msprop:Generator_UserColumnName="Accessoryrs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="B_Productionxt" msprop:Generator_TableClassName="B_ProductionxtDataTable" msprop:Generator_TableVarName="tableB_Productionxt" msprop:Generator_RowChangedName="B_ProductionxtRowChanged" msprop:Generator_TablePropName="B_Productionxt" msprop:Generator_RowDeletingName="B_ProductionxtRowDeleting" msprop:Generator_RowChangingName="B_ProductionxtRowChanging" msprop:Generator_RowEvHandlerName="B_ProductionxtRowChangeEventHandler" msprop:Generator_RowDeletedName="B_ProductionxtRowDeleted" msprop:Generator_RowClassName="B_ProductionxtRow" msprop:Generator_UserTableName="B_Productionxt" msprop:Generator_RowEvArgName="B_ProductionxtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Timery" msprop:Generator_ColumnVarNameInTable="columnTimery" msprop:Generator_ColumnPropNameInRow="Timery" msprop:Generator_ColumnPropNameInTable="TimeryColumn" msprop:Generator_UserColumnName="Timery" type="xs:string" minOccurs="0" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SituateNextry" msprop:Generator_ColumnVarNameInTable="columnSituateNextry" msprop:Generator_ColumnPropNameInRow="SituateNextry" msprop:Generator_ColumnPropNameInTable="SituateNextryColumn" msprop:Generator_UserColumnName="SituateNextry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PeriodicalPublishing" msprop:Generator_ColumnVarNameInTable="columnPeriodicalPublishing" msprop:Generator_ColumnPropNameInRow="PeriodicalPublishing" msprop:Generator_ColumnPropNameInTable="PeriodicalPublishingColumn" msprop:Generator_UserColumnName="PeriodicalPublishing" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Accessoryry" msprop:Generator_ColumnVarNameInTable="columnAccessoryry" msprop:Generator_ColumnPropNameInRow="Accessoryry" msprop:Generator_ColumnPropNameInTable="AccessoryryColumn" msprop:Generator_UserColumnName="Accessoryry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

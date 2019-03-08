@@ -1,0 +1,327 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <title>修改公告</title>
+    <style type="text/css">
+        .container {
+            padding-top: 30px;
+            margin-left: 10px;
+        }
+
+        .form-horizontal label {
+            font-weight: normal;
+            font-size: 15px;
+        }
+
+        .reset {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        input[type=checkbox] {
+            margin-top: 12px;
+        }
+
+
+        .file {
+            height: 100px;
+        }
+
+        .file, .noticeContent {
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .btngroup button {
+            font-size: 18px;
+            padding: 6px 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <form id="fromNotice" class="form-horizontal" role="form" enctype="multipart/form-data">
+                <input type="hidden" name="noticeId" id="noticeId" value="@ViewData["noticeId"]" />
+                <div class="form-group">
+                    <label class="col-md-2 col-sm-2 control-label reset">公告类别：</label>
+                    <div class="col-md-4 col-sm-4 reset">
+                        <select class="form-control" id="selectNoticeType" name="NoticeTypeID"></select>
+                    </div>
+                    <label class="col-md-2 col-sm-2 control-label reset">发布单位：</label>
+                    <div class="col-md-4 col-sm-4 reset">
+                        <select class="form-control" id="PromulgatorUnitID" name="PromulgatorUnitID"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 col-sm-2 control-label reset">发布时间：</label>
+                    <div class="col-md-4 col-sm-4 reset">
+                        <input type="date" class="form-control" id="SReleaseTimeStr" name="ReleaseTimeStrr">
+                    </div>
+                    <label class="col-md-2 col-sm-2 control-label reset">有效时间：</label>
+                    <div class="col-md-4 col-sm-4 reset">
+                        <input type="date" class="form-control" id="SEffective" name="EffectiveStr">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 col-sm-2 control-label reset">公告名称：</label>
+                    <div class="col-md-10 col-sm-10 reset">
+                        <input type="text" class="form-control" name="NoticeName" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 col-sm-2 control-label reset">公告内容：</label>
+                    <div class="col-md-10 col-sm-10 reset">
+                        <div class="noticeContent">
+                            <textarea id="NoticeContent" name="NoticeContent" class="form-control"></textarea>@* 是用来初始化*@
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 col-sm-2 control-label reset">附件：</label>
+                    <div class="col-md-10 col-sm-10 reset">
+                        <table id="tabFiles" class="">
+                            <tr>
+                                <th w_num="total_line" width="8%">序号</th>
+                                <th w_index="FileTypeName" width="10%">文件类型</th>
+                                <th w_index="Files">文件</th>
+                                <th w_index="FileName" w_hidden="true">FileName</th>
+                                <th w_render="setRemoveButton">移除</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-md-1 col-sm-1 col-md-offset-10">
+                        <input type="file" id="attachment" class="hidden" onchange="upAttachment()" /> @*文件选择框*@
+                        <button class="btn btn-primary" type="button" onclick="openUpAttachmentFile()">添加附件</button>
+                    </div>
+                </div>
+                <div class="form-group btngroup">
+                    <div class="col-md-2 col-sm-2 col-md-offset-5 col-sm-offset-5">
+                        <button class="btn btn-primary" type="button" id="saveForm">保存</button>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <button class="btn btn-primary" type="button" id="quit">返回</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @*文件上传表单*@
+    <div style="display: none">
+        <form id="formAttachment" action="/UnitHome/Notice/UpAttachment" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="form-control form-control-radius" onchange="upAttachmentFile()" />
+        </form>
+    </div>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    @*这是复文本框的js引用*@
+    <script src="~/Content/ckeditor_4.7.0_full/ckeditor.js"></script>
+    <script src="~/Content/ckeditor_4.7.0_full/lang/zh-cn.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script type="text/javascript">
+        var noticeId = $("#noticeId").val();//隐藏域
+        var ckeditorNoticeContent;
+        var tabFiles;
+        $(document).ready(function () {
+            //清理公告文件
+            $.post("/UnitHome/Notice/ClearNtioce", function () {   
+                $.ajax({//公告类型的下拉框
+                    url: "/UnitHome/Notice/SelectNoticeType",
+                    async: false,
+                    success: function (data) {
+                        selectLoadData("selectNoticeType", data);
+                    }
+                })
+                $.ajax({//发布单位的下拉框
+                    url: "/UnitHome/Notice/SelectPromulgatorUnit",
+                    async: false,
+                    success: function (data) {
+                        selectLoadData("PromulgatorUnitID", data);
+                    }
+                })
+                $.post("/UnitHome/Notice/SelectNoticeById", { noticeId: noticeId }, function (jsonData) {
+                    //初始化轮播图片选择collapse
+                    $("#collapseOverhead").collapse({ toggle: false });
+                    //当用户选择显示在轮播时显示
+                    $("#cNoticeCarousel").change(function () {
+                        if (document.getElementById("cNoticeCarousel").checked) {
+                            $("#collapseOverhead").collapse('show');
+                        } else {
+                            $("#collapseOverhead").collapse('hide');
+                        }
+                    });
+
+                    loadDatatoForm("fromNotice", jsonData);//这一句就是后台就会把数据直接对应绑定上去 loadDatatoForm这个方法在content里面的js里
+                    //这是通知正文跟附件的信息（不写就不会出来）
+                    ckeditorNoticeContent = CKEDITOR.replace('NoticeContent');
+
+                    //初始化table
+                    tabFiles = $.fn.bsgrid.init('tabFiles', {
+                        url: '/UnitHome/Notice/SelectSessionFiles',
+                        autoLoad: true,
+                        stripeRows: true,//隔行变色
+                        rowHoverColor: true,//划过行变色
+                        rowSelectedColor: true,//是否显示选中行背景色
+                        pageSize: 4,
+                        pageSizeSelect: false,//是否选择分页页数下拉框
+                        pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                        pagingToolbarAlign: "left"//分页工具条的显示位置
+                    });
+                });
+            });
+        });
+
+        //自定义单元格  移除按钮
+        function setRemoveButton(record, rowIndex, colIndex, options) {
+            var fileName = record.FileName;
+            //需要创建一个自定义单元格button
+            return '<input type="button" class="btn btn-sm btn-danger btn-radius" value="移除" onclick=removeAttachmentFile("' + fileName + '") />';
+        }
+
+        function openUpAttachmentFile() {
+            $("#attachment").click();
+        }
+
+        function upAttachment() {
+            //获取input的框的选择的文件
+            var files = $('#attachment').prop('files');
+
+            //通过异步提交
+
+            var fd = new FormData();
+            //把文件 fd 装到 append 里面去
+            fd.append("file", files[0]);
+            //构建XMLHttpRequest方法 用来提交
+            var xhr = new XMLHttpRequest();
+            //回调方法 event addEventListener监听，成功返回之后
+            xhr.addEventListener("load", function (event) {
+               // cosole.log(event.currentTargekt.respKConseText);
+                //返回字符串就会存在里面 responseText
+                if (event.currentTarget.responseText == "true") {
+                    tabFiles.search();//上传之后重新查询出来
+                    alert("上传成功");
+                }
+                else {
+                    alert("上传失败");
+                }
+            }, false);
+            xhr.addEventListener("error", function (event) {
+                alert("上传失败");
+            }, false);
+            //打开一个请求，用post提交
+            xhr.open("POST", "/UnitHome/Notice/UpAttachment");
+            //发送 FormData
+            xhr.send(fd);
+        }
+
+
+        //调用自定义创建的按钮删除文件 参数FileName：FileName
+        function removeAttachmentFile(FileName) {
+            $.post("/UnitHome/Notice/DeleteAttachment", { FileName: FileName }, function (msg) {
+                if (msg) {
+                    //如果msg是true的话刷新
+                    tabFiles.search();
+                }
+            })
+        }
+
+        //返回按钮
+        $("#quit").click(function () {
+            if (window.confirm("公告未保存，是否要退出")) {
+                $.post("/UnitHome/Notice/ClearNtioce", function () {
+                    //返回到公告页码面
+                    window.location.href = "/UnitHome/Notice/ToZhiGoGao"
+
+                })
+            }
+
+        })
+        //文件读取
+        var imgReader = new FileReader();
+        //图片文件 正则表达式过滤
+        regexImageFilter = /^(?:image\/bmp|image\/gif|image\/jpg|image\/jpeg|image\/png)$/i;
+
+        //文件读取 onload事件
+        imgReader.onload = function (evt) {
+            // evt.target.result 返回的是地址
+            $("#NoticeCarousePicture").attr("src", evt.target.result);
+            //从硬盘上选择的图片
+        }
+
+        function showImageFile() {
+            $("#NoticeCarouseImage").click();
+        }
+        function loadImgToEimg() {
+
+            // 选取选择图片 ID选择器 files代表选择的文件【0】代表只选择一个
+            var imgfFile = $("#NoticeCarouseImage").get(0).files[0];
+            //加载image标签中 正则表达式判断 imgfFile 图片  type 类型
+            if (!regexImageFilter.test(imgfFile.type)) {
+                alert("选择的不是一个有效的图片文件");
+            }
+            else {
+                imgReader.readAsDataURL(imgfFile);//读取这个文件
+            }
+
+
+        }
+
+        //保存
+        $("#saveForm").click(function () {          
+            var NoticeTypeID = $('#fromNotice [name="NoticeTypeID"]').val();//获取公告类型ID
+            var PromulgatorUnitID = $('#fromNotice [name="PromulgatorUnitID"]').val();//发布单位
+            var NoticeName = $('#fromNotice input[name="NoticeName"]').val();//公告名称
+            var Effective = $('#fromNotice input[name="EffectiveStr"]').val();// 有效时间
+            var ReleaseTimeStr = $('#fromNotice input[name="ReleaseTimeStrr"]').val();// 有效时间
+            //复文本框 公告内容
+            var NoticeContent = ckeditorNoticeContent.getData();
+
+            if (NoticeTypeID != "" && NoticeName != "" && NoticeContent != "") {
+                var fd = new FormData();
+                fd.append("NoticeID", noticeId)//NoticeID要跟实体类（数据库）对应 noticeId跟from对应
+                fd.append("NoticeTypeID", NoticeTypeID);//公告类型ID
+                fd.append("NoticeName", NoticeName);//公告名称
+                fd.append("NoticeContent", NoticeContent);//公告内容
+                fd.append("PromulgatorUnitID", PromulgatorUnitID);//发布单位
+                fd.append("Effective", Effective);//有效时间
+                fd.append("ReleaseTimeStr", ReleaseTimeStr);//有效时间
+
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("load", function (event) {
+                    if (event.currentTarget.responseText == "true") {
+                        alert("保存成功");
+                        window.location.href = "/UnitHome/Notice/ToZhiGoGao";
+                        searchNotice();//公告列表刷新
+                    }
+                    else {
+                        alert("保存失败");
+                    }
+                }, false);
+                xhr.addEventListener("error", function (event) {
+                    alert("保存失败");
+                }, false);
+
+                xhr.open("POST", "/UnitHome/Notice/NoticeUpdate");
+                xhr.send(fd);//添加到这个方法，
+            } else {
+                alert("请填写完整");
+            }
+        })
+    </script>
+</body>
+</html>

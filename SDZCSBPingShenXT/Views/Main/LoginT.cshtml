@@ -1,0 +1,199 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户登录</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/style.css" rel="stylesheet" />
+    <link href="~/Content/echarts/verify.css" rel="stylesheet" />
+    <style>
+        .tton{
+            width:120px;
+            height:50px;
+            outline:none;
+            border:0;
+            font-weight:bold;
+            font-family:'华文新魏';
+            font-size:25px;
+            background-color:rgba(0, 148, 255, 0.00);
+        }
+
+        .div-page {
+            width: auto;
+            height: 300px;
+            border-radius: 5px;
+            background-color: rgba(241, 241, 241, 0.0);
+            border: 1px solid #f1f1f1;
+            box-shadow: 3px 3px 7px #888888; /*阴影:右边阴影像素 下边阴影像素  阴影柔和度 颜色*/
+        }
+
+        .image img {
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="width: 100%; height: 637px; background-image: url('../../image/Delacre.png'); background-size: cover;">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2" style="margin-top: 75px; height: 500px; background-color:rgba(226, 225, 225, 0.81);">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="height:80px;border-bottom:1px solid #ebebeb;padding:0;">
+                <h3 style="color:#0094ff">山东省<i style="font-size:30px; font-weight:bold;">专业技术人员</i> 职称申报评审系统</h3>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                <div class="col-md-8 col-sm-8 col-xs-8 col-xs-offset-2" style="height:400px;padding:0px;"> 
+                    <div class="col-md-12" style="margin-top:60px">
+                        <div class="col-sm-12 div-page" id="UserDengLu" style="padding: 0;">
+                            <form id="fmLogin" method="post" class="form-horizontal form-radius" style="margin-top:40px;margin-left:auto;">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label col-sm-3 no-padding-right" for="Username" style="padding-right:0;font-family:'华文新魏';font-weight:bold;font-size:17px;">
+                                        用户名
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="Username" id="IsUsername" value="" class="form-control" />
+                                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-3 control-label no-padding-right" for="RegisterCode" style="padding-right:0;font-family:'华文新魏';font-weight:bold;font-size:17px;">
+                                        密&emsp;码
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="password" name="RegisterCode" id="IsRegisterCode" value="" class="form-control" />
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="validCode" style="padding-right:0;font-family:'华文新魏';font-weight:bold;font-size:17px;">
+                                        验证码
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input type="text" name="validCode" id="IsvalidCode" value="" class="form-control" style="padding-right:5px;padding-left:5px;" />
+                                            <div class="input-group-addon" style="padding:0"><img src="/Main/ValideCode" id="ValidateCode" onclick="reloadImage()"/></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8">
+                                        <div class="input-group" style="margin-left:142px;width:348px;display:none;" id="HuaDongYanZhen">
+                                            <div id="mpanel1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-4" style="padding-right:15px;margin-top:10px;">
+                                        <button type="button" class="btn btn-primary" id="btnSubmit" style="width:100px; height:40px; color:#ffffff;font-size:18px; background-color:rgba(0, 148, 255, 0.80)">
+                                            <i class="glyphicon glyphicon-arrow-up" style="color:yellow"></i>登 录
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="YongHuFH" style="width:100px; height:40px; color:#ffffff;font-size:18px; background-color:rgba(0, 148, 255, 0.80)">
+                                            返 回<i class="glyphicon glyphicon-arrow-down" style="color:yellow"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script src="~/Content/echarts/verify.js"></script>
+
+    <script>
+        //用户返回点击事件
+        $("#YongHuFH").click(function () {
+            window.location.href = "/Main/Declares"
+        });
+
+        //个人用户《登录》点击事件
+        $("#btnSubmit").click(function () {
+            var Username = $('#fmLogin [name="Username"]').val();//用户名
+            var fromData = $("#fmLogin").serializeArray();
+            $.post("/Main/UserLogin", fromData, function (msg) {
+                if (msg == "login") {
+                    $("#HuaDongYanZhen").show();
+                    //window.location.href = "/Main/Declare";
+                    //window.location.href = "/Main/ShenBaoNianDuLB";
+                }
+                else if (msg == "passwordErro") {
+                    alert("密码错误");
+                } else {
+                    alert(msg);
+                }
+            });
+        });
+
+        //回车键登录事件
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                var Username = $('#fmLogin [name="Username"]').val();//用户名
+                var fromData = $("#fmLogin").serializeArray();
+                $.post("/Main/UserLogin", fromData, function (msg) {
+                    if (msg == "login") {
+                        $("#HuaDongYanZhen").show();
+                        //window.open("/Main/Declare");
+                        //window.location.href = "/Main/Declare";
+                    }
+                    else if (msg == "passwordErro") {
+                        alert("密码错误");
+                    } else {
+                        alert(msg);
+                    }
+                });
+            }
+        })
+
+        //登录页面验证码刷新
+        function reloadImage() {
+            $("#ValidateCode").attr("src", '/Main/ValideCode?ts=' + new Date().getTime());
+        }
+
+        //登录界面退出清空用户名、密码和验证码
+        function DLQK() {
+            $("#IsUsername").val("");
+            $("#IsRegisterCode").val("");
+            $("#IsvalidCode").val("");
+        }
+
+        $(window).load(function () {
+            $('#mpanel1').slideVerify({
+                type: 1,		//类型
+                vOffset: 5,	//误差量，根据需求自行调整
+                barSize: {
+                    width: '348px',
+                    height: '40px',
+                },
+                ready: function () {
+                },
+                success: function () {
+                    layer.msg("验证成功", { icon: 1, skin: "layui-layer-molv" });
+                    setTimeout(function () {
+                        window.location.href = "/Main/Declare";
+                    }, 2000);
+
+                    //......后续操作
+                },
+                error: function () {
+                    //		        	alert('验证失败！');
+                }
+
+            });
+        })
+
+    </script>
+</body>
+</html>

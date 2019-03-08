@@ -1,0 +1,1442 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>山东省职称评审系统</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/style.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+
+        .text-center a {
+            text-decoration: none;
+            height: 50px;
+            width: 100px;
+            margin: 2px;
+            float: left;
+            border-radius: 20px;
+        }
+
+        .tuot {
+            background-color: #005ea0;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(left,#ffffff 0,#8ab5d5 10%,#72a7d1 90%,#005ea0 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(left,#005ea0 0,#8ab5d5 10%,#72a7d1 90%,#005ea0 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(left,#005ea0 0,#8ab5d5 10%,#72a7d1 90%,#005ea0 100%);
+            background: linear-gradient(left,#005ea0 0,#8ab5d5 10%,#72a7d1 90%,#005ea0 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#005ea0,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        .nav{
+            margin-bottom:1px;
+        }
+
+        #FormJiChu select,#FormJiChu input{
+            height:38px;
+        }
+        #FormJiChu label{
+            padding:9px;
+        }
+
+        #FormJiChuTwo select,#FormJiChuTwo input{
+            height:38px;
+        }
+        #FormJiChuTwo label{
+            padding:9px;
+        }
+
+        #FormJiBen select,#FormJiBen input{
+            height:38px;
+        }
+        #FormJiBen label{
+            padding:9px;
+        }
+
+        #FormChengGuo select,#FormChengGuo input{
+            height:38px;
+        }
+        #FormChengGuo label{
+            padding:9px;
+        }
+
+        #FormLunWen select,#FormLunWen input{
+            height:38px;
+        }
+        #FormLunWen label{
+            padding:9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-12" style="padding:0px;">           
+            <div class="row" style="position: fixed; top: 0; z-index: 9999; height: 80px;">
+                <img src="~/image/TouT.png" style="width:100%;" />
+                <div class="col-md-2 col-xs-2" style="padding-right:6px;">
+                    <input id="keywords" name="keywords" class="form-control" style="position:relative;margin-top:-68px;margin-left:910px;" type="text" />
+                </div>
+                <div class="col-md-1 col-xs-1" style="padding-left:1px;padding-right:0;">
+                    <input class="btn btn-default" type="submit" style="border-radius:5px; width:90px;position:relative;margin-top:-124px;margin-left:907px;" onclick="SiteSearch();" value="搜索" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-right" style="width:1320px;margin-left:15px; height:50px; margin-top:80px; background-color:#fafafa;">
+                    <button class="btn btn-info" style=" background-color:#dfeffc;color:#34759b;font-weight:bold; margin-top: 10px;" id="JCBaoCun">保存</button>
+                    <button class="btn btn-info" id="btnBasicxtdy" style="margin-left:50px;background-color:#dfeffc;color:#34759b;font-weight:bold; margin-top: 10px;" onclick="BaiBiaoDaYin()">一览表预览</button>
+                    @*<button class="btn btn-info" id="btnBasicxtdy" style="margin-left:50px;background-color:#dfeffc;color:#34759b;font-weight:bold;" onclick="window.print(this)">一览表预览</button>*@@*浏览器打印页面*@
+                    <button class="btn btn-info" id="XinXiShangBao" style="margin-left:50px;background-color:#dfeffc;color:#34759b;font-weight:bold; margin-top: 10px;">信息上报</button>
+                    <button class="btn btn-info" id="btnFanHui" style="margin-left:50px;margin-right:20px; background-color:#dfeffc;color:#34759b;font-weight:bold; margin-top: 10px;">返回首页</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--录入信息选项卡-->
+            <div class="col-lg-12 col-md-12 col-sm-12 setBorder" style="margin-top:10px;">
+                <div class="panel panel-primary" style="background-color:#d9d9d9;">
+                    <div class="panel-body" style="padding-top:0;">
+                        <div class="table">
+                            <div class="row" style="background-color:#005ea0;">
+                                <ul class="nav nav-tabs" id="myTab4" style="margin-left:200px;border:0;">
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavA" href="#tpA" data-toggle="tab">基础信息</a>
+                                    </li>
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavB" href="#tpB" data-toggle="tab">基本信息</a>
+                                    </li>
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavC" href="#tpC" data-toggle="tab">工作经历</a>
+                                    </li>
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavD" href="#tpD" data-toggle="tab">工作成绩</a>
+                                    </li>
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavE" href="#tpE" data-toggle="tab">成果奖励</a>
+                                    </li>
+                                    <li class="tuot" style="width:150px;">
+                                        <a id="tbnavF" href="#tpF" data-toggle="tab">论文作品</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content  padding-0">
+                                @*基础信息*@
+                                <div class="tab-pane in active" id="tpA">
+                                    <div class="col-md-12">
+                                        <div id="chartA" class="col-md-6" style="height: 300px; float: left;">
+                                            <form class="form-horizontal" id="FormJiChu" action="/Main/InsertBasis">
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter;padding-top:7px;padding-right:0;">身份证号：</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="JCIdentityCode" name="IdentityCode" disabled />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">组织机构代码：</label>
+                                                    <div class="col-md-6" style="padding:0px;">
+                                                        <div class="col-md-7">
+                                                            <input type="text" class="form-control" id="JCTissueOrganization" name="TissueOrganization" maxlength="5" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                        <span class="col-md-1" style="padding:0;margin-right:-15px;">-</span>
+                                                        <div class="col-md-4" style="padding:0px;">
+                                                            <input type="text" class="form-control" id="JCTissueOrganizationCode" name="TissueOrganizationCode" maxlength="1" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5 reset-padding fontcolor" style="font-weight:lighter; padding-top:7px;padding-right:0;">申报人工作单位性质：</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" id="XLDanWeiXZ" name="UnitNatureID"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">申报人工作单位所属行业：</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" id="XLSuoShu" name="BelongIndustryID"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">邮箱：</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="JCMailbox" name="Mailbox" disabled />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="chartBDetail" class="col-md-6" style="height:300px; float: left;">
+                                            <form class="form-horizontal" id="FormJiChuTwo" action="/Main/InsertBasis">
+                                                <input type="text" class="form-control hidden" name="BasisID" />
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">申报人属于：</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" id="XLShuYu" name="DeclareBelongID"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">申报人工作单位法定全称：</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="JCStatutoryCall" name="StatutoryCall" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-5 reset-padding fontcolor" style="font-weight:lighter; padding-top:7px;padding-right:0;">隶属关系：</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" id="XLLiShu" name="SubjectionID"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">联系电话：</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="JCContactPhone" name="ContactPhone" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" placeholder="请输入手机号码" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="margin-top:20px;">
+                                                    <label class="control-label col-md-5 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;">档案托管单位：</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="JCRecordUnit" name="RecordUnit" />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div> @*基础信息*@
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 setBorder">
+                                        <div class="panel panel-primary" style=" background-color: rgba(255, 255, 255, 0.31)">
+                                            <div class="panel-body" style="padding-top:0;">
+                                                <div class="table">
+                                                    <div class="row" style=" background-color:#005ea0;">
+                                                        <ul class="nav nav-tabs" id="myTab4" style="margin-left:320px;border:0;">
+                                                            <li class="tuot" style="width:200px;">
+                                                                <a id="tbnavX" href="#tpX" data-toggle="tab">外语符合免试条件</a>
+                                                            </li>
+                                                            <li class="tuot" style="width:200px;">
+                                                                <a id="tbnavY" href="#tpY" data-toggle="tab">外语成绩属于可放宽要求</a>
+                                                            </li>
+                                                            <li class="tuot" style="width:200px;">
+                                                                <a id="tbnavZ" href="#tpZ" data-toggle="tab">计算机符合免试条件</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tab-content  padding-0">
+                                                        @*外语符合免试条件*@
+                                                        <div class="tab-pane in active" id="tpX">
+                                                            <div class="col-md-12">
+                                                                <div id="chartX" style="width:100%; height: 400px; float: left;">
+                                                                    <from class="form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">外语符合免试
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">1、取得经国家教育行政部门许可的硕士以上学位的海外留学回国人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox"> 2、通过国家组织的全国外语水平考试（WSK）或全国出国培训备选人员外语考试（BFT），在国外执行访问学者或出国培训任务1年以上的人员。（须提供WSK或BFT合格证书原件和本单位及主管部门的证明）
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">3、申报副高级专业技术职务资格时职称外语考试成绩达到国家通用标准或取得合格证书，申报正高级需再次参加同一级别考试的人员。（自2007年参加职称外语考试的开始执行）
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">  4、独立出版过外语文专著、译著的人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">5、取得博士学位的人员
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">6、入选“百千万人才工程”国家级人选、享受国务院或省政府特殊津贴人员、国家或省有突出贡献的中青年专家。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox"> 7、任现职以来，获得省级以上科学技术奖、教学成果奖、社会科学成果奖三等奖以上奖励项目，至少一项的主要完成人。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox"> 8、从事具有中国特色、民族传统的临床中医药（限医师、药师专业）、名族医药（限医师、药师专业）和工艺美术、古籍整理、历史时期考古等专业技术工作人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">9、获二项以上国家专利（其中至少一项发明专利）的独立完成人或首位完成人。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">10、取得外语专业大专以上并从事外语专业工作，申报妆也技术职务资格有第二外语要求的人员。
+                                                                                    </label>
+                                                                                </div>                                                                                               
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">11、援藏、援疆或受政府派遣驻境外工作1年以上，在援助或境外工作期间申报专业技术职务资格的人员。（须提供单位或主管部门的证明）
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">12、申报各系列初级专业技术职务资格的人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">13、中小学教师，英语不做要求。
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </from>
+                                                                </div>                                          
+                                                            </div>                             
+                                                        </div>
+                                                        @*外语成绩属于可放宽要求*@
+                                                        <div class="tab-pane" id="tpY">
+                                                            <div class="col-md-12">
+                                                                <div id="chartY" style="width: 100%; height: 400px; float: left;">
+                                                                    <from class="form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">外语成绩要求
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">1、取得经国家教育行政部门许可的硕士以上学位的海外留学回国人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">2、独立出版过外语文专著、译著的人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">3、取得博士学位的人员
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">4、入选“百千万人才工程”国家级人选、享受国务院或省政府特殊津贴人员、国家或省有突出贡献的中青年专家。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">5、从事具有中国特色、民族传统的临床中医药（限医师、药师专业）、名族医药（限医师、药师专业）和工艺美术、古籍整理、历史时期考古等专业技术工作人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">6、获二项以上国家专利（其中至少一项发明专利）的独立完成人或首位完成人。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">7、取得外语专业大专以上并从事外语专业工作，申报妆也技术职务资格有第二外语要求的人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">8、申报各系列初级专业技术职务资格的人员。
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="checkbox">
+                                                                                    <label>
+                                                                                        <input type="checkbox">9、中小学教师，英语不做要求。
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </from>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @*计算机符合免试条件*@
+                                                        <div class="tab-pane" id="tpZ">
+                                                            <div id="chartZ" style="width:100%; height: 400px; float: left;">
+                                                                <from class="form-horizontal">
+                                                                    <div class="form-group col-lg-12 ">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">计算机符合要求
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">1、取得经国家教育行政部门许可的硕士以上学位的IT技术人员。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox"> 2、通过国家组织的全国外语水平考试（WSK）或全国出国培训备选人员计算机考试（BFT），在国外集团担任过计算机顾问或出国培训任务1年以上的人员。（须提供WSK或BFT合格证书原件和本单位及主管部门的证明）
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">3、申报副高级专业技术职务资格时职称计算机考试成绩达到国家通用标准或取得合格证书，申报正高级需再次参加同一级别考试的人员。（自2007年参加职称外语考试的开始执行）
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">  4、独立出版过计算机专著、编程书籍的人员。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">5、取得博士学位的人员
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">6、入选“超图集团开发3D地图工程”国家级人选、享受国务院或省政府特殊津贴人员、国家或省有突出贡献的中青年专家。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox"> 7、任现职以来，获得省级以上科学技术奖、计算机成果奖、社会科学成果奖三等奖以上奖励项目，至少一项的主要完成人。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">8、获二项以上国家专利（其中至少一项发明专利）的独立完成人或首位完成人。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">9、取得计算机专业大专以上并从事计算机专业工作，申报计算机技术职务资格有第二计算机要求的人员。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">10、申报各系列初级计算机专业技术职务资格的人员。
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox">11、大学院校教师，计算机不做要求。
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </from>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*基本信息*@
+                                <div class="tab-pane" id="tpB">
+                                    <div class="col-md-12" style="padding:0px;">
+                                        <div id="chartB" style="width:100%; height: 650px; float: left;">
+                                            <form class="form-horizontal" id="FormJiBen" action="/Main/InsertBasic" style="margin-top:10px;">
+                                                <div class="col-md-12" style="padding:0px;">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">申报等级</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="DengjiJB" name="DeclareGradeID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">申报系列</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="XiLieJB" name="DeclareSeriesID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">申报资格</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="ZiGeJB" name="DeclareQualificationID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">填表时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdFormTime" name="FormTime" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">姓名</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdName" name="Name" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">性别</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="XingBieJB" name="SexID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">出生年月</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdBirthday" name="Birthday" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">现所在单位</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdPlaceUnit" name="PlaceUnit" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">第一学历</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="DiYiXueLi" name="EducationID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">毕业时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdgraduateTime" name="GraduateTime" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">毕业院校</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdGraduateSchool" name="GraduateSchool" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">专业</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="ZhuanYe" name="MajorID"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">评审依据学历</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="PingShenXueLi" name="JudgeEducationID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">毕业时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdGraduateTime1" name="GraduateTime1" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">毕业院校</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdGraduateSchool1" name="GraduateSchool1" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">专业</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="ZhuanYeTwo" name="MajorID1"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">专业技术职称</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="XLZhiChenJB" name="MajorsPostID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">获得资格时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdGainedQualificationTime" name="GainedQualificationTime" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">聘任时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdEngageTime" name="EngageTime" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">聘任年限</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdEngageYear" name="EngageYear" maxlength="2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">现任行政职务</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdTakeOffice" name="TakeOffice" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">任职时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdTakeOfficeTime" name="TakeOfficeTime" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">现所从事专业</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdMajor" name="Major" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">从事专业年限</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdMajorYear" name="MajorYear" maxlength="2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">参加工作时间</label>
+                                                        <div class="col-md-2">
+                                                            <input type="date" class="form-control" id="IdJoinWorkTime" name="JoinWorkTime" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">外语语种</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdForeignLanguage" name="ForeignLanguage" maxlength="15" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">外语级别</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="WaiYuJiBieJB" name="ForeignLanguageRankID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">外语成绩</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdForeignLanguageResult" name="ForeignLanguageResult" maxlength="3" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3" style="font-weight:lighter;padding-top:7px;padding-right:2px;padding-left:0;">全国专业技术人员计算机应用能力考试情况</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="KaoShiQKJB" name="ExamCaseID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-2" style="font-weight:lighter;padding-top:7px;padding-right:2px;">任届期满考核结果</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="KaoHeJieGuoJB" name="ExamineResultID"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3" style="font-weight:lighter;padding-top:7px;padding-right:2px;padding-left:0;">任职以来各年度</label>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJB" name="DeclareYearID" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJBA" name="DeclareYearID1" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJBB" name="DeclareYearID2" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJBC" name="DeclareYearID3" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJBD" name="DeclareYearID4" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="NianDuJBE" name="DeclareYearID5" style="padding:0;"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3" style="font-weight:lighter;padding-top:7px;padding-right:2px;padding-left:0;">考核结果</label>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBA" name="ExamineResultID1" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBB" name="ExamineResultID2" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBC" name="ExamineResultID3" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBD" name="ExamineResultID4" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBE" name="ExamineResultID5" style="padding:0;"></select>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <select class="form-control" id="KaoHeJieGuoJBF" name="ExamineResultID6" style="padding:0;"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3" style="font-weight:lighter;padding-top:7px;padding-right:2px;">申报方式</label>
+                                                        <div class="col-md-2">
+                                                            <select class="form-control" id="SBFangShiJB" name="DeclareModeID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">量化赋分</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdQuantityScore" name="QuantityScore" maxlength="2" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                        <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:2px;">考试成绩</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" id="IdExamResult" name="ExamResult" maxlength="3" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="text-center" style="color:red;font-size:20px; margin-bottom:2px;">量化赋分、考试成绩根据主管部门要求填写,主管部门无要求此项可为空</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-right" style="padding:0px;">
+                                                        <button type="button" class="btn btn-info" id="btnJiBenBaoCun" style="width:100px; margin-bottom:1px; background-color:#dfeffc;color:#34759b;font-weight:bold;"><i class="glyphicon glyphicon-floppy-saved"></i>保存</button>
+                                                    </div>
+                                                </div>
+                                                <button type="reset" hidden>重置</button>
+                                            </form>
+                                        </div> @*基本信息*@
+                                    </div>
+                                </div>
+                                @*工作经历*@
+                                <div class="tab-pane" id="tpC" action="/Main/InsertExperience">
+                                    <div class="col-md-12">
+                                        <div id="chartC" style="width:100%;height: 600px; float: left;">
+                                            <div class="col-md-6" style="height:600px;">
+                                                <div class="text-center">
+                                                    <p>主要工作经历</p> 
+                                                    <p style="color:brown">（限21行以内）</p>
+                                                    <div class="text-center" style="margin-left:220px;">
+                                                        <textarea class="form-control" id="TextGoZuoJL" style="width:150px; height:400px;overflow:auto;" maxlength="147" onkeyup="GZJLWBY(this)"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="height:600px;">
+                                                <div class="text-center">
+                                                    <p>范例</p>
+                                                    <p style="color:brown">（限21行以内）</p>
+                                                    <div style="margin-left:220px;">
+                                                        <textarea class="form-control" style="width:150px; height:400px;overflow:auto;" disabled>
+                                                            1979年6月至1982年9月聊城市临青供销社工作任会计聘为助理会计师职称。1982年9月至1986年7月
+                                                            山东经济学院学习，获得工商管理专业第二学位。1986年7月至1990年11月聊城冠县电业公司工作，
+                                                            任办公室副主任。1990年11月至2004年4月，聊城管线电业公司工作，任财务室主任，聘为经济师职称。
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> @*工作经历*@
+                                    </div>
+                                </div>
+                                @*工作成绩*@
+                                <div class="tab-pane" id="tpD" action="/Main/InsertWorkResult">
+                                    <div class="col-md-12">
+                                        <div id="chartD" style="width:100%; height:600px; float: left;">
+                                            <div class="col-md-12" style="height:600px;">
+                                                <div class="col-md-4 col-lg-offset-4">
+                                                    <p class="text-center">
+                                                        任现职以来的主要专业技术工作成绩<br />
+                                                        <br />
+                                                        (包括完成的业务工作业务、工作量、取得的效果等)<br />
+                                                        <br />
+                                                    </p>                                                 
+                                                    <p class="text-center" style="color:brown">（限33行以内）</p>
+                                                    <div class="col-md-12 text-center">
+                                                        <textarea class="form-control" id="TextGZCJ" style="width:200px; height:400px; margin-left:70px; overflow:auto;" maxlength="363" onkeyup="GZCJWBY(this)"></textarea>
+                                                    </div>
+                                                    <div class="col-md-12  text-center" style="margin-top:10px;">
+                                                        <button type="button" class="btn btn-info" id="btnGongZuoCJBaoCun" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><i class="glyphicon glyphicon-floppy-saved"></i>保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> @*工作成绩*@
+                                    </div>
+                                </div>
+                                @*成果奖励*@
+                                <div class="tab-pane" id="tpE">
+                                    <div class="col-md-12">
+                                        <div id="chartE" style="width:100%; height: 600px; float: left;">
+                                            <div class="col-md-12 col-sm-12" style="height:100px; padding:0px;">
+                                                <div class="text-center" style="border:10px outset;margin-top:10px;background-color:#005ea0;">@**@
+                                                    <h3 style="color:#ffc2c2;margin-top:10px;">摘要</h3>
+                                                    <p style="width:500px; margin-left:350px; color:white;">项目全称、批准机关全称、获得成果或奖励的全称</p>
+                                                    <p style="width:500px; margin-left:350px; color:white;">获得成果或奖励资格证书的编号、项目的核心提纲和效果</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:50px;">
+                                                <form class="form-horizontal" id="FormChengGuo" action="/Main/InsertAchievement">
+                                                    <input type="text" class="form-control hidden" id="AchievementId" name="AchievementID" />
+                                                    <div class="form-group" style="margin-top:20px;">
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">项目名称：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="text" class="form-control" id="IdItem" name="Item" />
+                                                        </div>
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">时间：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="date" class="form-control" id="IdTime" name="Timers" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-2 reset-padding fontcolor" style="font-weight:lighter;">等级：</label>
+                                                        <div class="col-md-3">
+                                                            <select class="form-control" id="IdAchievementGradeID" name="AchievementGradeID"></select>
+                                                        </div>
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">位次：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="text" class="form-control" id="IdSituateNext" name="SituateNextrs" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">批准机关：</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control" id="IdRatifySection" name="RatifySection" />
+                                                        </div>
+                                                        @*<label class="control-label col-md-2 reset-padding" style="font-weight:lighter;padding-top:0px;">附件：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="file" id="exampleInputFile">
+                                                        </div>*@
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-12 text-right" style="margin-bottom:10px;padding-right:0px; margin-top:50px;">
+                                                <button class="btn btn-info" id="btnChengGuoXZ" style="margin-right:10px; background-color:#dfeffc;color:#34759b;font-weight:bold;">增加</button>
+                                                <button class="btn btn-info" id="btnChengGuoXG" style="margin-right:10px; background-color:#dfeffc;color:#34759b;font-weight:bold;">修改并保存</button>
+                                                <button class="btn btn-info" id="btnChengGuoSC" style="background-color:#dfeffc;color:#34759b;font-weight:bold;">删除</button>
+                                            </div>
+                                            <div class="col-md-12" style="padding:0px;">
+                                                <table id="tabChengGuo" style="width:100%">
+                                                    <tr>
+                                                        <th w_num="total_line" width="5%">序号</th>
+                                                        <th w_index="AchievementID" w_hidden="true">成果ID</th>
+                                                        <th w_index="Item">项目名称</th>
+                                                        <th w_index="Timeser">时间</th>
+                                                        <th w_index="AchievementGrade">等级</th>
+                                                        <th w_index="SituateNextrs">位次</th>
+                                                        <th w_index="RatifySection">批准机关</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div> @*成果奖励*@
+                                    </div>
+                                </div>
+                                @*论文作品*@
+                                <div class="tab-pane" id="tpF">
+                                    <div class="col-md-12">
+                                        <div id="chartF" style="width:100%; height: 600px; float: left;">
+                                            <div class="col-md-12 col-sm-12" style="height:100px; padding:0px;">
+                                                <div class="text-center" style="border:10px outset;margin-top:10px;background-color:#005ea0;">
+                                                    <h3 class="text-center" style="color:#ffc2c2;margin-top:10px;">摘要</h3>
+                                                    <p style="width:500px; margin-left:350px; color:white;">要求按成果、课题、论文、著作等的顺序依次排列，且按排名的顺序依次排列。</p>@*刊号（书号）、是否专业学术期刊*@
+                                                    <p style="width:500px; margin-left:350px; color:white;">所列各项材料由单位统一核对原件、核 对人签字，单位盖章。</p>@*题目的全称、提纲(观点)、文章字数*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-md-12 col-sm-12" style="margin-top:50px;">
+                                                <form class="form-horizontal" id="FormLunWen" action="/Main/IntsertProduction">
+                                                    <input type="text" class="form-control hidden" id="ProductionId" name="ProductionID" />
+                                                    <div class="form-group" style="margin-top:20px;">
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">题目：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="text" class="form-control" id="IdTitle" name="Title" />
+                                                        </div>
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">时间：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="date" class="form-control" id="IDTime" name="Timery" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">位次：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="text" class="form-control" id="IDSituateNext" name="SituateNextry" />
+                                                        </div>
+                                                        <label class="control-label col-md-2 reset-padding" style="font-weight:lighter;">刊物或出版社：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="text" class="form-control" id="IdPeriodicalPublishing" name="PeriodicalPublishing" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @*<label class="control-label col-md-2 reset-padding" style="font-weight:lighter;padding-top:0px;">附件：</label>
+                                                        <div class="col-md-3">
+                                                            <input type="file" id="exampleInputFile">
+                                                        </div>*@
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-12 text-right" style="margin-bottom:10px;padding-right:0px;">
+                                                <button class="btn btn-info" id="btnLunWenXZ" style="margin-right:10px; background-color:#dfeffc;color:#34759b;font-weight:bold;">增加</button>
+                                                <button class="btn btn-info" id="btnLunWenXG" style="margin-right:10px; background-color:#dfeffc;color:#34759b;font-weight:bold;">修改并保存</button>
+                                                <button class="btn btn-info" id="btnLunWenSC" style="background-color:#dfeffc;color:#34759b;font-weight:bold;">删除</button>
+                                            </div>
+                                            <div class="col-md-12" style="padding:0px;">
+                                                <table id="tabLunWen" style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th w_num="total_line" width="5%">序号</th>
+                                                            <th w_index="ProductionID" w_hidden="true">论文作品ID</th>
+                                                            <th w_index="Timeser">时间</th>
+                                                            <th w_index="Title">题目</th>
+                                                            <th w_index="SituateNextry">位次</th>
+                                                            <th w_index="PeriodicalPublishing">刊物出版社</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div> @*论文作品*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        var tabChengGuo;
+        var tabLunWen;
+        var BasicID = 1;
+
+        //搜索
+        function SiteSearch() {
+            window.location.href = "/Main/Declare";
+        }
+
+        //返回首页
+        $("#btnFanHui").click(function () {
+            window.location.href = "/Main/Declares"
+        });
+
+        //下拉框
+        $(function () {
+            createSelect("XLZhiChenJB", "/Main/SelectZYZhiCheng");
+            createSelect("DengjiJB", "/Main/SelectSBDengJi");//JB申报等级
+            createSelect("XiLieJB", "/Main/SelectSBXiLie");//JB申报系列
+            createSelect("ZiGeJB", "/Main/SelectSBZiGe");//JB申报资格
+            createSelect("XingBieJB", "/Main/SelectSex");//JB性别
+            createSelect("DiYiXueLi", "/Main/SelectXueLi");//JB第一学历
+            createSelect("PingShenXueLi", "/Main/SelectXueLi");//JB评审学历
+            createSelect("ZhuanYe", "/Main/SelectZhuanYe");//JB专业
+            createSelect("ZhuanYeTwo", "/Main/SelectZhuanYe");//JB专业
+            createSelect("WaiYuJiBieJB", "/Main/SelectWaiYuJiBie");//JB外语级别
+            createSelect("KaoShiQKJB", "/Main/SelectKaoShiQK");//JB考试情况                     
+            createSelect("KaoHeJieGuoJB", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBA", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBB", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBC", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBD", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBE", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("KaoHeJieGuoJBF", "/Main/SelectKaoHeJieGuo");//JB考核结果
+            createSelect("NianDuJB", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("NianDuJBA", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("NianDuJBB", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("NianDuJBC", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("NianDuJBD", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("NianDuJBE", "/Main/SelectNianDu");//JB任职以来各年度
+            createSelect("SBFangShiJB", "/Main/SelectSBFangShi");//JB任职以来各年度
+            createSelect("IdAchievementGradeID", "/Main/SelectCGDengJi");//CG成果等级           
+            createSelect("XLDanWeiXZ", "/Main/SelectUnitXZ");//JC单位性质
+            createSelect("XLSuoShu", "/Main/SelectSuoShuHY");//JC所属行业
+            createSelect("XLShuYu", "/Main/SelectSBShuYu");//JC申报属于
+            createSelect("XLLiShu", "/Main/SelectLiShuGX");//JC隶属关系
+        });
+
+        //绑定数据库表的最后一条数据的身份证号和编码
+        $(document).ready(function () {
+            $.getJSON("/Main/JCShenFenZhengHao", function (data) {
+                $("#JCIdentityCode").val(data);
+            })
+            $.getJSON("/Main/JCYouXiang", function (data) {
+                $("#JCMailbox").val(data);
+            })
+            $.getJSON("/Main/JBXingMing", function (data) {
+                $("#IdName").val(data);
+            })
+        });
+
+        //新增 基础信息
+        $("#JCBaoCun").click(function () {
+            var JCIdentityCode = $('#FormJiChu [name="IdentityCode"]').val();//身份证号
+            var JCTissueOrganization = $('#FormJiChu [name="TissueOrganization"]').val();//组织机构代码
+            var JCTissueOrganizationCode = $('#FormJiChu [name="TissueOrganizationCode"]').val();//组织机构代码证
+            var XLDanWeiXZ = $('#FormJiChu [name="UnitNatureID"]').val();//单位性质
+            var XLSuoShu = $('#FormJiChu [name="BelongIndustryID"]').val();//所属行业
+            var JCMailbox = $('#FormJiChu [name="Mailbox"]').val();//邮箱
+            var XLShuYu = $('#FormJiChuTwo [name="DeclareBelongID"]').val();//申报人属于
+            var JCStatutoryCall = $('#FormJiChuTwo [name="StatutoryCall"]').val();//法定全称
+            var XLLiShu = $('#FormJiChuTwo [name="SubjectionID"]').val();//隶属关系
+            var JCContactPhone = $('#FormJiChuTwo [name="ContactPhone"]').val();//联系电话
+            var JCRecordUnit = $('#FormJiChuTwo [name="RecordUnit"]').val();//托管单位
+            if (XLDanWeiXZ > 0 && XLSuoShu > 0 && XLShuYu > 0 && XLLiShu > 0 && JCIdentityCode != '' && JCTissueOrganization != '' && JCTissueOrganizationCode != '' && JCMailbox != '' &&
+                JCStatutoryCall != '' && JCContactPhone != '' && JCRecordUnit != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                $('#FormJiChu [name="IdentityCode"]').removeAttr("disabled");
+                $('#FormJiChu [name="Mailbox"]').removeAttr("disabled");
+                //提交表单
+                $("#FormJiChu").ajaxSubmit(function (msg) {
+                    layer.close(layerIndex);//关闭 加载层                      
+                    $('#FormJiChuTwo [name="BasisID"]').val(msg)
+                    $("#FormJiChuTwo").ajaxSubmit(function (msg) {
+                        layer.close(layerIndex);//关闭 加载层   
+                        if (msg == "success") {
+                            layer.alert("提交成功!!!", { icon: 1, title: '提示' });
+                            JiChuXinXiQK();
+                        } else {
+                            layer.alert("提交失败???", { icon: 0, title: '提示' });
+                        }
+                    });
+                });
+
+            } else {
+                layer.alert('信息还没填写完整，不可以提交哦', { icon: 0, title: '提示' });
+            }
+        });
+
+        //新增 基本信息
+        $("#btnJiBenBaoCun").click(function () {
+            var DengjiJB = $('#FormJiBen [name="DeclareGradeID"]').val();//申报等级ID
+            var XiLieJB = $('#FormJiBen [name="DeclareSeriesID"]').val();//申报系列ID
+            var ZiGeJB = $('#FormJiBen [name="DeclareQualificationID"]').val();//申报资格ID
+            var IdFormTime = $('#FormJiBen [name="FormTime"]').val();//填表时间
+            var IdName = $('#FormJiBen [name="Name"]').val();//姓名
+            var XingBieJB = $('#FormJiBen [name="SexID"]').val();//性别ID
+            var IdBirthday = $('#FormJiBen [name="Birthday"]').val();//出身年月
+            var IdPlaceUnit = $('#FormJiBen [name="PlaceUnit"]').val();//所在单位
+            var DiYiXueLi = $('#FormJiBen [name="EducationID"]').val();//第一学历ID
+            var IdgraduateTime = $('#FormJiBen [name="GraduateTime"]').val();//毕业时间
+            var IdGraduateSchool = $('#FormJiBen [name="GraduateSchool"]').val();//毕业院校
+            var ZhuanYe = $('#FormJiBen [name="MajorID"]').val();//专业ID
+            var PingShenXueLi = $('#FormJiBen [name="JudgeEducationID"]').val();//评审学历ID
+            var IdGraduateTime1 = $('#FormJiBen [name="GraduateTime1"]').val();//毕业时间1
+            var IdGraduateSchool1 = $('#FormJiBen [name="GraduateSchool1"]').val();//毕业院校1
+            var ZhuanYeTwo = $('#FormJiBen [name="MajorID1"]').val();//专业ID1
+            var XLZhiChenJB = $('#FormJiBen [name="MajorsPostID"]').val();//专业职称ID
+            var IdGainedQualificationTime = $('#FormJiBen [name="GainedQualificationTime"]').val();//获得资格时间
+            var IdEngageTime = $('#FormJiBen [name="EngageTime"]').val();//聘任时间
+            var IdEngageYear = $('#FormJiBen [name="EngageYear"]').val();//聘任年限
+            var IdTakeOffice = $('#FormJiBen [name="TakeOffice"]').val();//行政职务
+            var IdTakeOfficeTime = $('#FormJiBen [name="TakeOfficeTime"]').val();//任职时间
+            var IdMajor = $('#FormJiBen [name="Major"]').val();//从事专业
+            var IdMajorYear = $('#FormJiBen [name="MajorYear"]').val();//从事专业年限
+            var IdJoinWorkTime = $('#FormJiBen [name="JoinWorkTime"]').val();//参加工作时间
+            var IdForeignLanguage = $('#FormJiBen [name="ForeignLanguage"]').val();//外语语种
+            var WaiYuJiBieJB = $('#FormJiBen [name="ForeignLanguageRankID"]').val();//外语级别ID
+            var IdForeignLanguageResult = $('#FormJiBen [name="ForeignLanguageResult"]').val();//外语成绩
+            var KaoShiQKJB = $('#FormJiBen [name="ExamCaseID"]').val();//考试情况ID
+            var KaoHeJieGuoJB = $('#FormJiBen [name="ExamineResultID"]').val();//考核结果ID
+            var NianDuJB = $('#FormJiBen [name="DeclareYearID"]').val();//申报年度ID
+            var NianDuJBA = $('#FormJiBen [name="DeclareYearID1"]').val();//申报年度ID1
+            var NianDuJBB = $('#FormJiBen [name="DeclareYearID2"]').val();//申报年度ID2
+            var NianDuJBC = $('#FormJiBen [name="DeclareYearID3"]').val();//申报年度ID3
+            var NianDuJBD = $('#FormJiBen [name="DeclareYearID4"]').val();//申报年度ID4
+            var NianDuJBE = $('#FormJiBen [name="DeclareYearID5"]').val();//申报年度ID5
+            var KaoHeJieGuoJBA = $('#FormJiBen [name="ExamineResultID1"]').val();//考核结果ID1
+            var KaoHeJieGuoJBB = $('#FormJiBen [name="ExamineResultID2"]').val();//考核结果ID2
+            var KaoHeJieGuoJBC = $('#FormJiBen [name="ExamineResultID3"]').val();//考核结果ID3
+            var KaoHeJieGuoJBD = $('#FormJiBen [name="ExamineResultID4"]').val();//考核结果ID4
+            var KaoHeJieGuoJBE = $('#FormJiBen [name="ExamineResultID5"]').val();//考核结果ID5
+            var KaoHeJieGuoJBF = $('#FormJiBen [name="ExamineResultID6"]').val();//考核结果ID6
+            var SBFangShiJB = $('#FormJiBen [name="DeclareModeID"]').val();//申报方式ID
+            var IdQuantityScore = $('#FormJiBen [name="QuantityScore"]').val();//量化赋分
+            var IdExamResult = $('#FormJiBen [name="ExamResult"]').val();//考试成绩
+
+            if (DengjiJB > 0 && XiLieJB > 0 && ZiGeJB > 0 && XingBieJB > 0 && DiYiXueLi > 0 && ZhuanYe > 0
+                 && PingShenXueLi > 0 && ZhuanYeTwo > 0 && XLZhiChenJB > 0 && WaiYuJiBieJB > 0 && KaoShiQKJB > 0 && KaoHeJieGuoJB > 0
+                 && NianDuJB > 0 && NianDuJBA > 0 && NianDuJBB > 0 && NianDuJBC > 0 && NianDuJBD > 0 && NianDuJBE > 0 && KaoHeJieGuoJBA > 0
+                 && KaoHeJieGuoJBB > 0 && KaoHeJieGuoJBC > 0 && KaoHeJieGuoJBD > 0 && KaoHeJieGuoJBE > 0 && KaoHeJieGuoJBF > 0 && SBFangShiJB > 0
+                 && IdFormTime != '' && IdName != '' && IdBirthday != '' && IdPlaceUnit != '' && IdgraduateTime != '' && IdGraduateSchool != ''
+                 && IdGraduateTime1 != '' && IdGraduateSchool1 != '' && IdGainedQualificationTime != '' && IdEngageTime != '' && IdEngageYear != '' && IdTakeOffice != ''
+                 && IdTakeOfficeTime != '' && IdMajor != '' && IdMajorYear != '' && IdJoinWorkTime != '' && IdForeignLanguage != '' && IdForeignLanguageResult != '' && IdQuantityScore != '' && IdExamResult != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //获取下拉框的值保存到数据库
+                $.getJSON("/Main/InsertBasic", {
+                    DeclareGradeID: DengjiJB,
+                    DeclareSeriesID: XiLieJB,
+                    DeclareQualificationID: ZiGeJB,
+                    FormTime: IdFormTime,
+                    Name: IdName,
+                    SexID: XingBieJB,
+                    Birthday: IdBirthday,
+                    PlaceUnit: IdPlaceUnit,
+                    EducationID: DiYiXueLi,
+                    GraduateTime: IdgraduateTime,
+                    GraduateSchool: IdGraduateSchool,
+                    MajorID: ZhuanYe,
+                    JudgeEducationID: PingShenXueLi,
+                    GraduateTime1: IdGraduateTime1,
+                    GraduateSchool1: IdGraduateSchool1,
+                    MajorID1: ZhuanYeTwo,
+                    MajorsPostID: XLZhiChenJB,
+                    GainedQualificationTime: IdGainedQualificationTime,
+                    EngageTime: IdEngageTime,
+                    EngageYear: IdEngageYear,
+                    TakeOffice: IdTakeOffice,
+                    TakeOfficeTime: IdTakeOfficeTime,
+                    Major: IdMajor,
+                    MajorYear: IdMajorYear,
+                    JoinWorkTime: IdJoinWorkTime,
+                    ForeignLanguage: IdForeignLanguage,
+                    ForeignLanguageRankID: WaiYuJiBieJB,
+                    ForeignLanguageResult: IdForeignLanguageResult,
+                    ExamCaseID: KaoShiQKJB,
+                    ExamineResultID: KaoHeJieGuoJB,
+                    DeclareYearID: NianDuJB,
+                    DeclareYearID1: NianDuJBA,
+                    DeclareYearID2: NianDuJBB,
+                    DeclareYearID3: NianDuJBC,
+                    DeclareYearID4: NianDuJBD,
+                    DeclareYearID5: NianDuJBE,
+                    ExamineResultID1: KaoHeJieGuoJBA,
+                    ExamineResultID2: KaoHeJieGuoJBB,
+                    ExamineResultID3: KaoHeJieGuoJBC,
+                    ExamineResultID4: KaoHeJieGuoJBD,
+                    ExamineResultID5: KaoHeJieGuoJBE,
+                    ExamineResultID6: KaoHeJieGuoJBF,
+                    DeclareModeID: SBFangShiJB,
+                    QuantityScore: IdQuantityScore,
+                    ExamResult: IdExamResult,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("提交成功!!!", { icon: 1, title: '提示' });
+                        $('#FormJiBen [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("提交失败!!!", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            } else {
+                layer.alert('信息还没填写完整，不可以提交哦', { icon: 0, title: '提示' });
+            }
+        });
+
+        //新增 工作经历
+        $("#tbnavD").click(function () {
+            var TextGoZuoJL = $('#TextGoZuoJL').val();//工作主要经历
+            if (TextGoZuoJL != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //获取文本域的值保存到数据库
+                $.getJSON("/Main/InsertExperience", {
+                    Experience: TextGoZuoJL
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("保存成功!!!", { icon: 1, title: '提示' });
+                        GongZuoJingLi();//清空
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("保存失败!!!", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            }
+        });
+
+        //新增 工作成绩
+        $("#btnGongZuoCJBaoCun").click(function () {
+
+            var TextGZCJ = $('#TextGZCJ').val();//工作主要经历
+            alert(TextGZCJ);
+            if (TextGZCJ != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //获取文本域的值保存到数据库
+                $.getJSON("/Main/InsertWorkResult", {
+                    WorkResult: TextGZCJ
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("保存成功!!!", { icon: 1, title: '提示' });
+                        GongZuoChengJi();
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("保存失败!!!", { icon: 2, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            }
+        });
+
+        //成果奖励新增
+        $("#btnChengGuoXZ").click(function () {
+            var IdItem = $('#FormChengGuo [name="Item"]').val();//项目名称
+            var IdTime = $('#FormChengGuo [name="Timers"]').val();//时间
+            var IdAchievementGradeID = $('#FormChengGuo [name="AchievementGradeID"]').val();//成果等级
+            var IdSituateNext = $('#FormChengGuo [name="SituateNextrs"]').val();//位次
+            var IdRatifySection = $('#FormChengGuo [name="RatifySection"]').val();//批准机关
+            if (IdAchievementGradeID > 0 && IdItem != '' && IdTime != '' && IdSituateNext != '' && IdRatifySection != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //获取下拉框的值保存到数据库
+                $.getJSON("/Main/InsertAchievement", {
+                    Item: IdItem,
+                    Timers: IdTime,
+                    AchievementGradeID: IdAchievementGradeID,
+                    SituateNextrs: IdSituateNext,
+                    RatifySection: IdRatifySection,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("提交成功!!!", { icon: 1, title: '提示' });
+                        CGJL();
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("提交失败!!!", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //论文作品新增
+        $("#btnLunWenXZ").click(function () {
+            var IdTitle = $('#FormLunWen [name="Title"]').val();//题目
+            var IDTime = $('#FormLunWen [name="Timery"]').val();//时间
+            var IDSituateNext = $('#FormLunWen [name="SituateNextry"]').val();//位次
+            var IdPeriodicalPublishing = $('#FormLunWen [name="PeriodicalPublishing"]').val();//刊物或出版社
+            if (IdTitle != '' && IdTime != '' && IdSituateNext != '' && IdPeriodicalPublishing != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //获取文本的值保存到数据库
+                $.getJSON("/Main/IntsertProduction", {
+                    Title: IdTitle,
+                    Timery: IDTime,
+                    SituateNextry: IDSituateNext,
+                    PeriodicalPublishing: IdPeriodicalPublishing,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("提交成功!!!", { icon: 1, title: '提示' });
+                        LWZP();
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("提交失败!!!", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //成果奖励修改保存
+        $("#btnChengGuoXG").click(function () {
+            $("#FormChengGuo").attr("action", "/Main/UpdateAchievement");
+            var IdItem = $('#FormChengGuo [name="Item"]').val();//项目名称
+            var IdTime = $('#FormChengGuo [name="Timers"]').val();//时间
+            var IdAchievementGradeID = $('#FormChengGuo [name="AchievementGradeID"]').val();//成果等级
+            var IdSituateNext = $('#FormChengGuo [name="SituateNextrs"]').val();//位次
+            var IdRatifySection = $('#FormChengGuo [name="RatifySection"]').val();//批准机关
+            if (IdAchievementGradeID > 0 && IdItem != '' && IdTime != '' && IdSituateNext != '' && IdRatifySection != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $("#FormChengGuo").ajaxSubmit(function (msg) {
+                    if (msg == "success") {
+                        layer.alert("修改成功", { icon: 1, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                        tabChengGuo.refreshPage();//刷新
+                        CGJL();
+                    } else {
+                        layer.alert("修改失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层 
+                    }
+                });
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //论文作品修改保存
+        $("#btnLunWenXG").click(function () {
+            $("#FormLunWen").attr("action", "/Main/UpdateProduction");
+            var IdTitle = $('#FormLunWen [name="Title"]').val();//题目名称
+            var IDTime = $('#FormLunWen [name="Timery"]').val();//时间
+            var IDSituateNext = $('#FormLunWen [name="SituateNextry"]').val();//位次
+            var IdPeriodicalPublishing = $('#FormLunWen [name="PeriodicalPublishing"]').val();//刊物出版社
+            if (IdTitle != '' && IDTime != '' && IDSituateNext != '' && IdPeriodicalPublishing != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $("#FormLunWen").ajaxSubmit(function (msg) {
+                    if (msg == "success") {
+                        layer.alert("修改成功", { icon: 1, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                        tabLunWen.refreshPage();//刷新
+                        LWZP();
+                    } else {
+                        layer.alert("修改失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层 
+                    }
+                });
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //成果奖励删除
+        $("#btnChengGuoSC").click(function () {
+            var rowIndex = tabChengGuo.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var AchievementID = tabChengGuo.getColumnValue(rowIndex, "AchievementID");
+                layer.confirm("确认要删除该成果信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/Main/DeleteAchievement", { AchievementID: AchievementID }, function (msg) {
+                        tabChengGuo.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                        CGJL();//清空
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的成果信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //论文作品删除
+        $("#btnLunWenSC").click(function () {
+            var rowIndex = tabLunWen.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var ProductionID = tabLunWen.getColumnValue(rowIndex, "ProductionID");
+                layer.confirm("确认要删除该作品信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/Main/DeleteProduction", { ProductionID: ProductionID }, function (msg) {
+                        tabLunWen.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                        LWZP();//清空
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的作品信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //基础信息清空
+        function JiChuXinXiQK() {
+            $("#JCIdentityCode").val("");//身份证号
+            $("#JCTissueOrganization").val("");//组织机构代码
+            $("#JCTissueOrganizationCode").val("");//组织机构代码证
+            $("#XLDanWeiXZ").val(0);//单位性质
+            $("#XLSuoShu").val(0);//所属单位
+            $("#JCMailbox").val("");//邮箱
+            $("#XLShuYu").val(0);//申报人属于
+            $("#JCStatutoryCall").val("");//单位法定全称
+            $("#XLLiShu").val(0);//隶属关系
+            $("#JCContactPhone").val("");//联系电话
+            $("#JCRecordUnit").val("");//托管单位
+        }
+
+        //工作经历
+        function GongZuoJingLi() {
+            $("#TextGoZuoJL").val("");
+        }
+
+        //工作成绩
+        function GongZuoChengJi() {
+            $("#TextGZCJ").val("");
+        }
+
+        //成果奖励表清空
+        function CGJL() {
+            $("#IdItem").val("");
+            $("#IdTime").val("");
+            $("#IdAchievementGradeID").val(0);
+            $("#IdSituateNext").val("");
+            $("#IdRatifySection").val("");
+        }
+
+        //论文作品表清空
+        function LWZP() {
+            $("#IdTitle").val("");
+            $("#IDTime").val("");
+            $("#IDSituateNext").val("");
+            $("#IdPeriodicalPublishing").val("");
+        }
+
+        //基础信息手机号正则验证
+        $("#JCContactPhone").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#JCContactPhone").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#JCContactPhone').css("border-color", "green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#JCContactPhone').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+
+        //成果表格
+        $(function () {
+            tabChengGuo = $.fn.bsgrid.init('tabChengGuo', {
+                url: '/Main/SelectAchievements',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                AchievementID = record.AchievementID;
+                                $.post("/Main/SelectAchievement?AchievementID=" + AchievementID, function (data) {
+                                    $('#FormChengGuo [name="AchievementID"]').val(data.AchievementID);//成果ID
+                                    $('#FormChengGuo [name="Item"]').val(data.Item);//项目名称
+                                    $('#FormChengGuo [name="Timers"]').val(data.Timeser);//时间
+                                    $('#FormChengGuo [name="AchievementGradeID"]').val(data.AchievementGradeID);//项目等级
+                                    $('#FormChengGuo [name="SituateNextrs"]').val(data.SituateNextrs);//位次
+                                    $('#FormChengGuo [name="RatifySection"]').val(data.RatifySection);//批准机关
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+            $(".bsgridPagingOutTab").width("98%");//调整分页工具条的长度
+        });        
+
+        //论文作品表格
+        $(function () {
+            tabLunWen = $.fn.bsgrid.init('tabLunWen', {
+                url: '/Main/SelectProduction',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                ProductionID = record.ProductionID;
+                                $.post("/Main/SelectProductions?ProductionID=" + ProductionID, function (data) {
+                                    $('#FormLunWen [name="ProductionID"]').val(data.ProductionID);//作品ID
+                                    $('#FormLunWen [name="Title"]').val(data.Title);//项目名称
+                                    $('#FormLunWen [name="Timery"]').val(data.Timeser);//时间
+                                    $('#FormLunWen [name="SituateNextry"]').val(data.SituateNextry);//位次
+                                    $('#FormLunWen [name="PeriodicalPublishing"]').val(data.PeriodicalPublishing);//刊物或出版社
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+            $(".bsgridPagingOutTab").width("98%");//调整分页工具条的长度
+        });
+        
+
+        //工作成绩限制行数
+        function GZCJWBY(obj) {
+            $("#TextGZCJ").attr({
+                maxlength: "363"
+            });
+            var value = $(obj).val();//获取文本框内的内容
+            var length = value.length;//获取内容的长度   
+            if (length >= 363) {
+                //判断内容是否超出自己想要的长度
+                layer.alert("已超出字数", { icon: 0, title: '提示' });
+            }
+        }
+
+        //工作经历限制行数
+        function GZJLWBY(obj) {
+            $("#TextGoZuoJL").attr({
+                maxlength: "147"
+            });
+            var value = $(obj).val();//获取文本框内的内容
+            var length = value.length;//获取内容的长度   
+            if (length >= 168) {
+                //判断内容是否超出自己想要的长度
+                layer.alert("已超出字数", { icon: 0, title: '提示' });
+            }
+        }
+        
+        @*一览表打印*@
+        function BaiBiaoDaYin() {
+            window.open("/Main/Basicxtdy?BasicID=" + BasicID);
+        }
+
+        //信息上报按钮   PS：数据早已存进数据库，此按钮只是为了让申报人更放心；
+        $("#XinXiShangBao").click(function () {
+            alert("上报成功");
+            alert("信息以上报至申报人所在单位，如有疑问请联系主办单位!!!     电话：12580-000-011");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>单位登录</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/style.css" rel="stylesheet" />
+    <style>
+        .tton {
+            width: 120px;
+            height: 50px;
+            outline: none;
+            border: 0;
+            font-weight: bold;
+            font-family: '华文新魏';
+            font-size: 25px;
+            background-color: rgba(0, 148, 255, 0.00);
+        }
+
+        .div-page {
+            height: 300px;
+            border-radius: 5px;
+            background-color: rgba(241, 241, 241, 0.0);
+            border: 1px solid #f1f1f1;
+            box-shadow: 3px 3px 7px #888888; /*阴影:右边阴影像素 下边阴影像素  阴影柔和度 颜色*/
+        }
+
+        .image img {
+            border-radius: 12px;
+        }
+
+        .control-label{
+            padding-right:0;
+            padding-left:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="width: 100%; height: 637px; background-image: url('../../image/Delacre.png'); background-size: cover;">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2" style="margin-top:75px; height:500px; background-color:rgba(226, 225, 225, 0.81);">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="height:80px;border-bottom:1px solid #ebebeb;padding:0;">
+                <h3 style="color:#0094ff">山东省<i style="font-size:30px; font-weight:bold;">专业技术人员</i> 职称申报后台管理系统</h3>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+                <!--单位口令-->
+                <div class="col-md-8 col-sm-8 col-xs-offset-2" id="IdKoLing" style="height: 400px; padding: 0;">
+                    <div class="col-sm-12" style="margin-top:60px;">
+                        <div class="col-sm-12  div-page" id="UnitDongTaiKLing" style="padding:0px;">
+                            <form id="FromDongTaiKL" method="post" class="form-horizontal" style="margin-top:100px;">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3" style="font-family:黑体;font-size:18px;padding:0px;">动态口令</label>
+                                    <div class="col-md-8">
+                                        <input type="password" class="form-control" id="DynamicOrderCode" name="DynamicOrderCode" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-offset-4">
+                                        <button type="button" id="btnJieSuo" class="btn btn-danger" style="width:100px;">解锁</button>
+                                        <button type="button" id="btnJieSuoFanHui" class="btn btn-danger" style="width:100px;margin-left:40px;">返回</button>
+                                        <button type="reset" hidden>重置</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <p class="text-center">
+                                            1.动态口令由公司内部人员使用，如果没有动态口令，请联<br />
+                                            系公司主办单位进行协助登录。<br />
+                                            <br />
+                                            2.解锁成功，在注册完成后，请谨记自己所购买的动态口令<br />
+                                            <br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div>
+                </div>
+                <!--单位口令-->
+                <!--单位登录 hidden-->
+                <div class="col-md-8 col-sm-8 col-xs-8 col-xs-offset-2 hidden" id="IdUnit" style="height:400px;padding:0px;">
+                    <div class="col-md-12" style="margin-top:60px;">
+                        <div class="col-sm-12 div-page" id="UnitDengLu" style="padding: 0;">
+                            <form id="IdUnitLogin" method="post" class="form-horizontal form-radius" style="margin-top:50px;margin-left:auto;margin-bottom:auto;">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-3 control-label no-padding-right" for="UserNuber">
+                                        单位名称
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="UnitIDCide" id="IdUnitIDCide" value="" class="form-control" />
+                                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-3 control-label no-padding-right" for="password">
+                                        登录密码
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="password" name="RegisterCode" id="IdRegisterCode" value="" class="form-control" />
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">
+                                        动态口令
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="DynamicOrderCode" id="DLDynamicOrderCode" value="" class="form-control" disabled />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5 col-sm-offset-4" style="padding:0;">
+                                        <button type="button" class="btn btn-primary btn-block btn-radius" id="btnDongTaiLingPai" style="font-weight:bold;">
+                                            动态令牌同步 <i class="glyphicon glyphicon-cloud" style="color:yellow"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-3 col-sm-offset-4" style="margin-top:10px;padding:0;">
+                                        <button type="button" class="btn btn-primary btn-block btn-radius" style="width:100px; font-weight:bold; padding-left:12px;" id="UnitbtnSubmit" onclick="UnitYM()">
+                                            <i class="glyphicon glyphicon-arrow-up" style="color:yellow"></i> 登 录
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top:10px; padding:0;">
+                                        <button id="DanWeiFH" type="button" class="btn btn-primary btn-block btn-radius" style="width:95px; font-weight:bold;">
+                                            返 回 <i class="glyphicon glyphicon-arrow-down" style="color:yellow"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="reset" hidden>重置</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--单位登录-->
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        //单位返回点击事件
+        $("#DanWeiFH").click(function () {
+            $("#IdUnit").addClass("hidden");
+            $("#IdKoLing").removeClass("hidden");
+
+        });
+
+        //解锁返回按钮
+        $("#btnJieSuoFanHui").click(function () {
+            window.location.href = "/Main/Declares";
+        });
+
+        //单位解锁按钮
+        $("#btnJieSuo").click(function () {
+            var DynamicOrderCode = $('#IdUnitLogin [name="DynamicOrderCode"]').val();//动态口令
+            var fromData = $("#FromDongTaiKL").serializeArray();
+            $.post("/Main/UnitDeblock", fromData, function (msg) {
+                if (msg == "login") {
+                    //alert("解锁成功");
+                    $('#FromDongTaiKL [type="reset"]').click();//重置
+                    $("#IdUnit").removeClass("hidden");
+                    $("#IdKoLing").addClass("hidden");
+                }
+                else if (msg == "NotDynamicOrderCode") {
+                    alert("没有该动态口令");
+                } else {
+                    alert(msg);
+                }
+            });
+        });
+
+        //单位登录按钮
+        $("#UnitbtnSubmit").click(function () {
+            var IdUnitIDCide = $('#IdUnitLogin [name="UnitIDCide"]').val();//用户名
+            var fromData = $("#IdUnitLogin").serializeArray();
+            $.post("/Main/UnitLogin", fromData, function (msg) {
+                if (msg == "login") {
+                    //alert("登录成功");
+                    $('#IdUnitLogin [type="reset"]').click();//重置
+                    window.location.href = "/UnitHome/UnitLogin/PingShenSY";//跳转页面                    
+                }
+                else if (msg == "passwordErro") {
+                    alert("密码错误");
+                } else {
+                    alert(msg);
+                }
+            });
+        });
+
+        //回车键登录事件
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                var IdUnitIDCide = $('#IdUnitLogin [name="UnitIDCide"]').val();//用户名
+                var fromData = $("#IdUnitLogin").serializeArray();
+                $.post("/Main/UnitLogin", fromData, function (msg) {
+                    if (msg == "login") {
+                        //alert("登录成功");
+                        $('#IdUnitLogin [type="reset"]').click();//重置
+                        window.location.href = "/UnitHome/UnitLogin/PingShenSY";//跳转页面                    
+                    }
+                    else if (msg == "passwordErro") {
+                        alert("密码错误");
+                    } else {
+                        alert(msg);
+                    }
+                });
+            }
+        })
+
+        //动态令牌同步
+        $("#btnDongTaiLingPai").click(function () {
+            $(document).ready(function () {
+                $.getJSON("/Main/DWDongTaiLingPai", function (data) {
+                    $("#DLDynamicOrderCode").val(data);
+                    if (data != 0) {//判断动态口令是否存在
+                        alert(msg);
+                    } else {
+                        alert("您还没购买动态口令");
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+</html>

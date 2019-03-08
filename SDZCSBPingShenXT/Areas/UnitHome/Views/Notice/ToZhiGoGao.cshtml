@@ -1,0 +1,308 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <title>ToZhiGoGao</title>
+    <style type="text/css">
+        .container {
+            width: 100%;
+            padding: 20px 40px 0 35px;
+            margin: 0;
+        }
+
+        .panel-heading span {
+            font-size: 18px;
+        }
+
+        .form-horizontal label {
+            font-weight: normal;
+        }
+
+        .reset {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .panel-body {
+            padding-left: 0;
+        }
+
+        a {
+            font-size: 17px;
+            margin-right: 8px;
+        }
+
+            a, a:hover, a:active, a:visited, a:link {
+                color: white;
+                text-decoration: none;
+            }
+
+        td a {
+            color: blue !important;
+        }
+
+        .h4 {
+            margin: 0 0 4px 0;
+        }
+
+        th {
+            font-weight: normal;
+        }
+
+        .h4, td, th {
+            text-align: center;
+        }
+
+        .table tbody tr td {
+            padding: 4px;
+        }
+
+            .table tbody tr td button {
+                height: 24px;
+                padding: 2px 12px;
+            }
+
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        #FromTJCX select,#FromTJCX input{
+            height:38px;
+        }
+        #FromTJCX label{
+            padding:9px;
+        }
+
+        #FormNotice select,#FormNotice input{
+            height:38px;
+        }
+        #FormNotice label{
+            padding:9px;
+        }
+
+        #FormUpdate select,#FormUpdate input{
+            height:38px;
+        }
+        #FormUpdate label{
+            padding:9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="GoGaoChuangTi">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><span>查询内容</span></div>
+                <div class="panel-body">
+                    <div class="col-md-11 col-sm-11 col-xs-11" style="padding-left:2px;">
+                        <form class="form-horizontal" role="form" id="FromTJCX">
+                            <div class="form-group">
+                                <label class="col-md-1 col-sm-1 control-label reset">标题</label>
+                                <div class="col-md-3 col-sm-3 reset">
+                                    <input type="text" class="form-control" name="NoticeName" id="NoticeName" />
+                                </div>
+                                <label class="col-md-1 col-sm-1 control-label reset">发布时间</label>
+                                <div class="col-md-3 col-sm-3 reset">
+                                    <input type="date" class="form-control" name="ReleaseTimeStr" id="ReleaseTimeStr" />
+                                </div>
+                                <label class="col-md-1 col-sm-1 control-label reset">公告类别</label>
+                                <div class="col-md-3 col-sm-3 reset">
+                                    <select class="form-control" name="NoticeType" id="NoticeTypeID"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                        <button type="button" class="btn btn-info" id="btnSelect"  style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span>数据列表</span>
+                    <div class="pull-right">
+                        <a href="javascript:;" id="refresh"><span class="glyphicon glyphicon-refresh"></span>刷新</a>
+                        <a href="javascript:;" id="Insert"><span class="glyphicon glyphicon-ok"></span>新增</a>
+                        <a href="javascript:;" id="Update"><span class="glyphicon glyphicon-pencil"></span>修改</a>
+                        <a href="javascript:;" id="Delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+                    </div>
+                </div>
+                <div class="panel-body" style="padding-left:15px;">
+                    <div class="h4">公告信息</div>
+                    <table id="tabNotice">
+                        <tr>
+                            <th w_index="NoticeID" w_hidden="true">公告ID</th>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="NoticeName" w_align="left" width="30%">公告名称</th>
+                            <th w_index="NoticeType" width="10%">公告类别</th>
+                            <th w_index="PromulgatorUnit" width="10%">发布单位</th>
+                            <th w_index="releaseTimeStrTimer" width="10%">发布时间</th>
+                            <th w_index="effectiveTimer" width="10%">有效日期</th>
+                            <th w_index="NoticeContent" w_render="crearViewButton" width="8%">公告详情</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script>
+        //公告列表
+        var tabNotice;
+
+        $(function(){
+            tabNotice = $.fn.bsgrid.init('tabNotice', {
+                url: '/UnitHome/Notice/selectNotice',
+                autoLoad: true,//自动加载数据
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 10,//默认页面大小
+                pageSizeSelect: true,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                NoticeID = record.NoticeID;
+                                $.post("/UnitHome/Notice/UpdateNotice?NoticeID=" + NoticeID, function (data) {
+                                    $('#FormUpdate [name="NoticeID"]').val(data.NoticeID);//公告ID
+                                    $('#FormUpdate [name="NoticeName"]').val(data.NoticeName);//公告名称
+                                    $('#FormUpdate [name="NoticeContent"]').val(data.NoticeContent);//公告内容
+                                    $('#FormUpdate [name="NoticeTypeID"]').val(data.NoticeTypeID);//公告类别ID
+                                    $('#FormUpdate [name="PromulgatorUnitID"]').val(data.PromulgatorUnitID);//发布单位ID
+                                    $('#FormUpdate [name="ReleaseTimeStr"]').val(data.releaseTimeStrTimer);//发布时间
+                                    $('#FormUpdate [name="Effective"]').val(data.effectiveTimer);//有效时间
+                                })
+                            }
+                        }
+                    }
+                }            
+            });
+            searchNotice();
+        });
+        
+        $("#btnSelect").click(function () {
+            searchNotice();
+        });
+
+        function searchNotice() {
+            var noticeTypeId = $("#NoticeTypeID").val();
+            if (noticeTypeId == "" || noticeTypeId == undefined) {
+                noticeTypeId = 0;
+            }
+            var noticeName = $("#NoticeName").val();
+            if (noticeName == undefined) {
+                noticeName = "";
+            }
+            var releaseTimeStrTimer = $("#ReleaseTimeStr").val();
+            if (releaseTimeStrTimer == undefined) {
+                releaseTimeStrTimer = "";
+            }
+            tabNotice.search({ noticeTypeId: noticeTypeId, noticeName: noticeName, releaseTimeStrTimer: releaseTimeStrTimer })
+        }
+
+        //刷新按钮
+        $("#refresh").click(function () {
+            searchNotice();//刷新公告信息
+        });
+
+        //新增窗体打开按钮
+        $("#Insert").click(function () {
+            window.open('/UnitHome/Notice/InsertNotice');
+            //window.location.href = "/UnitHome/Notice/InsertNotice";
+        });
+
+        //修改窗体打开按钮
+        $("#Update").click(function () {
+            var rowIndex = tabNotice.getSelectedRowIndex();//获取行索引
+            if (rowIndex > -1) {
+                var noticrId = tabNotice.getColumnValue(rowIndex, "NoticeID");
+                window.location.href = "/UnitHome/Notice/UpdateNotice?noticeId=" + noticrId;//修改公告页面
+            } else {
+                alert("请选择需要修改公告");
+            }
+        });
+
+        //下拉框
+        $(function () {
+            createSelect("NoticeTypeID", "/UnitHome/Notice/SelectNoticeType");//公告类别
+            createSelect("SNoticeTypeID", "/UnitHome/Notice/SelectNoticeType");//新增公告类别
+            createSelect("SPromulgatorUnitID", "/UnitHome/Notice/SelectPromulgatorUnit");//新增发布单位
+            createSelect("UNoticeTypeID", "/UnitHome/Notice/SelectNoticeType");//修改公告类别
+            createSelect("UPromulgatorUnitID", "/UnitHome/Notice/SelectPromulgatorUnit");//修改发布单位
+        });
+
+        //自定义公告详情列
+        function crearViewButton(record, rowIndex, colIndex, options) {
+            return '<button type="button" class="btn btn-primary btn-sm" onclick="openViewNotice(' + record.NoticeID + ')">详情</button>';
+        }
+
+        //打开公告详情页面
+        function openViewNotice(noticeId) {
+            window.open("/UnitHome/Notice/NoticeDetailed?noticeId=" + noticeId);
+        }
+
+        //新增保存按钮
+        $("#InsertBaoCun").click(function () {
+            window.location.href = "/UnitHome/Notice/NoticeInsert";
+        });
+
+        //修改保存按钮
+        $("#UpdateBaoCun").click(function () {
+            window.location.href = "/UnitHome/Notice/NoticeUpdate";
+        });
+
+        //删除
+        $("#Delete").click(function () {
+            var rowIndex = tabNotice.getSelectedRowIndex();//获取行索引
+            if (rowIndex > -1) {
+                if (window.confirm("是否要删除该公告？")) {
+                    var notieId = tabNotice.getColumnValue(rowIndex, "NoticeID");//获取ID   noticrId: noticrId指的是name：value
+                    $.post("/UnitHome/Notice/NoticeDelete", { notieId: notieId }, function (msg) {
+                        if (msg) {
+                            alert("删除成功")
+                        } else {
+                            alert("删除失败")
+                        }
+                        searchNotice();//刷新                      
+                    });
+                }
+
+            } else {
+                alert("请选择要删除的公告");
+            }
+        })
+    </script>
+</body>
+</html>

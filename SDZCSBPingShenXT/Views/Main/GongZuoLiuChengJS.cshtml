@@ -1,0 +1,368 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>山东专业技术人员管理平台—职称评审管理系统</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /*头部*/
+        .banner-bg {
+            width: 100%;
+            height: 55px;
+            background-color: #005EA0;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+        }
+
+        .logo {
+            /*background-image: url("../img/logo.png");*/
+            background-repeat: no-repeat;
+            width: 936px;
+            height: 55px;
+            background-position: left;
+            float: left;
+            padding-top: 15px;
+        }
+
+        .right-search {
+            width: 264px;
+            height: 35px;
+            float: right;
+            margin-top: 15px;
+        }
+        /*头部*/
+
+        /*导航条*/
+        .container {
+            width: 100%;
+        }
+
+        .big-div {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .margin-top70 {
+            background-color: #005EA0;
+            height: 37px;
+            margin-top: 70px;
+            margin-bottom: 15px;
+        }
+
+        .banner-write {
+            line-height: 37px;
+            padding: 0px 35px;
+            color: #fff;
+            float: left;
+            font-size: 14px;
+        }
+
+            .banner-write a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+                .banner-write a:hover {
+                    text-decoration: none;
+                    color: #fcff00;
+                }
+        /*导航条*/
+
+        /*左侧列表*/
+        .list-left {
+            width: 250px;
+            border: 1px solid #E6E6E6;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vertical-top {
+            vertical-align: top;
+        }
+
+        .listfloat-left {
+            float: left;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .list-1 {
+            background-image: url("../../image/list_1.png");
+            background-repeat: no-repeat;
+            width: 239px;
+            height: 169px;
+            margin: 0 auto;
+            margin-top: 7px;
+            text-align: center;
+            margin-right: 0;
+        }
+
+        .list-left-write {
+            font-size: 16px;
+            line-height: 33px;
+        }
+
+            .list-left-write a {
+                color: #777;
+                text-decoration: none;
+            }
+
+                .list-left-write a:hover {
+                    text-decoration: none;
+                    color: #666;
+                }
+
+        .list-2 {
+            background-image: url("../../image/list_2.png");
+            background-repeat: no-repeat;
+            width: 239px;
+            height: 169px;
+            margin: 0 auto;
+            margin-top: 7px;
+            text-align: center;
+            margin-right: 0;
+        }
+        /*左侧列表*/
+
+        /*右侧公告*/
+        .list-title-bg a {
+            line-height: 35px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+            .list-title-bg a:hover {
+                text-decoration: none;
+                color: #333;
+            }
+
+        .list-right {
+            width: 930px;
+        }
+
+        .float-right {
+            float: right;
+            vertical-align: bottom;
+        }
+
+        .list-title {
+            border: 1px solid #eee;
+            height: 35px;
+        }
+
+        .height15 {
+            width: 100%;
+            height: 15px;
+            clear: both;
+        }
+
+        .border {
+            border: 1px solid #eee;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .new-listbg-bai {
+            background-color: #fff;
+            border-bottom: 1px dashed #ccc;
+        }
+        /*右侧公告*/
+
+        /*友情链接*/
+        .linkbg {
+            background-color: #005ea0;
+            height: 83px;
+            width: 100%;
+        }
+
+        .links-img {
+            background-image: url('../../image/links.png');
+            width: 228px;
+            height: 83px;
+            background-repeat: no-repeat;
+            margin-left: 47px;
+            float: left;
+        }
+
+        .links-write {
+            font-size: 15px;
+            line-height: 83px;
+            letter-spacing: 3px;
+            font-family: "微软雅黑";
+        }
+
+            .links-write a {
+                text-decoration: none;
+                color: white;
+            }
+        /*友情链接*/
+        .NoticeDiv{/*公告日期的样式*/
+            color:#C19A56;
+        }
+        .ewew{/*公告内容的样式*/
+            font-family:'华文仿宋';
+            font-size:16px;
+            color:#0767a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="banner-bg">
+                <div class="header-div">
+                    <div class="logo">
+                        <h3 style="color:white;font-weight:bold;font-size:25px; margin:0; padding-left:75px;">山东省职称申报评审系统</h3>
+                    </div>
+                    <div class="right-search">
+                        <div class="container margin0">
+                            <div class="search" id="search">
+                                <input id="keywords" name="keywords" class="input" style="border-radius:3px; padding-left:7px;" type="text" placeholder="" x-webkit-speech="">
+                                <input class="button" type="submit" onclick="SouSuo()" style="border-radius:2px;" value="搜索">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="big-div margin-top70">
+                <div class="banner-write">
+                    <a href="/Main/Declares">首页</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/ToZhiGG">通知公告</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/YeWuZhiNan">业务指南</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/XiangGuanZhengCe">相关政策</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/RenZhiZiGeTJ">任职资格条件</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/ChangJianWenTi">常见问题</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/GongZuoLiuChengJS">工作流程介绍</a>
+                </div>
+                <div class="banner-write">
+                    <a target="_blank" href="/Main/LianXiWoMen">关于我们</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div style="width:1200px;height:430px;margin-left:75px;">
+                <div style="float:left; width:260px;height:430px;border:1px solid #cacaca;">
+                    <div class="list-left vertical-top listfloat-left clear">
+                        <a target="_blank" href="http://www.sdosta.org.cn/">
+                            <div class="list-1"></div>
+                        </a>
+                        <div class="list-left-write">
+                            <a target="_blank" href="http://www.sdosta.org.cn/">证书查询</a>
+                        </div>
+                        <a target="_blank" href="http://www.sdhrss.gov.cn/pages/zx/">
+                            <div class="list-2"></div>
+                        </a>
+                        <div class="list-left-write">
+                            <a target="_blank" href="http://www.sdhrss.gov.cn/pages/zx/">帮助中心</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="float:right; width:940px;height:430px;">
+                    <div class="list-right float-right">
+                        <div class="list-right listfloat-left list-title clear">
+                            <div class="list-title-bg">
+                                <a href="/Main/GongZuoLiuChengJS">&nbsp;&nbsp;工作流程介绍</a>
+                            </div>
+                        </div>
+                        <div class="height15 clear"></div>
+                        <div class="list-right border">
+                            <!--公告内容显示区-->
+                            <div class="list-right listfloat-left new-listbg-bai" id="TrueSix">
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div style="width:1200px;height:100px;margin-left:75px; margin-top:20px;">
+                <div class="linkbg">
+                    <div class="links-img"></div>
+                    <div class="links-write">
+                        <a href="http://www.sdhrss.gov.cn/" target="_blank">山东省人力资源和社会保障厅&nbsp;&nbsp;</a>
+
+                        <a href="http://ctisd.com/class-11.html" target="_blank">|&nbsp;&nbsp;山东科技成果网&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:1200px; margin-left:60px; border-top:2px solid #00a1fe;height:180px; margin-top:10px; background-color:#cacaca;">
+            <div class="copyright" style="margin-top:30px;margin-left:80px;">
+                <div class="container" style="height:95px;">
+                    <div style="float:left;margin-left:200px;display:inline;width:110px; text-align:center; overflow:hidden;padding-top:12px;">
+                        <script id="_jiucuo_" sitecode='3700000027' src='http://pucha.kaipuyun.cn/exposure/jiucuo.js'></script>
+                    </div>
+                    <div style="float:left;display:inline;width:70px;text-align:center;overflow:hidden;">
+                        <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/16/000/0000/60418909/CA160000000604189090002.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                    </div>
+                    <div style="float:left;display:inline;width:500px; text-align:center; overflow:hidden;">
+                        <p class="link"><a href="http://www.sdhrss.gov.cn/pages/jiaoliu/jzxx/wyxx_xz.html" style="color:brown;">厅长信箱</a>&emsp;|&emsp;<a href="http://www.sdhrss.gov.cn/pages/zdxxwh/50009.html" style="color:brown;">“庸懒散”专项治理举报电话</a>&emsp;|&emsp;<a href="http://www.sdhrss.gov.cn/pages/zdxxwh/52112.html" style="color:brown;">联系我们</a>&emsp;|&emsp;<a href="http://mail.sdhrss.gov.cn/extmail/cgi/index.cgi" target="_blank" style="color:brown;">邮箱登录</a></p>
+                        <p>主办单位：山东人力资源和社会保障厅 版权所有：山东省人力资源和社会保障厅</p>
+                        <p>技术支持：山东省人力资源社会保障信息中心</p>
+                        <p>鲁ICP备10039682号</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        //点击搜索刷新
+        function SouSuo() {
+            window.location.href = "/Main/GongZuoLiuChengJS";
+        }
+
+        $(function () {
+            PublishNotice();
+        });
+
+        //系统公告
+        function PublishNotice() {
+            $.post("/UnitHome/Notice/SelectNoticer", function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].NoticeTypeID == 7) {
+                        $("#TrueSix").append("<div class='NoticeDiv'><label>[" + data[i].ReleaseTimeStrr + "] <span class='mySpan'><a class ='ewew' onclick='OpenViewNotice(" + data[i].NoticeID + ")'>" + data[i].NoticeName + "</a></span></label><br/>");
+                    }
+                }
+            });
+        }
+
+        //打开公告详情页面
+        function OpenViewNotice(noticeId) {
+            //window.open("/UnitHome/Notice/NoticeDetailed?noticeId=" + noticeId);
+            window.location.href = "/UnitHome/Notice/NoticeDetailed?noticeId=" + noticeId;
+        }
+    </script>
+</body>
+</html>

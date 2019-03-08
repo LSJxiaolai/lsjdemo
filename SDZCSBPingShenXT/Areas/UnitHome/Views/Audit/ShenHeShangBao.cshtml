@@ -1,0 +1,1182 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShenHeShangBao</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        #FormSHShangBao select,#FormSHShangBao input{
+            height:38px;
+        }
+        #FormSHShangBao label{
+            padding:9px;
+        }
+
+        #FormBianHao select{
+            height:38px;
+        }
+        #FormBianHao label{
+            padding:9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="ShenHeShangBaoChuangTi">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;background-color:#64b6ed;">
+                    <h4><i class="glyphicon glyphicon-tree-conifer" style="color:green;"></i>审核上报</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:220px; border-top:2px solid #e1edee;border-bottom:2px solid #e1edee;">
+                    <form class="form-horizontal" role="form" id="FormSHShangBao" action="/UnitHome/Audit/" method="post">
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报等级</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareGradeID" name="DeclareGradeID"></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报系列</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareSeriesID" name="DeclareSeriesID"></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <button type="button" class="btn btn-info" id="QingKong" style="background-color:#dfeffc;color:#34759b;font-weight:bold;">清空条件</button>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">姓名</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="text" class="form-control" id="Name" name="Name" />
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">呈报单位</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="text" class="form-control" id="PlaceUnit" name="PlaceUnit" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报资格</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareQualificationID" name="DeclareQualificationID"></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报方式</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareModeID" name="DeclareModeID"></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报状态</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareStatusID" name="DeclareStatusID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">排序方式</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SortlevelID" name="SortlevelID"></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SortlevelIDA" name="SortlevelID"></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SortlevelIDB" name="SortlevelID"></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SortlevelIDC" name="SortlevelID"></select>
+                            </div>
+                        </div>
+                        <button type="reset" hidden>重置</button>
+                    </form>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; margin-top:10px;">
+                    <div class="text-right">
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnChaXun"><span class="glyphicon glyphicon-search"></span>查询</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnBianHao"><span class="glyphicon glyphicon-signal"></span>编号</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnShenHe"><span class="glyphicon glyphicon-flash"></span>审核</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnPiLiangShenHe"><span class="glyphicon glyphicon-flash"></span>批量审核</button>
+                        <button class="btn btn-info" style="width:110px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnDCHuaMingCe"><span class="glyphicon glyphicon-paste"></span>导出花名册</button>
+                        <button class="btn btn-info" style="width:110px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnDCYiLanBiao"><span class="glyphicon glyphicon-paste"></span>导出一览表</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnShangBao"><span class="glyphicon glyphicon-floppy-open"></span>上报</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold; "id="btnQuanBuShangBao"><span class="glyphicon glyphicon-floppy-open"></span>全部上报</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:40px;background-color:#64b6ed;">
+                        <h5>基本信息列表</h5>
+                    </div>
+                    <table id="tabJiBenXinXiLB" style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <th w_check="true" w_index="ID">选择</th>
+                                <th w_num="total_line" width="5%">序号</th>
+                                <th w_index="BasicID" w_hidden="true">基本信息ID</th>
+                                <th w_index="PlaceUnit">呈报单位</th>
+                                <th w_index="Name">姓名</th>
+                                <th w_index="Sex">性别</th>
+                                <th w_index="birthdayer">出生年月</th>
+                                <th w_index="Major">现所从事专业</th>
+                                <th w_index="Education">学历</th>
+                                <th w_index="DeclareGrade">等级名称</th>
+                                <th w_index="DeclareSeries">专业名称</th>
+                                <th w_index="DeclareQualification">资格名称</th>
+                                <th w_index="formTimer">报送时间</th>
+                                <th w_index="DeclareMode">申报方式</th>
+                                <th w_index="ContactPhone">联系电话</th>
+                                <th w_index="DeclareStatus" w_hidden="true">状态</th>
+                                <th w_index="ZhuangTai" w_render="crearViewButton">申报状态</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--编号-->
+    <div class="container  hidden" id="BianHao">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 tuot" style="background-color:#26a3e6; height:50px;">
+                <h4>编号</h4>
+            </div>
+        </div>
+        <div class="row" style="border:2px solid #e1edee;padding:0; height:600px;">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="border-top:2px solid #e1edee;border-bottom:2px solid #e1edee; height:50px;">
+                <form class="form-horizontal" id="FormBianHao" action="">
+                    <div class="form-group" style="margin-top:5px;">
+                        <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">排序方式</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-left:100px;">
+                            <select class="form-control" id="EducationID" name="EducationID"></select>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-left:100px;">
+                            <select class="form-control" id="DeclareModeID2" name="DeclareModeID"></select>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-left:100px;">
+                            <select class="form-control" id="MajorsPostID" name="MajorsPostID"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
+                <div class="text-center">
+                    <button type="button" class="btn btn-info" id="btnPaiXu" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-search"></span>排序</button>
+                    <button type="button" class="btn btn-info" id="btnChongXinBianHao" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-signal"></span>重新编号</button>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12"style="margin-top:20px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:40px;background-color:#64b6ed;">
+                    <h5>编号列表</h5>
+                </div>
+                <table id="tabBianHao" style="margin-top:2px; width:100%;">
+                    <tr>
+                        <th w_num="total_line" width="5%">序号</th>
+                        <th w_index="BasicID" w_hidden="true">基本信息ID</th>
+                        <th w_index="Name">姓名</th>
+                        <th w_index="PlaceUnit">工作单位</th>
+                        <th w_index="Major">现所从事专业</th>
+                        <th w_index="Education">学历</th>
+                        <th w_index="DeclareMode">申报方式</th>
+                        <th w_index="MajorsPost">现专业技术职称</th>
+                        <th w_index="joinWorkTimer">参加工作时间</th>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+    </div>
+    <!--编号-->
+
+    <!--审核-->
+    <div class="container hidden" id="ShenHe" style="background-color:#b2b2b2;">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="height:50px;">
+                <div class="text-center">
+                    <sapn style="color:firebrick;font-size:30px;">专业技术人员申报评审职称情况一览表</sapn>
+                </div>  
+            </div>
+        </div>
+        <div class="row" style="border:1px solid blue; border-color:blue;padding:0; height:1500px;">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                <form class="form-horizontal" id="FormShenHe" action="" method="post">
+                    <div class="form-group" style="margin-top:5px;">
+                        <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报等级</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <select class="form-control" id="DeclareGradeId" name="DeclareGradeID" disabled></select>
+                        </div>
+                        <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报系列</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <select class="form-control" id="DeclareSeriesId" name="DeclareSeriesID" disabled></select>
+                        </div>
+                        <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报资格</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <select class="form-control" id="DeclareQualificationId" name="DeclareQualificationID" disabled></select>
+                        </div>
+                        <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">填表时间</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <input class="form-control" id="FormTime" name="FormTime" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                <div class="text-center" style="margin-top:7px;">
+                    <sapn style="color:firebrick;font-size:25px;">基本信息</sapn>
+                </div>                    
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" style="height:1400px; border:1px solid #26a3e6">
+                <form class="form-horizontal" id="FormPiLiangSH" action="" method="post">                    
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px; height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">姓名</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="Name" name="Name" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">性别</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SexID" name="SexID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">出生年月</label>
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <input class="form-control" id="Birthday" name="Birthday" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">现所在单位</label>
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <input class="form-control" id="PlaceUnit" name="PlaceUnit" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">档案托管单位</label>
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <input class="form-control" id="RecordUnit" name="RecordUnit" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">第一学历</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="EducationId" name="EducationID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">毕业时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="GraduateTime" name="GraduateTime" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">毕业院校</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="GraduateSchool" name="GraduateSchool" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">专业</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="MajorID" name="MajorID" disabled></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">评审依据学历</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="JudgeEducationID" name="JudgeEducationID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">毕业时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="GraduateTime1" name="GraduateTime1" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">毕业院校</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="GraduateSchool1" name="GraduateSchool1" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">专业</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="MajorID1" name="MajorID1" disabled></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">专业技术职称</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="MajorsPostId" name="MajorsPostID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">获得资格时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="GainedQualificationTime" name="GainedQualificationTime" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">聘任时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="EngageTime" name="EngageTime" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">聘任年限</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="EngageYear" name="EngageYear" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">现任行政职务</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="TakeOffice" name="TakeOffice" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">任职时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="TakeOfficeTime" name="TakeOfficeTime" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">现所从事专业</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="Major" name="Major" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">从事专业年限</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="MajorYear" name="MajorYear" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter; padding:0;">参加工作时间</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="JoinWorkTime" name="JoinWorkTime" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">外语语种</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="ForeignLanguage" name="ForeignLanguage" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">外语级别</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="ForeignLanguageRankID" name="ForeignLanguageRankID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">外语成绩</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="ForeignLanguageResult" name="ForeignLanguageResult" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">申报方式</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareModeId" name="DeclareModeID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">量化赋分</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="QuantityScore" name="QuantityScore" disabled>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">考试情况</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="ExamCaseID" name="ExamCaseID" disabled></select>
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">考试成绩</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input class="form-control" id="ExamResult" name="ExamResult" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:100px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:15px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">任职以来各年度考核结果：</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareYearID" name="DeclareYearID" disabled></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareYearID1" name="DeclareYearID1" disabled></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareYearID2" name="DeclareYearID2" disabled></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareYearID3" name="DeclareYearID3" disabled></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="DeclareYearID4" name="DeclareYearID4" disabled></select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:5px;">
+                                <select class="form-control" id="ExamineResultID1" name="ExamineResultID1" disabled></select>
+                            </div>                                
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:5px;">
+                                <select class="form-control" id="ExamineResultID2" name="ExamineResultID2" disabled></select>
+                            </div>                                
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:5px;">
+                                <select class="form-control" id="ExamineResultID3" name="ExamineResultID3" disabled></select>
+                            </div>                               
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:5px;">
+                                <select class="form-control" id="ExamineResultID4" name="ExamineResultID4" disabled></select>
+                            </div>                              
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:5px;">
+                                <select class="form-control" id="ExamineResultID5" name="ExamineResultID5" disabled></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-2" style="font-weight:lighter;">任期届满考核结果</label>
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <select class="form-control" id="ExamineResultID" name="ExamineResultID" disabled></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="height:150px; border:1px solid #26a3e6">
+                        <div class="form-group" style="margin-top:7px;">
+                            <label class="control-label col-lg-3 col-md-3 col-sm-3" style="font-weight:lighter; color:#082afa;font-size:17px;">工作经历</label>
+                            <label class="control-label col-lg-6 col-md-6 col-sm-6" style="font-weight:lighter; color:#082afa;font-size:17px;">工作成绩</label>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <textarea type="text" class="form-control" id="Experience" name="Experience" style="width:500px; height:100px;overflow:auto;" disabled></textarea>
+                            </div>                               
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <textarea type="text" class="form-control" id="WorkResult" name="WorkResult" style="width:500px; height:100px;overflow:auto;" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:40px;background-color:#64b6ed;">
+                        <h5>成果奖励表</h5>
+                    </div>
+                    <table id="tabChengGuoJianLi" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="AchievementID" w_hidden="true">成果ID</th>
+                            <th w_index="Item">项目名称</th>
+                            <th w_index="Timeser">时间</th>
+                            <th w_index="AchievementGrade">等级</th>
+                            <th w_index="SituateNextrs">位次</th>
+                            <th w_index="RatifySection">批准机关</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:40px;background-color:#64b6ed;">
+                        <h5>论文作品表</h5>
+                    </div>
+                    <table id="tabLunWenZuoPing" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="ProductionID" w_hidden="true">论文作品ID</th>
+                            <th w_index="Timeser">时间</th>
+                            <th w_index="Title">题目</th>
+                            <th w_index="SituateNextry">位次</th>
+                            <th w_index="PeriodicalPublishing">刊物出版社</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-left:20px;">
+                    <form class="form-horizontal" id="FormShenHeFou" action="/UnitHome/Audit/InsertAuditAppear" method="post">
+                        <div class="form-group">  
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="EducationCondition" name="EducationCondition" value="true">学历不符合条件
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="LanguageCondition" name="LanguageCondition" value="true">外语不符合条件
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="ComputerCondition" name="ComputerCondition" value="true">计算机不符合条件
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="SpecialCondition" name="SpecialCondition" value="true">不符合破格条件
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="ProductionFake" name="ProductionFake" value="true">论文作品有假
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="AchievementFake" name="AchievementFake" value="true">成果奖励有假
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="CertificateFake" name="CertificateFake" value="true">证件有假
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="checkbox" id="Other" name="Other" value="true">其它
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-1 col-md-1 col-lg-1" style="padding:0;">
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPass" value="true" checked>审核通过</label>
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPass1" value="false">审核未通过</label>
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPass2" value="">退回</label>
+                            </div>
+
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <textarea type="text" class="form-control" id="OtherCause" name="OtherCause" style="width:900px; height:100px;overflow:auto;"></textarea>
+                            </div>
+
+                        </div> 
+                        <button type="reset" hidden>重置</button>              
+                    </form>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-info" id="btnShuanXin" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-refresh"></span>刷新</button>
+                        <button type="button" class="btn btn-info" id="btnSHBaoCun" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-download-alt"></span>保存</button>
+                        <button type="button" class="btn btn-info" id="btnGuanBi" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-file"></span>关闭</button>
+                        <button type="button" class="btn btn-info" id="btnSHXiaYiTiao" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-forward"></span>审核下一条</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <!--审核-->
+
+    <!--批量审核模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot" style="background-color:#64b6ed">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">申报信息审核</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" id="FormShenHePL" action="/UnitHome/Audit/InsertAuditAppear" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="EducationCondition" name="EducationCondition" value="true">学历不符合条件
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="LanguageCondition" name="LanguageCondition" value="true">外语不符合条件
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3" style="padding:0px;">
+                                <input type="checkbox" id="ComputerCondition" name="ComputerCondition" value="true">计算机不符合条件
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="SpecialCondition" name="SpecialCondition" value="true">不符合破格条件
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="ProductionFake" name="ProductionFake" value="true">论文作品有假
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="AchievementFake" name="AchievementFake" value="true">成果奖励有假
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="CertificateFake" name="CertificateFake" value="true">证件有假
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="checkbox" id="Other" name="Other" value="true">其它
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-md-6 col-lg-6" style="padding:0 20px;padding-right:0;">
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPass" value="true" checked>审核通过</label>
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPass1" value="false">审核未通过</label>
+                                <label style="font-weight:lighter;"><input type="radio" name="AuditPass" id="AuditPacc2" value="" data-dismiss="modal">退回</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <textarea type="text" class="form-control" id="OtherCause" name="OtherCause" style="width:280px; height:100px;overflow:auto;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnQueDing">确定</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--批量审核模态窗体-->
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>@*3*@
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>@*4*@
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>@*5*@
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    @*查询数据*@
+    <script>
+        var tabJiBenXinXiLB;
+        //绑定下拉框
+        $(function () {
+            createSelect("DeclareSeriesID", "/UnitHome/Audit/SelectSBXiLie");//申报系列
+            createSelect("DeclareGradeID", "/UnitHome/Audit/SelectSBDengJi");//申报等级
+            createSelect("DeclareQualificationID", "/UnitHome/Audit/SelectDeclareQualification");//申报资格
+            createSelect("DeclareModeID", "/UnitHome/Audit/SelectDeclareMode");//申报方式
+            createSelect("CategoryID", "/UnitHome/Audit/SelectCategory");//申报类别
+            createSelect("DeclareStatusID", "/UnitHome/Audit/SelectDeclareStatus");//申报状态
+            createSelect("SortlevelID", "/UnitHome/Audit/SelectSortlevel");//排序方式
+            createSelect("SortlevelIDA", "/UnitHome/Audit/SelectSortlevel");//排序方式
+            createSelect("SortlevelIDB", "/UnitHome/Audit/SelectSortlevel");//排序方式
+            createSelect("SortlevelIDC", "/UnitHome/Audit/SelectSortlevel");//排序方式
+        });
+
+        //基本信息列表
+        $(function () {
+                tabJiBenXinXiLB = $.fn.bsgrid.init('tabJiBenXinXiLB', {
+                    url: '/UnitHome/Audit/SelectJiBenXinXi',
+                    autoLoad: true,
+                    stripeRows: true,//隔行变色
+                    rowHoverColor: true,//划过行变色
+                    rowSelectedColor: true,//是否显示选中行背景色
+                    pageSize: 5,
+                    pageSizeSelect: false,//是否选择分页页数下拉框
+                    pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                    pagingToolbarAlign: "left",
+                });
+                ShangBaoTiaoJianChaXun();
+        });
+
+        //自定义状态列
+        function crearViewButton(record, rowIndex, colIndex, options) {
+            var StatusName = tabJiBenXinXiLB.getRecordIndexValue(record, "DeclareStatus");
+            StatusName = record.DeclareStatus;
+            if (StatusName == "已审核") {
+                return '<span><a href="#"style="color:green">已审核</a></span>';
+            } else if (StatusName == "待审核") {
+                return '<span><a href="#" style="color:red">待审核</a></span>';
+            }
+              else if (StatusName == "已上报") {
+                  return '<span><a href="#" style="color:sandybrown">已上报</a></span>';
+            }
+        }
+
+        //清空条件
+        $("#QingKong").click(function () {
+            $('#FormSHShangBao [type="reset"]').click();//重置
+        });
+
+        //条件查询
+        $("#btnChaXun").click(function () {
+            ShangBaoTiaoJianChaXun();
+        });
+        function ShangBaoTiaoJianChaXun() {
+            var name = $("#Name").val();
+            if (name == undefined) {
+                name = "";
+            }//姓名
+            var placeUnit = $("#PlaceUnit").val();
+            if (placeUnit == undefined) {
+                placeUnit = "";
+            }//呈报单位
+            var declareQualificationId = $("#DeclareQualificationID").val();
+            if (declareQualificationId == "" || declareQualificationId == undefined) {
+                declareQualificationId = 0;
+            }//申报资格
+            var declareModeId = $("#DeclareModeID").val();
+            if (declareModeId == "" || declareModeId == undefined) {
+                declareModeId = 0;
+            }//申报方式
+            var declareGradeId = $("#DeclareGradeID").val();
+            if (declareGradeId == "" || declareGradeId == undefined) {
+                declareGradeId = 0;
+            }//申报等级（必填）
+            var declareSeriesId = $("#DeclareSeriesID").val();
+            if (declareSeriesId == "" || declareSeriesId == undefined) {
+                declareSeriesId = 0;
+            }//申报系列（必填）
+            var declareStatusId = $("#DeclareStatusID").val();
+            if (declareStatusId == "" || declareStatusId == undefined) {
+                declareStatusId = 0;
+            }//申报状态
+            tabJiBenXinXiLB.search({
+                name: name, placeUnit: placeUnit, declareQualificationId: declareQualificationId, declareModeId: declareModeId,
+                declareGradeId: declareGradeId, declareSeriesId: declareSeriesId, declareStatusId: declareStatusId
+            })
+        }
+
+    </script>
+
+    @*编号*@
+    <script>
+        var tabBianHao;
+        //打开编号页面
+        $("#btnBianHao").click(function () {
+            $('#FormBianHao [type="reset"]').click();//重置表单
+            $("#ShenHeShangBaoChuangTi").addClass("hidden");
+            $("#BianHao").removeClass("hidden");
+        });
+
+        //绑定下拉
+        $(function () {
+            createSelect("EducationID", "/UnitHome/Audit/SelectEducation");//学历
+            createSelect("DeclareModeID2", "/UnitHome/Audit/SelectDeclareMode");//申报方式
+            createSelect("MajorsPostID", "/UnitHome/Audit/SelectMajorsPost");//专业职称
+            createSelect("SortlevelIDE", "/UnitHome/Audit/SelectSortlevel");//排序方式
+        });
+
+        //排序
+        $("#btnPaiXu").click(function () {
+                var educationId = $("#EducationID").val();
+                if (educationId == "" || educationId == undefined) {
+                    educationId = 0;
+                }
+                var declareModeId = $("#DeclareModeID2").val();
+                if (declareModeId == "" || declareModeId == undefined) {
+                    declareModeId = 0;
+                }
+                var majorsPostId = $("#MajorsPostID").val();
+                if (majorsPostId == "" || majorsPostId == undefined) {
+                    majorsPostId = 0;
+                }
+            //条件查询
+            tabBianHao.search({ educationId: educationId, declareModeId: declareModeId, majorsPostId: majorsPostId })           
+        });
+
+        //重新编号
+        $("#btnChongXinBianHao").click(function () {
+            $('#FormSHShangBao [type="reset"]').click();//重置表单
+            $("#BianHao").addClass("hidden");
+            $("#ShenHeShangBaoChuangTi").removeClass("hidden");
+        });
+
+        //编号列表
+        $(function () {
+            tabBianHao = $.fn.bsgrid.init('tabBianHao', {
+                url: '/UnitHome/Audit/SelectBianHao',
+                autoLoad: false,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//工具条显示位置
+            });
+            $(".bsgridPagingOutTab").width("98%");//调整分页工具条的长度
+        });
+    </script>
+
+    @*审核*@
+    <script>
+        //绑定下拉框
+        $(function () {
+            createSelect("DeclareGradeId", "/UnitHome/Audit/SelectSBDengJi");//申报等级
+            createSelect("DeclareSeriesId", "/UnitHome/Audit/SelectSBXiLie");//申报系列
+            createSelect("DeclareQualificationId", "/UnitHome/Audit/SelectDeclareQualification");//申报资格
+            createSelect("SexID", "/UnitHome/Audit/SelectSex");//性别
+            createSelect("EducationId", "/UnitHome/Audit/SelectEducation");//学历
+            createSelect("MajorID", "/UnitHome/Audit/SelectMajor");//专业1
+            createSelect("JudgeEducationID", "/UnitHome/Audit/SelectEducation");//评审依据学历
+            createSelect("MajorID1", "/UnitHome/Audit/SelectMajor");//专业2
+            createSelect("MajorsPostId", "/UnitHome/Audit/SelectMajorsPost");//专业技术职称
+            createSelect("ForeignLanguageRankID", "/UnitHome/Audit/SelectForeignLanguageRank");//外语级别
+            createSelect("DeclareModeId", "/UnitHome/Audit/SelectDeclareMode");//申报方式
+            createSelect("ExamCaseID", "/UnitHome/Audit/SelectExamCase");//考试情况
+            createSelect("DeclareYearID", "/UnitHome/Audit/SelectDeclareYear");//申报年度
+            createSelect("DeclareYearID1", "/UnitHome/Audit/SelectDeclareYear");//申报年度
+            createSelect("DeclareYearID2", "/UnitHome/Audit/SelectDeclareYear");//申报年度
+            createSelect("DeclareYearID3", "/UnitHome/Audit/SelectDeclareYear");//申报年度
+            createSelect("DeclareYearID4", "/UnitHome/Audit/SelectDeclareYear");//申报年度
+            createSelect("ExamineResultID", "/UnitHome/Audit/SelectExamineResult");//考核结果 
+            createSelect("ExamineResultID1", "/UnitHome/Audit/SelectExamineResult");//考核结果
+            createSelect("ExamineResultID2", "/UnitHome/Audit/SelectExamineResult");//考核结果
+            createSelect("ExamineResultID3", "/UnitHome/Audit/SelectExamineResult");//考核结果
+            createSelect("ExamineResultID4", "/UnitHome/Audit/SelectExamineResult");//考核结果
+            createSelect("ExamineResultID5", "/UnitHome/Audit/SelectExamineResult");//考核结果
+        });
+
+        //关闭审核
+        $("#btnGuanBi").click(function () {
+            $("#ShenHe").addClass("hidden");
+            $("#ShenHeShangBaoChuangTi").removeClass("hidden");
+        });
+        //退回
+        $("#AuditPass2").click(function () {
+            $("#ShenHe").addClass("hidden");
+            $("#ShenHeShangBaoChuangTi").removeClass("hidden");
+        }); 
+
+        //审核成果奖励表
+        $(function () {
+            tabChengGuoJianLi = $.fn.bsgrid.init('tabChengGuoJianLi', {
+                url: '/UnitHome/Audit/SelectAchievement',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 3,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//工具条显示位置
+            });
+            $(".bsgridPagingOutTab").width("98%");//调整分页工具条的长度
+        });
+
+        //审核论文作品表
+        $(function () {
+            tabLunWenZuoPing = $.fn.bsgrid.init('tabLunWenZuoPing', {
+                url: '/UnitHome/Audit/SelectProduction',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 3,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//工具条显示位置
+            });
+            $(".bsgridPagingOutTab").width("98%");//调整分页工具条的长度
+        });
+
+        //刷新
+        $("#btnShuanXin").click(function () {
+            $('#FormShenHeFou [type="reset"]').click();
+        });
+
+        //打开审核页面，与绑定数据
+        $("#btnShenHe").click(function () {
+            var records = getCheckedRecords();//调用便利循环选中的check
+            var Returns = 0;//声明一个变量
+            $.post("/UnitHome/Audit/SelectBasicxtdy", function (data) {
+                $('#FormShenHe [name="DeclareGradeID"]').val(data.listBasicxtdy[0].DeclareGradeID);//申报等级
+                $('#FormShenHe [name="DeclareSeriesID"]').val(data.listBasicxtdy[0].DeclareSeriesID);//申报系列
+                $('#FormShenHe [name="DeclareQualificationID"]').val(data.listBasicxtdy[0].DeclareQualificationID);//申报资格
+                $('#FormShenHe [name="FormTime"]').val(data.listBasicxtdy[0].formTimer);//填表时间
+                $('#FormPiLiangSH [name="Name"]').val(data.listBasicxtdy[0].Name);//姓名
+                $('#FormPiLiangSH [name="SexID"]').val(data.listBasicxtdy[0].SexID);//性别
+                $('#FormPiLiangSH [name="Birthday"]').val(data.listBasicxtdy[0].birthdayer);//出生年月
+                $('#FormPiLiangSH [name="PlaceUnit"]').val(data.listBasicxtdy[0].PlaceUnit);//现所在单位
+                $('#FormPiLiangSH [name="RecordUnit"]').val(data.listBasisxtdy[0].RecordUnit);//档案托管单位
+                $('#FormPiLiangSH [name="EducationID"]').val(data.listBasicxtdy[0].EducationID);//第一学历
+                $('#FormPiLiangSH [name="GraduateTime"]').val(data.listBasicxtdy[0].graduateTimer);//毕业时间
+                $('#FormPiLiangSH [name="GraduateSchool"]').val(data.listBasicxtdy[0].GraduateSchool);//毕业院校
+                $('#FormPiLiangSH [name="MajorID"]').val(data.listBasicxtdy[0].MajorID);//专业
+                $('#FormPiLiangSH [name="JudgeEducationID"]').val(data.listBasicxtdy[0].EducationID);//评审依据学历
+                $('#FormPiLiangSH [name="GraduateTime1"]').val(data.listBasicxtdy[0].graduateTime1er);//毕业时间
+                $('#FormPiLiangSH [name="GraduateSchool1"]').val(data.listBasicxtdy[0].GraduateSchool1);//毕业院校
+                $('#FormPiLiangSH [name="MajorID1"]').val(data.listBasicxtdy[0].MajorID1);//专业
+                $('#FormPiLiangSH [name="MajorsPostID"]').val(data.listBasicxtdy[0].MajorsPostID);//专业技术职称
+                $('#FormPiLiangSH [name="GainedQualificationTime"]').val(data.listBasicxtdy[0].gainedQualificationTimer);//获得资格时间
+                $('#FormPiLiangSH [name="EngageTime"]').val(data.listBasicxtdy[0].engageTimer);//聘任时间
+                $('#FormPiLiangSH [name="EngageYear"]').val(data.listBasicxtdy[0].EngageYear);//聘任年限
+                $('#FormPiLiangSH [name="TakeOffice"]').val(data.listBasicxtdy[0].TakeOffice);//现任行政职务
+                $('#FormPiLiangSH [name="TakeOfficeTime"]').val(data.listBasicxtdy[0].takeOfficeTimer);//任职时间
+                $('#FormPiLiangSH [name="Major"]').val(data.listBasicxtdy[0].Major);//现所从事专业
+                $('#FormPiLiangSH [name="MajorYear"]').val(data.listBasicxtdy[0].MajorYear);//从事专业年限
+                $('#FormPiLiangSH [name="JoinWorkTime"]').val(data.listBasicxtdy[0].joinWorkTimer);//参加工作时间
+                $('#FormPiLiangSH [name="ForeignLanguage"]').val(data.listBasicxtdy[0].ForeignLanguage);//外语语种
+                $('#FormPiLiangSH [name="ForeignLanguageRankID"]').val(data.listBasicxtdy[0].ForeignLanguageRankID);//外语级别
+                $('#FormPiLiangSH [name="ForeignLanguageResult"]').val(data.listBasicxtdy[0].ForeignLanguageResult);//外语成绩
+                $('#FormPiLiangSH [name="DeclareModeID"]').val(data.listBasicxtdy[0].DeclareModeID);//申报方式
+                $('#FormPiLiangSH [name="QuantityScore"]').val(data.listBasicxtdy[0].QuantityScore);//量化赋分
+                $('#FormPiLiangSH [name="ExamCaseID"]').val(data.listBasicxtdy[0].ExamCaseID);//考试情况
+                $('#FormPiLiangSH [name="ExamResult"]').val(data.listBasicxtdy[0].ExamResult);//考试成绩
+                $('#FormPiLiangSH [name="DeclareYearID"]').val(data.listBasicxtdy[0].DeclareYearID);//申报年度
+                $('#FormPiLiangSH [name="ExamineResultID1"]').val(data.listBasicxtdy[0].ExamineResultID1);//考核结果
+                $('#FormPiLiangSH [name="DeclareYearID1"]').val(data.listBasicxtdy[0].DeclareYearID1);//申报年度
+                $('#FormPiLiangSH [name="ExamineResultID2"]').val(data.listBasicxtdy[0].ExamineResultID2);//考核结果
+                $('#FormPiLiangSH [name="DeclareYearID2"]').val(data.listBasicxtdy[0].DeclareYearID2);//申报年度
+                $('#FormPiLiangSH [name="ExamineResultID3"]').val(data.listBasicxtdy[0].ExamineResultID3);//考核结果
+                $('#FormPiLiangSH [name="DeclareYearID3"]').val(data.listBasicxtdy[0].DeclareYearID3);//申报年度
+                $('#FormPiLiangSH [name="ExamineResultID4"]').val(data.listBasicxtdy[0].ExamineResultID4);//考核结果
+                $('#FormPiLiangSH [name="DeclareYearID4"]').val(data.listBasicxtdy[0].DeclareYearID4);//申报年度
+                $('#FormPiLiangSH [name="ExamineResultID5"]').val(data.listBasicxtdy[0].ExamineResultID5);//考核结果
+                $('#FormPiLiangSH [name="ExamineResultID"]').val(data.listBasicxtdy[0].ExamineResultID);//考核结果
+                $('#FormPiLiangSH [name="Experience"]').val(data.listExperiencext[0].Experience);//工作经历
+                $('#FormPiLiangSH [name="WorkResult"]').val(data.listWorkResultxt[0].WorkResult);//工作成绩
+            })
+            if (records.length > 0) {
+                $("#ShenHeShangBaoChuangTi").addClass("hidden");
+                $("#ShenHe").removeClass("hidden");
+            } else {
+                layer.alert('至少选择一个申报人进行审核', { icon: 0, title: '提示' });
+            }
+        });
+
+        //便利循环选中的check
+        function getCheckedRecords() {
+            var records = new Array();//声明一个数组:存储选中CheckBox
+            //便利表的行
+            $('#tabJiBenXinXiLB tbody tr').each(function () {
+                //判断获取选中当前点击的行
+                if ($(this).find('td:eq(0)>input:checked').length == 1) {
+                    //把选中的行保存到数组中
+                    records[records.length] = tabJiBenXinXiLB.getRowRecord($(this));//getRowRecord()根据行dom对象获取行记录值
+                }
+            });
+            //返回数组
+            return records;
+        }
+
+        //审核保存
+        $("#btnSHBaoCun").click(function () {
+            var EducationCondition = $('#FormShenHeFou [name="EducationCondition"]').is(":checked");
+            var LanguageCondition = $('#FormShenHeFou [name="LanguageCondition"]').is(":checked");
+            var ComputerCondition = $('#FormShenHeFou [name="ComputerCondition"]').is(":checked");
+            var SpecialCondition = $('#FormShenHeFou [name="SpecialCondition"]').is(":checked");
+            var ProductionFake = $('#FormShenHeFou [name="ProductionFake"]').is(":checked");
+            var AchievementFake = $('#FormShenHeFou [name="AchievementFake"]').is(":checked");
+            var CertificateFake = $('#FormShenHeFou [name="CertificateFake"]').is(":checked");
+            var Other = $('#FormShenHeFou [name="Other"]').is(":checked");
+            var OtherCause = $('#FormShenHeFou [name="OtherCause"]').val();
+            var AuditPass = $('#FormShenHeFou [name="AuditPass"]').prop('checked');//审核通过否
+            if (OtherCause != '') {
+                if (AuditPass == true) {
+                    AuditPass = "审核通过"
+                } else {
+                    AuditPass = "审核未通过"
+                }
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $.getJSON("/UnitHome/Audit/InsertAuditAppear", {
+                    EducationCondition: EducationCondition,
+                    LanguageCondition: LanguageCondition,
+                    ComputerCondition: ComputerCondition,
+                    SpecialCondition: SpecialCondition,
+                    ProductionFake: ProductionFake,
+                    AchievementFake: AchievementFake,
+                    CertificateFake: CertificateFake,
+                    Other: Other,
+                    OtherCause: OtherCause,
+                    AuditPass: AuditPass,
+                }, function (msg) {
+                    if (msg != 0) {
+                        var records = getCheckedRecords();//调用遍历循环中的checkBox
+                        var Returns = 0;//声明一个变量
+                        var ZhuangTaiID = msg;
+                        //循环选中的数组
+                        for (var i = 0; i < records.length; i++) {
+                            var basicID = tabJiBenXinXiLB.getRecordIndexValue(records[i], 'BasicID')
+                            $.post("/UnitHome/Audit/UpdateZhuangTi", { basicID: basicID, ZhuangTaiID: msg }, function (data) {
+                                if (data == "success") {
+                                    Returns = Returns + 1;
+                                    if (Returns == records.length)//判断提交的行数是否与记录的行数相等
+                                    {
+                                        $("#ShenHe").addClass("hidden");
+                                        $("#ShenHeShangBaoChuangTi").removeClass("hidden");//关闭审核窗体
+                                        layer.alert("审核成功", { icon: 1, title: '提示' });
+                                        $('#FormShenHeFou [type="reset"]').click();//重置
+                                        layer.close(layerIndex);//关闭 加载层
+                                        ShangBaoTiaoJianChaXun();
+                                    }
+                                }
+                                else {
+                                    layer.alert("提交审核失败。。。");
+                                }
+                            });
+                        }
+                    } else {
+                        layer.alert("审核失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层
+                        ShangBaoTiaoJianChaXun();
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+    </script>
+
+    @*批量审核*@
+    <script>
+        //打开批量审核窗体
+        $("#btnPiLiangShenHe").click(function () {
+            var records = getCheckedRecords();//调用便利循环选中的check
+            var Returns = 0;//声明一个变量
+            if (records.length > 0) {
+                $('#formInsertExaminee [type="reset"]').click();//重置表单
+                $("#modInsertExaminee").modal("show");
+            } else {
+                layer.alert('至少选择一个申报人进行审核', { icon: 0, title: '提示' });
+            }
+        });
+
+        //确定
+        $("#btnQueDing").click(function () {
+            var EducationCondition = $('#FormShenHePL [name="EducationCondition"]').is(":checked");
+            var LanguageCondition = $('#FormShenHePL [name="LanguageCondition"]').is(":checked");
+            var ComputerCondition = $('#FormShenHePL [name="ComputerCondition"]').is(":checked");
+            var SpecialCondition = $('#FormShenHePL [name="SpecialCondition"]').is(":checked");
+            var ProductionFake = $('#FormShenHePL [name="ProductionFake"]').is(":checked");
+            var AchievementFake = $('#FormShenHePL [name="AchievementFake"]').is(":checked");
+            var CertificateFake = $('#FormShenHePL [name="CertificateFake"]').is(":checked");
+            var Other = $('#FormShenHePL [name="Other"]').is(":checked");
+            var OtherCause = $('#FormShenHePL [name="OtherCause"]').val();
+            var AuditPass = $('#FormShenHePL [name="AuditPass"]').prop('checked');//审核通过否
+            if (OtherCause != '') {
+                if (AuditPass == true) {
+                    AuditPass = "审核通过"
+                } else {
+                    AuditPass = "审核未通过"
+                }
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $.getJSON("/UnitHome/Audit/InsertAuditAppear", {
+                    EducationCondition: EducationCondition,
+                    LanguageCondition: LanguageCondition,
+                    ComputerCondition: ComputerCondition,
+                    SpecialCondition: SpecialCondition,
+                    ProductionFake: ProductionFake,
+                    AchievementFake: AchievementFake,
+                    CertificateFake: CertificateFake,
+                    Other: Other,
+                    OtherCause: OtherCause,
+                    AuditPass: AuditPass,
+                }, function (msg) {
+                    if (msg != 0) {
+                        var records = getCheckedRecords();//调用遍历循环中的checkBox
+                        var Returns = 0;//声明一个变量
+                        var ZhuangTaiID = msg;
+                        //循环选中的数组
+                        for (var i = 0; i < records.length; i++) {
+                            var basicID = tabJiBenXinXiLB.getRecordIndexValue(records[i], 'BasicID')
+                            $.post("/UnitHome/Audit/UpdateZhuangTi", { basicID: basicID, ZhuangTaiID: msg }, function (data) {
+                                if (data == "success") {
+                                    Returns = Returns + 1;
+                                    if (Returns == records.length)//判断提交的行数是否与记录的行数相等
+                                    {
+                                        layer.alert("审核成功", { icon: 1, title: '提示' });
+                                        $('#FormShenHePL [type="reset"]').click();//重置
+                                        layer.close(layerIndex);//关闭 加载层
+                                        ShangBaoTiaoJianChaXun();
+                                    }
+                                }
+                                else {
+                                    layer.alert("提交审核失败。。。");
+                                }
+                            });
+                        }
+                    } else {
+                        layer.alert("审核失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层
+                        ShangBaoTiaoJianChaXun();
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+    </script>
+
+    @*导出花名册*@
+    <script>
+        $("#btnDCHuaMingCe").click(function () {
+            //获取查询条件
+            var declareGradeId = $("#DeclareGradeID").val();
+            if (declareGradeId == "" || declareGradeId == undefined) {
+                declareGradeId = 0;
+            }
+            var declareSeriesId = $("#DeclareSeriesID").val();
+            if (declareSeriesId == "" || declareSeriesId == undefined) {
+                declareSeriesId = 0;
+            }
+            var declareStatusId = $("#DeclareStatusID").val();
+            if (declareStatusId == "" || declareStatusId == undefined) {
+                declareStatusId = 0;
+            }
+
+
+            //拼接查询条件
+            var str = 'declareGradeId=' + declareGradeId + '&declareSeriesId=' + declareSeriesId + '&declareStatusId=' + declareStatusId;
+            //获取当前列表的查询条件
+            var oldStr = tabJiBenXinXiLB.getPageCondition(tabJiBenXinXiLB.getCurPage());
+            //检查当前列表是否是 当前的查询条件查询出来的
+            if (oldStr.indexOf(str) > -1) {
+                layer.confirm("是否要导出当前的数据？", {
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示                    
+                    //打开下载链接
+                    window.open("/UnitHome/Audit/ExportToExcel?" + str);
+                })
+            }
+            else {
+                layer.alert("请先条件查询出申报信息，预览是否是需要导出申报人员", { icon: 0, title: '提示' });
+            }
+        });
+    </script>
+
+    @*导出一览表*@
+    <script>
+        $("#btnDCYiLanBiao").click(function () {         
+            var BasicID = tabJiBenXinXiLB.getCheckedValues("BasicID");
+            if (BasicID.length == 0) {
+                layer.alert("必须选择一条数据", { icon: 0, title: '提示' });
+            } else if (1 < BasicID.length) {
+                layer.alert("只能导出一条数据", { icon: 0, title: '提示' });
+            } else {
+                layer.confirm("是否要导出当前的数据？", {
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示
+                    //打开下载链接
+                    window.open("/UnitHome/Audit/ExportToExcels?BasicID=" + BasicID);
+                })
+            }
+        });
+    </script>
+
+    @*上报*@
+    <script>
+        $("#btnShangBao").click(function () {
+            var BasicID = tabJiBenXinXiLB.getCheckedValues("BasicID");//勾选一条数据的ID
+            if (BasicID.length == 0) {//-----------------------------------------------------------------当未勾选数据时
+                layer.alert("请选择需要上报的申报信息", { icon: 0, title: '提示' });
+            } else {
+                $.post("/UnitHome/Audit/DeclareStatus", { BasicID: BasicID }, function (data) {
+                    if (data.DeclareStatusID > 1) {//----------------------------------------------------当状态为"待审核"时
+                        if (data.DeclareStatusID == 5) {//-----------------------------------------------当状态为"已上报"时
+                            layer.alert("该信息已上报，不需要再重新上报", { icon: 0, title: '提示' });
+                        } else {
+                            $.post("/UnitHome/Audit/XiuGaiZhuangTi", { BasicID: BasicID }, function (data) {
+                                if (data == "success") {//-----------------------------------------------当状态为"已审核"时
+                                    layer.alert("上报成功", { icon: 1, title: '提示' });
+                                    layer.close(layerIndex);//关闭 加载层                                                                      
+                                } else {
+                                    layer.alert("上报失败", { icon: 3, title: '提示' });
+                                }
+                            });
+                        }
+                    } else {
+                        layer.alert("该申报信息还未审核，请先审核，再上报", { icon: 0, title: '提示' });
+                    }
+                });
+            }
+            //tabJiBenXinXiLB.refreshPage();
+            //ShangBaoTiaoJianChaXun();
+        });
+    </script>
+
+    @*全部上报*@
+    <script>
+        $("#btnQuanBuShangBao").click(function () {
+            var BasicID = tabJiBenXinXiLB.getCheckedValues("BasicID");//勾选一条数据的ID
+            if (BasicID.length == 0) {//-----------------------------------------------------------------当未勾选数据时
+                layer.alert("请选择需要上报的申报信息", { icon: 0, title: '提示' });
+            } else {
+                $.post("/UnitHome/Audit/DeclareStatus", { BasicID: BasicID }, function (data) {
+                    if (data.DeclareStatusID > 1) {//----------------------------------------------------当状态为"待审核"时
+                        if (data.DeclareStatusID == 5) {//-----------------------------------------------当状态为"已上报"时
+                            layer.alert("该信息已上报，不需要再重新上报", { icon: 0, title: '提示' });
+                        } else {
+                            $.post("/UnitHome/Audit/XiuGaiZhuangTi", { BasicID: BasicID }, function (data) {
+                                if (data == "success") {//-----------------------------------------------当状态为"已审核"时
+                                    layer.alert("上报成功", { icon: 1, title: '提示' });
+                                    layer.close(layerIndex);//关闭 加载层                                                                      
+                                } else {
+                                    layer.alert("上报失败", { icon: 3, title: '提示' });
+                                }
+                            });
+                        }
+                    } else {
+                        layer.alert("该申报信息还未审核，请先审核，再上报", { icon: 0, title: '提示' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

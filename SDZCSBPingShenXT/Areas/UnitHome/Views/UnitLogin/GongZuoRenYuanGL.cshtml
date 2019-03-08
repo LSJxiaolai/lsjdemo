@@ -1,0 +1,513 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GongZuoRenYuanGL</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        #FormWork select,#FormWork input{
+            height:38px;
+        }
+        #FormWork label{
+            padding:9px;
+        }
+
+        #FormWorkUpdata select,#FormWorkUpdata input{
+            height:38px;
+        }
+        #FormWorkUpdata label{
+            padding:9px;
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="GongZuoChuangTi">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;">
+                    <h4><i class="glyphicon glyphicon-tree-conifer" style="color:green;"></i>工作人员管理</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px;border-top:2px solid #e1edee;border-bottom:2px solid #e1edee">
+                    <div class="text-right" style="margin-top:5px;">
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnXinZeng"><span class="glyphicon glyphicon-plus"></span>增加</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnXiuGai"><span class="glyphicon glyphicon-pencil"></span>修改</button>
+                        <button class="btn btn-info" style="width:100px;background-color:#dfeffc;color:#34759b;font-weight:bold;"  id="btnShanChu"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                        <button class="btn btn-info" style="width:130px;background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnChongZhiMiMa"><span class="glyphicon glyphicon-cog"></span>重置密码</button>
+                        <button class="btn btn-info" style="width:130px;background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnQBChongZhiMiMa"><span class="glyphicon glyphicon-cog"></span>全部重置密码</button>
+                        <button class="btn btn-info" style="width:130px;background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnDaoChu"><span class="glyphicon glyphicon-floppy-save"></span>导出工作人员</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:30px;margin-top:10px;">
+                        <h5>工作人员列表</h5>
+                    </div>
+                    <table id="tabGongZuoRenYuanLB" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="WorkPersonnelID" w_hidden="true">工作人员ID</th>
+                            <th w_index="Workname">姓名</th>
+                            <th w_index="WorkLoginName">登录名</th>
+                            <th w_index="Password">密码</th>
+                            <th w_index="Sex">性别</th>
+                            <th w_index="MaillSite">邮址</th>
+                            <th w_index="PhoneCode">手机</th>
+                            <th w_index="registerTimer">注册时间</th>
+                            <th w_index="finallyEnterTimer">最后登录时间</th>
+                            <th w_index="UserState">用户状态</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--新增工作人员模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">新增工作人员列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormWork" action="/UnitHome/UnitLogin/InsertWorkPersonnel" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">姓名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="Workname" name="Workname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">登录名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="WorkLoginName" name="WorkLoginName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">密码:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="Password" name="Password" maxlength="15" onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">性别:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="SexID" name="SexID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">邮址：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="MaillSite" name="MaillSite" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">手机：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="PhoneCode" name="PhoneCode" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="请输入手机号码"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">注册时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="RegisterTime" name="RegisterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">最后登录时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="FinallyEnterTime" name="FinallyEnterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="UserStateID" name="UserStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnGongZuoRYBaoCun">保存</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新增工作人员模态窗体-->
+
+    <!--修改工作人员模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="UpdatamodInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">修改工作人员列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormWorkUpdata" action="/UnitHome/UnitLogin/UpdataWorkPersonnel" method="post">
+                        <input type="text" class="form-control hidden" id="WorkPersonnelID" name="WorkPersonnelID" />
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">姓名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="Workname" name="Workname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">登录名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="WorkLoginName" name="WorkLoginName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">密码:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="Password" name="Password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">性别:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="IdSexID" name="SexID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">邮址：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="MaillSite" name="MaillSite" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">手机：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="PhoneCodes" name="PhoneCode" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="请输入手机号码"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">注册时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="RegisterTime" name="RegisterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">最后登录时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="FinallyEnterTime" name="FinallyEnterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="IdUserStateID" name="UserStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnGongZuoUpdata">保存</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改工作人员模态窗体-->
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        var tabGongZuoRenYuanLB;
+        $(function () {
+            createSelect("SexID", "/UnitHome/UnitLogin/SelectSex");//条件查询的性别
+            createSelect("IdSexID", "/UnitHome/UnitLogin/SelectSex");//用户修改列表的性别
+            createSelect("UserStateID", "/UnitHome/UnitLogin/SelectUserState");//用户状态
+            createSelect("IdUserStateID", "/UnitHome/UnitLogin/SelectUserState");//修改用户状态
+        });
+        //打开工作人员新增窗体
+        $("#btnXinZeng").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#modInsertExaminee").modal("show");
+        });
+
+        //打开工作人员修改窗体
+        $("#btnXiuGai").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#UpdatamodInsertExaminee").modal("show");
+        });
+
+        //工作人员新增
+        $("#btnGongZuoRYBaoCun").click(function (){
+            var Workname = $('#FormWork [name="Workname"]').val();//姓名
+            var WorkLoginName = $('#FormWork [name="WorkLoginName"]').val();//登录名
+            var Password = $('#FormWork [name="Password"]').val();//密码
+            var SexID = $('#FormWork [name="SexID"]').val();//性别ID
+            var MaillSite = $('#FormWork [name="MaillSite"]').val();//邮址
+            var PhoneCode = $('#FormWork [name="PhoneCode"]').val();//手机
+            var RegisterTime = $('#FormWork [name="RegisterTime"]').val();//注册时间
+            var FinallyEnterTime = $('#FormWork [name="FinallyEnterTime"]').val();//最后登录时间
+            var UserStateID = $('#FormWork [name="UserStateID"]').val();//用户状态ID
+            if (SexID > 0 && UserStateID > 0 && Workname != '' && WorkLoginName != '' && Password != '' && MaillSite != '' && PhoneCode != ''
+                && RegisterTime != '' && FinallyEnterTime != '') {
+                var layerIndex = layer.load(0);
+                $.getJSON("/UnitHome/UnitLogin/InsertWorkPersonnel", {
+                    Workname: Workname,
+                    WorkLoginName: WorkLoginName,
+                    Password:Password,
+                    SexID: SexID,
+                    MaillSite: MaillSite,
+                    PhoneCode: PhoneCode,
+                    RegisterTime: RegisterTime,
+                    FinallyEnterTime: FinallyEnterTime,
+                    UserStateID: UserStateID,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("新增成功", { icon: 1, title: '提示' });
+                        $('#FormWork [type="reset"]').click();
+                        layer.close(layerIndex);
+                    } else {
+                        layer.alert("新增失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //工作人员修改
+        $("#btnGongZuoUpdata").click(function () {
+            var Workname = $('#FormWorkUpdata [name="Workname"]').val();//姓名
+            var WorkLoginName = $('#FormWorkUpdata [name="WorkLoginName"]').val();//用户名
+            var Password = $('#FormWorkUpdata [name="Password"]').val();//密码
+            var IdSexID = $('#FormWorkUpdata [name="SexID"]').val();//性别ID
+            var MaillSite = $('#FormWorkUpdata [name="MaillSite"]').val();//邮址
+            var PhoneCodes = $('#FormWorkUpdata [name="PhoneCode"]').val();//手机
+            var RegisterTime = $('#FormWorkUpdata [name="RegisterTime"]').val();//注册时间
+            var FinallyEnterTime = $('#FormWorkUpdata [name="FinallyEnterTime"]').val();//最后登录时间
+            var IdUserStateID = $('#FormWorkUpdata [name="UserStateID"]').val();//用户状态ID
+            if (IdSexID != '' && IdUserStateID != '' && Workname != '' && WorkLoginName != '' && Password != '' && MaillSite != '' && PhoneCodes != ''
+                && RegisterTime != '' && FinallyEnterTime != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $("#FormWorkUpdata").ajaxSubmit(function (msg) {
+                    if (msg == "success") {
+                        layer.alert("修改成功", { icon: 1, title: '提示' });
+                        $('#FormWorkUpdata [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层  
+                    } else {
+                        layer.alert("修改失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层 
+                    }
+                });
+            }
+        });
+
+        //工作人员删除
+        $("#btnShanChu").click(function () {
+            var rowIndex = tabGongZuoRenYuanLB.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var WorkPersonnelID = tabGongZuoRenYuanLB.getColumnValue(rowIndex, "WorkPersonnelID");
+                layer.confirm("确认要删除该工作人员信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/UnitHome/UnitLogin/DeleteWorkPersonnel", { WorkPersonnelID: WorkPersonnelID }, function (msg) {
+                        tabGongZuoRenYuanLB.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的工作人员信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //重置密码
+        $("#btnChongZhiMiMa").click(function () {
+            var rowIndex = tabGongZuoRenYuanLB.getSelectedRowIndex();
+            var WorkPersonnelID = tabGongZuoRenYuanLB.getColumnValue(rowIndex, "WorkPersonnelID");
+            layer.confirm("确认要重置该密码吗？", {//提示是否确认
+                icon: 3,
+                btn: ['确定', '取消']
+            }, function (layerIndex) {
+                layer.close(layerIndex);//关闭提示框
+                $.post("/UnitHome/UnitLogin/UpdataWork", { WorkPersonnelID: WorkPersonnelID }, function (msg) {
+                    tabGongZuoRenYuanLB.refreshPage();//刷新
+                    layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                })
+            })
+
+        });
+
+        //全部重置密码
+        $("#btnQBChongZhiMiMa").click(function () {
+            layer.confirm("确认要全部重置吗？", {//提示是否确认
+                icon: 3,
+                btn: ['确定', '取消']
+            }, function (layerIndex) {
+                layer.close(layerIndex);//关闭提示框
+                $.post("/UnitHome/UnitLogin/UpdataWorkPer", function (msg) {
+                    tabGongZuoRenYuanLB.refreshPage();//刷新
+                    layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                })
+            })
+
+        });
+
+        //工作人员列表
+        $(function () {
+            tabGongZuoRenYuanLB = $.fn.bsgrid.init('tabGongZuoRenYuanLB', {
+                url: '/UnitHome/UnitLogin/SelectWorkPersonnel',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                WorkPersonnelID = record.WorkPersonnelID;
+                                $.post("/UnitHome/UnitLogin/SelectWorkPer?WorkPersonnelID=" + WorkPersonnelID, function (data) {
+                                    $('#FormWorkUpdata [name="WorkPersonnelID"]').val(data.WorkPersonnelID);//工作人员ID
+                                    $('#FormWorkUpdata [name="Workname"]').val(data.Workname);//姓名
+                                    $('#FormWorkUpdata [name="WorkLoginName"]').val(data.WorkLoginName);//登录名
+                                    $('#FormWorkUpdata [name="SexID"]').val(data.SexID);//性别ID
+                                    $('#FormWorkUpdata [name="Password"]').val(data.Password);//密码
+                                    $('#FormWorkUpdata [name="MaillSite"]').val(data.MaillSite);//邮址
+                                    $('#FormWorkUpdata [name="PhoneCode"]').val(data.PhoneCode);//手机号码
+                                    $('#FormWorkUpdata [name="RegisterTime"]').val(data.registerTimer);//注册时间
+                                    $('#FormWorkUpdata [name="FinallyEnterTime"]').val(data.finallyEnterTimer);//最后登录时间
+                                    $('#FormWorkUpdata [name="UserStateID"]').val(data.UserStateID);//用户状态ID
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        //导出工作人员
+        $("#btnDaoChu").click(function () {
+            //获取当前列表的查询条件
+            //var oldStr = tabGongZuoRenYuanLB.getPageCondition(tabGongZuoRenYuanLB.getCurPage());
+            //检查当前列表是否是 当前的查询条件查询出来的
+            //if (oldStr.indexOf(str) > -1) {
+                layer.confirm("是否要导出当前的数据？", {
+                    icon: 3,
+                    btn: ['确定', '取消']
+                    //按钮
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示                    
+                    //打开下载链接
+                    window.open("/UnitHome/UnitLogin/ExportToExcel");
+                })
+            //}
+            //else {
+            //    layer.alert("请先查询出工作人员，预览是否是需要导出的工作人员", { icon: 0, title: '提示' });
+            //}
+        });
+
+        //新增手机号正则验证
+        $("#PhoneCode").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#PhoneCode").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#PhoneCode').css("border-color", "#green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#PhoneCode').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+
+        //修改手机号正则验证
+        $("#PhoneCodes").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#PhoneCodes").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#PhoneCodes').css("border-color", "#green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#PhoneCodes').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+    </script>
+</body>
+</html>

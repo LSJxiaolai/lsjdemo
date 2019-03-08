@@ -1,0 +1,404 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DaiLiLuJing</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        #FormTiaoJianChaXun select,#FormTiaoJianChaXun input{
+            height:38px;
+        }
+        #FormTiaoJianChaXun label{
+            padding:9px;
+        }
+
+        #FormPath select,#FormPath input{
+            height:38px;
+        }
+        #FormPath label{
+            padding:9px;
+        }
+
+        #FormUpPath select,#FormUpPath input{
+            height:38px;
+        }
+        #FormUpPath label{
+            padding:9px;
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="ShenBaoLuJingChuangTi">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;">
+                    <h4><i class="glyphicon glyphicon-tree-conifer" style="color:green;"></i>代理路径申请</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:100px; border-top:2px solid #e1edee;border-bottom:2px solid #e1edee;">
+                    <form class="form-horizontal" id="FormTiaoJianChaXun">
+                        <div class="form-group" style="margin-top:5px;">
+                            <div class="col-lg-offset-1 col-lg-4 col-md-4 col-sm-4 text-right" style="margin-left:-1px;">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <label class="control-label" style="font-weight:lighter;">系列名称：</label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 reset">
+                                        <select class="form-control" id="DeclareSeriesID" name="DeclareSeriesID"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-offset-1 col-lg-4 col-md-4 col-sm-4 text-right" style="margin-left:-1px;">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <label class="control-label" style="font-weight:lighter;">等级：</label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 reset">
+                                        <select class="form-control" id="DeclareGradeID" name="DeclareGradeID"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-2" style="font-weight:lighter;">代理审核单位：</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="text" class="form-control" id="ControlUnit" name="ControlUnit" />
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-2" style="font-weight:lighter;">确认状态：</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="CommittedStateID" name="CommittedStateID"></select>
+                            </div>
+                            <div class="text-right" style="margin-right:15px;">
+                                <button type="button" class="btn btn-info" id="ShenBaoChaXun" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-search"></span>查询</button>
+                                <button type="button" class="btn btn-info" id="QingKongTJ" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-refresh"></span>清空条件</button>
+                            </div>
+                        </div>
+                        <button type="reset" hidden>重置</button>
+                    </form>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; margin-top:10px;">
+                    <div class="text-right">
+                        <button class="btn btn-info" id="btnXinZeng" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-plus"></span>增加</button>
+                        <button class="btn btn-info" id="btnXiuGai" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-pencil"></span>修改</button>
+                        <button class="btn btn-info"  id="btnShanChu" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:30px;background-color:#64b6ed;">
+                        <h5>代理路径列表</h5>
+                    </div>
+                    <table id="tabDaiLiLuJing" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="DeclarePathID" w_hidden="true">申报路径ID</th>
+                            <th w_index="DeclareSeries">系列名称</th>
+                            <th w_index="DeclareGrade">等级</th>
+                            <th w_index="ControlUnit">代理审核单位</th>
+                            <th w_index="CommittedState">代理审核单位确认状态</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--新增申报路径模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">新增代理路径列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormPath" action="/UnitHome/SetWay/InsertDeclarePath" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">系列、等级:</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 reset">
+                                <select type="text" class="form-control" id="IdDeclareSeriesID" name="DeclareSeriesID"></select>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 reset">
+                                <select type="text" class="form-control" id="IdDeclareGradeID" name="DeclareGradeID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">代理审核单位:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="ControlUnit" name="ControlUnit" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">确认状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="IdCommittedStateID" name="CommittedStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnQueDing">确定</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新增申报路径模态窗体-->
+    <!--修改申报路径模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="UpdatamodInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">修改代理路径列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormUpPath" action="/UnitHome/SetWay/UpdataDeclarePath" method="post">
+                        <input type="text" class="form-control hidden" id="DeclarePathID" name="DeclarePathID" />
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">系列、等级:</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 reset">
+                                <select type="text" class="form-control" id="idDeclareSeriesID" name="DeclareSeriesID"></select>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 reset">
+                                <select type="text" class="form-control" id="idDeclareGradeID" name="DeclareGradeID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">代理审核单位:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="ControlUnit" name="ControlUnit" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">确认状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="idCommittedStateID" name="CommittedStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnBaoCun">确定</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改申报路径模态窗体-->
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        var tabDaiLiLuJing;
+        //代理路径列表
+        $(function () {
+            tabDaiLiLuJing = $.fn.bsgrid.init('tabDaiLiLuJing', {
+                url: '/UnitHome/SetWay/SelectDeclarePath',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                DeclarePathID = record.DeclarePathID;
+                                $.post("/UnitHome/SetWay/SelectDPath?DeclarePathID=" + DeclarePathID, function (data) {
+                                    $('#FormUpPath [name="DeclarePathID"]').val(data.DeclarePathID);//申报路径ID                                   
+                                    $.post("/UnitHome/SetWay/SelectSBXiLie", function (jsondata) {
+                                        selectLoadData("idDeclareSeriesID", jsondata);
+                                        $("#idDeclareSeriesID").val(data.DeclareSeriesID);//申报系列ID
+                                    });
+                                    $.post("/UnitHome/SetWay/SelectSBDengJi", function (jsondata) {
+                                        selectLoadData("idDeclareGradeID", jsondata);
+                                        $("#idDeclareGradeID").val(data.DeclareGradeID);//等级ID
+                                    });
+                                    $('#FormUpPath [name="CommittedStateID"]').val(data.CommittedStateID);//确认状态ID
+                                    $('#FormUpPath [name="ControlUnit"]').val(data.ControlUnit);//审核单位
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+            searchPath();
+        });
+
+        //下拉框
+        $(function () {
+            createSelect("DeclareSeriesID", "/UnitHome/SetWay/SelectSBXiLie");//系列名称
+            createSelect("DeclareGradeID", "/UnitHome/SetWay/SelectSBDengJi");//等级
+            createSelect("CommittedStateID", "/UnitHome/SetWay/SelectQueRenZT");//确认状态
+            createSelect("IdDeclareSeriesID", "/UnitHome/SetWay/SelectSBXiLie");//新增列表的系列名称
+            createSelect("IdDeclareGradeID", "/UnitHome/SetWay/SelectSBDengJi");//新增列表的等级
+            createSelect("IdCommittedStateID", "/UnitHome/SetWay/SelectQueRenZT");//新增列表的确认状态
+            createSelect("idDeclareSeriesID", "/UnitHome/SetWay/SelectSBXiLie");//修改列表的系列名称
+            createSelect("idDeclareGradeID", "/UnitHome/SetWay/SelectSBDengJi");//修改列表的等级
+            createSelect("idCommittedStateID", "/UnitHome/SetWay/SelectQueRenZT");//修改列表的确认状态
+        });
+
+        //打开代理路径新增窗体
+        $("#btnXinZeng").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#modInsertExaminee").modal("show");
+        });
+
+        //打开代理路径修改窗体
+        $("#btnXiuGai").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#UpdatamodInsertExaminee").modal("show");
+        });
+
+        //代理路径申请新增
+        $("#btnQueDing").click(function () {
+            var DeclareSeriesID = $('#FormPath [name="DeclareSeriesID"]').val();//系列名称
+            var DeclareGradeID = $('#FormPath [name="DeclareGradeID"]').val();//等级
+            var CommittedStateID = $('#FormPath [name="CommittedStateID"]').val();//确认状态
+            var ControlUnit = $('#FormPath [name="ControlUnit"]').val();//审核单位
+            if (DeclareSeriesID > 0 && DeclareGradeID > 0 && CommittedStateID > 0 && ControlUnit != '') {
+                var layerIndex = layer.load(0);
+                $.getJSON("/UnitHome/SetWay/InsertDeclarePath", {
+                    DeclareSeriesID: DeclareSeriesID,
+                    DeclareGradeID: DeclareGradeID,
+                    CommittedStateID: CommittedStateID,
+                    ControlUnit: ControlUnit,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("新增成功", { icon: 1, title: '提示' });
+                        $('#FormPath [type="reset"]').click();
+                        layer.close(layerIndex);
+                    } else {
+                        layer.alert("新增失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //代理路径申请修改
+        $("#btnBaoCun").click(function () {
+            var idDeclareSeriesID = $('#FormUpPath [name="DeclareSeriesID"]').val();//申报系列ID
+            var idDeclareGradeID = $('#FormUpPath [name="DeclareGradeID"]').val();//等级ID
+            var ControlUnit = $('#FormUpPath [name="ControlUnit"]').val();//审核单位
+            var idCommittedStateID = $('#FormUpPath [name="CommittedStateID"]').val();//确认状态ID
+            if (idDeclareSeriesID != '' && idDeclareGradeID != '' && ControlUnit != '' && idCommittedStateID != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $("#FormUpPath").ajaxSubmit(function (msg) {
+                    if (msg == "success") {
+                        layer.alert("修改成功", { icon: 1, title: '提示' });
+                        $('#FormUpPath [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层  
+                    } else {
+                        layer.alert("修改失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层 
+                    }
+                });
+            }
+        });
+
+        //代理路径申请删除
+        $("#btnShanChu").click(function () {
+            var rowIndex = tabDaiLiLuJing.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var DeclarePathID = tabDaiLiLuJing.getColumnValue(rowIndex, "DeclarePathID");
+                layer.confirm("确认要删除该代理路径信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/UnitHome/SetWay/DeleteDeclarePath", { DeclarePathID: DeclarePathID }, function (msg) {
+                        tabDaiLiLuJing.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的代理路径信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //清空条件
+        $("#QingKongTJ").click(function () {
+            $('#FormTiaoJianChaXun [type="reset"]').click();//重置
+        });
+
+        //条件查询
+        $("#ShenBaoChaXun").click(function () {
+            searchPath();
+        });
+        function searchPath() {
+            var controlUnit = $("#ControlUnit").val();
+            if (controlUnit == undefined) {
+                controlUnit = "";
+            }
+            var declareSeriesId = $("#DeclareSeriesID").val();
+            if (declareSeriesId == "" || declareSeriesId == undefined) {
+                declareSeriesId = 0;
+            }
+            var declareGradeId = $("#DeclareGradeID").val();
+            if (declareGradeId == "" || declareGradeId == undefined) {
+                declareGradeId = 0;
+            }
+            var committedStateId = $("#CommittedStateID").val();
+            if (committedStateId == "" || committedStateId == undefined) {
+                committedStateId = 0;
+            }
+            tabDaiLiLuJing.search({ controlUnit: controlUnit, declareSeriesId: declareSeriesId, declareGradeId: declareGradeId, committedStateId: committedStateId })
+        }
+    </script>
+</body>
+</html>

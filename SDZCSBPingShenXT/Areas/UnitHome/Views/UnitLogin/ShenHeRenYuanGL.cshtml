@@ -1,0 +1,696 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>ShenHeRenYuanGL</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+        #FormTiaoJianChaXun select,#FormTiaoJianChaXun input{
+            height:38px;
+        }
+        #FormTiaoJianChaXun label{
+            padding:9px;
+        }
+
+        #FormUser select,#FormUser input{
+            height:38px;
+        }
+        #FormUser label{
+            padding:9px;
+        }
+
+        #FormUserUpdata select,#FormUserUpdata input{
+            height:38px;
+        }
+        #FormUserUpdata label{
+            padding:9px;
+        }
+
+        #FormJueSe label{
+            padding:9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="ShenHeChuangTi">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left  tuot" style="height:50px;">
+                    <h4><i class="glyphicon glyphicon-tree-conifer" style="color:green;"></i>审核人员管理</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; border-top:2px solid #e1edee;border-bottom:2px solid #e1edee">
+                    <form class="form-horizontal" id="FormTiaoJianChaXun">
+                        <div class="form-group" style="margin-top:5px;">
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">姓名</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="text" class="form-control" id="Name" name="Name" />
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">用户名</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <input type="text" class="form-control" id="Username" name="Username" />
+                            </div>
+                            <label class="control-label col-lg-1 col-md-1 col-sm-1" style="font-weight:lighter;">性别</label>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <select class="form-control" id="SexID" name="SexID"></select>
+                            </div>
+                            <div class="text-right" style="margin-right:15px;">
+                                <button type="button" class="btn btn-info" id="ShenHeChaXun" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-search"></span>查询</button>
+                                <button type="button" class="btn btn-info" id="QingKongTJ" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-refresh"></span>清空条件</button>
+                            </div>
+                        </div>
+                        <button type="reset" hidden>重置</button>
+                    </form>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; margin-top:10px;">
+                    <div class="text-right">
+                        <button class="btn btn-info" id="btnXinZeng" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-plus"></span>增加</button>
+                        <button class="btn btn-info" id="btnXiuGai" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-pencil"></span>修改</button>
+                        <button class="btn btn-info" id="btnShanChu" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                        <button class="btn btn-info" id="btnDuiYingJueSe" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-user"></span>对应角色</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:30px;">
+                        <h5>审核人员列表</h5>
+                    </div>
+                    <table id="tabYongHuLB" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="CheckPersonnelID" w_hidden="true">审核人员ID</th>
+                            <th w_index="CheckName">姓名</th>
+                            <th w_index="CheckUserName">用户名</th>
+                            <th w_index="Sex">性别</th>
+                            <th w_index="MaillSite">邮址</th>
+                            <th w_index="PhoneCode">手机</th>
+                            <th w_index="RegisterTimer">注册时间</th>
+                            <th w_index="FinallyEnterTimer">最后登录时间</th>
+                            <th w_index="UserState">用户状态</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--新增用户模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">新增用户列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormUser" action="/UnitHome/UnitLogin/InsertCheckPersonnel" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">姓名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="CheckName" name="CheckName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="CheckUserName" name="CheckUserName" />
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">性别:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="IdSexID" name="SexID"></select>
+                            </div>
+                        </div>                       
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">邮址：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="MaillSite" name="MaillSite" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">手机：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="PhoneCode" name="PhoneCode" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="请输入手机号码"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">注册时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="RegisterTime" name="RegisterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">最后登录时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="FinallyEnterTime" name="FinallyEnterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="UserStateID" name="UserStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnYongHuBaoCun">保存</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新增用户模态窗体-->
+
+    <!--修改用户模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="UpdatamodInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">修改用户列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormUserUpdata" action="/UnitHome/UnitLogin/UpdataCheckPer" method="post">
+                        <input type="text" class="form-control hidden" id="CheckPersonnelID" name="CheckPersonnelID" />
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">姓名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="CheckName" name="CheckName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户名:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="CheckUserName" name="CheckUserName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">性别:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="idSexID" name="SexID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">邮址：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="MaillSite" name="MaillSite" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">手机：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="PhoneCodes" name="PhoneCode" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="请输入手机号码"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">注册时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="RegisterTime" name="RegisterTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">最后登录时间：</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="date" class="form-control" id="FinallyEnterTime" name="FinallyEnterTime"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">用户状态:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="IdUserStateID" name="UserStateID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnYongHuUpdata">保存</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改用户模态窗体-->
+
+    <!--点击对应角色弹出窗体-->
+    <div class="container  hidden" id="JueSeChuangTi">
+        <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;">
+                <h4>审核人员管理</h4>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px; margin-top:10px;">
+                <div class="text-right">
+                    <button type="button" class="btn btn-info" id="btnJueSeXinZeng" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-plus"></span>增加</button>
+                    <button type="button" class="btn btn-info" id="btnJueSeShanChu" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                    <button type="button" class="btn btn-info" id="btnJueSeFanHui" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-share-alt"></span>返回</button>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <table id="tabJueSeLB">
+                    <tr>
+                        <th w_num="total_line" width="5%">序号</th>
+                        <th w_index="RoleID" w_hidden="true">角色ID</th>
+                        <th w_index="RoleCode">角色id</th>
+                        <th w_index="RoleName">角色名</th>
+                        <th w_index="RoleDescribe">备注</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--点击弹出对应角色窗体-->
+
+    <!--对应角色新增模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="ModalJueSeXingZeng">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">新增角色</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormJueSe" action="/UnitHome/UnitLogin/InsertRole" method="post">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 reset-padding" style="font-weight:lighter;">角色名称</label>
+                            <div class="col-md-4">
+                                <label style="font-weight:lighter;">
+                                    <input type="radio" name="RoleCode" id="IdRoleCode" value="审核角色" checked>
+                                    审核角色
+                                </label>
+                                <label style="font-weight:lighter;">
+                                    <input type="radio" name="RoleCode" id="IdRoleCodeb" value="评委会办事机构">
+                                    评委会办事机构
+                                </label>
+                                <label style="font-weight:lighter;">
+                                    <input type="radio" name="RoleCode" id="IdRoleCodec" value="上报角色">
+                                    上报角色
+                                </label>
+                                <label style="font-weight:lighter;">
+                                    <input type="radio" name="RoleCode" id="IdRoleCoded" value="评委会工作人员">
+                                    评委会工作人员
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-2" style="font-weight:lighter;">角色名</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="RoleName" name="RoleName" style="height:38px;" disabled/>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-2" style="font-weight:lighter;">备注</label>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="RoleDescribe" name="RoleDescribe" style="height:38px;" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary" type="button" id="btnQueDing">确定</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                        <button type="reset" hidden>重置</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--对应角色新增模态窗体-->
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        var tabYongHuLB;
+        var tabJueSeLB;
+        //下拉框
+        $(function () {
+            createSelect("SexID", "/UnitHome/UnitLogin/SelectSex");//条件查询的性别
+            createSelect("IdSexID", "/UnitHome/UnitLogin/SelectSex");//用户新增列表的性别
+            createSelect("idSexID", "/UnitHome/UnitLogin/SelectSex");//用户修改列表的性别
+            createSelect("UserStateID", "/UnitHome/UnitLogin/SelectUserState");//用户状态
+            createSelect("IdUserStateID", "/UnitHome/UnitLogin/SelectUserState");//修改用户状态
+        });
+
+        //用户列表
+        $(function () {        
+            tabYongHuLB = $.fn.bsgrid.init('tabYongHuLB', {
+                url: '/UnitHome/UnitLogin/SelectCheckPersonnel',
+                autoLoad: false,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                CheckPersonnelID = record.CheckPersonnelID;
+                                $.post("/UnitHome/UnitLogin/SelectCheckPer?CheckPersonnelID=" + CheckPersonnelID, function (data) {
+                                    $('#FormUserUpdata [name="CheckPersonnelID"]').val(data.CheckPersonnelID);//审核人员ID
+                                    $('#FormUserUpdata [name="CheckName"]').val(data.CheckName);//姓名
+                                    $('#FormUserUpdata [name="CheckUserName"]').val(data.CheckUserName);//用户名
+                                    $('#FormUserUpdata [name="SexID"]').val(data.SexID);//性别ID
+                                    $('#FormUserUpdata [name="MaillSite"]').val(data.MaillSite);//邮址
+                                    $('#FormUserUpdata [name="PhoneCode"]').val(data.PhoneCode);//手机号码
+                                    $('#FormUserUpdata [name="RegisterTime"]').val(data.registerTimer);//注册时间
+                                    $('#FormUserUpdata [name="FinallyEnterTime"]').val(data.finallyEnterTimer);//最后登录时间
+                                    $('#FormUserUpdata [name="UserStateID"]').val(data.UserStateID);//用户状态ID
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+            searchUser();
+        });
+
+        //打开新增窗体
+        $("#btnXinZeng").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#modInsertExaminee").modal("show");
+        });
+
+        //新增保存用户列表
+        $("#btnYongHuBaoCun").click(function () {
+            var CheckName = $('#FormUser [name="CheckName"]').val();//姓名
+            var CheckUserName = $('#FormUser [name="CheckUserName"]').val();//用户名
+            var IdSexID = $('#FormUser [name="SexID"]').val();//性别ID
+            var MaillSite = $('#FormUser [name="MaillSite"]').val();//邮址
+            var PhoneCode = $('#FormUser [name="PhoneCode"]').val();//手机
+            var RegisterTime = $('#FormUser [name="RegisterTime"]').val();//注册时间
+            var FinallyEnterTime = $('#FormUser [name="FinallyEnterTime"]').val();//最后登录时间
+            var UserStateID = $('#FormUser [name="UserStateID"]').val();//用户状态ID
+            if (IdSexID > 0 && UserStateID > 0 && CheckName != '' && CheckUserName != '' && MaillSite != '' && PhoneCode != ''
+                && RegisterTime != '' && FinallyEnterTime != '') {
+                var layerIndex = layer.load(0);
+                $.getJSON("/UnitHome/UnitLogin/InsertCheckPersonnel", {
+                    CheckName: CheckName,
+                    CheckUserName: CheckUserName,
+                    SexID: IdSexID,
+                    MaillSite: MaillSite,
+                    PhoneCode: PhoneCode,
+                    RegisterTime: RegisterTime,
+                    FinallyEnterTime: FinallyEnterTime,
+                    UserStateID: UserStateID,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("新增成功", { icon: 1, title: '提示' });
+                        $('#FormUser [type="reset"]').click();
+                        layer.close(layerIndex);
+                    } else {
+                        layer.alert("新增失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //打开修改窗体
+        $("#btnXiuGai").click(function () {
+            $('#formInsertExaminee [type="reset"]').click();//重置表单
+            $("#UpdatamodInsertExaminee").modal("show");
+        });
+
+        //修改保存用户列表
+        $("#btnYongHuUpdata").click(function () {
+            var CheckName = $('#FormUserUpdata [name="CheckName"]').val();//姓名
+            var CheckUserName = $('#FormUserUpdata [name="CheckUserName"]').val();//用户名
+            var idSexID = $('#FormUserUpdata [name="SexID"]').val();//性别ID
+            var MaillSite = $('#FormUserUpdata [name="MaillSite"]').val();//邮址
+            var PhoneCodes = $('#FormUserUpdata [name="PhoneCode"]').val();//手机
+            var RegisterTime = $('#FormUserUpdata [name="RegisterTime"]').val();//注册时间
+            var FinallyEnterTime = $('#FormUserUpdata [name="FinallyEnterTime"]').val();//最后登录时间
+            var IdUserStateID = $('#FormUserUpdata [name="UserStateID"]').val();//用户状态ID
+            if (idSexID != '' && IdUserStateID != '' && CheckName != '' && CheckUserName != '' && MaillSite != '' && PhoneCodes != ''
+                && RegisterTime != '' && FinallyEnterTime != '') {
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $("#FormUserUpdata").ajaxSubmit(function (msg) {
+                    if (msg == "success") {
+                        layer.alert("修改成功", { icon: 1, title: '提示' });
+                        $('#FormUserUpdata [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层  
+                    } else {
+                        layer.alert("修改失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层 
+                    }
+                });
+            }
+        });
+
+        //用户删除
+        $("#btnShanChu").click(function () {
+            var rowIndex = tabYongHuLB.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var CheckPersonnelID = tabYongHuLB.getColumnValue(rowIndex, "CheckPersonnelID");
+                layer.confirm("确认要删除该用户信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/UnitHome/UnitLogin/DeleteCheckper", { CheckPersonnelID: CheckPersonnelID }, function (msg) {
+                        tabYongHuLB.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的用户信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //打开对应角色窗体
+        $("#btnDuiYingJueSe").click(function () {
+            $("#ShenHeChuangTi").addClass("hidden");//隐藏
+            $("#JueSeChuangTi").removeClass("hidden");//打开
+        });
+
+        //角色列表
+        $(function () {
+            tabJueSeLB = $.fn.bsgrid.init('tabJueSeLB', {
+                url: '/UnitHome/UnitLogin/SelectRole',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+                event: {
+                    customRowEvents: {
+                        click: function (record, rowIndex, trObj, options) {
+                            if (record != null) {
+                                RoleID = record.RoleID;
+                                $.post("/UnitHome/UnitLogin/SelectRole?RoleID=" + RoleID, function (data) {
+                                    $('#tabJueSeLB [name="RoleID"]').val(data.RoleID);//角色ID
+                                    $('#tabJueSeLB [name="RoleCode"]').val(data.RoleCode);//角色id码
+                                    $('#tabJueSeLB [name="RoleName"]').val(data.RoleName);//角色名
+                                    $('#tabJueSeLB [name="RoleDescribe"]').val(data.RoleDescribe);//角色描述
+                                })
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        //角色新增窗体
+        $("#btnJueSeXinZeng").click(function () {
+            //$('#FormJueSe [type="reset"]').click();//重置表单
+            $("#ModalJueSeXingZeng").modal("show");
+        });
+
+        //角色新增保存
+        $("#btnQueDing").click(function () {
+            var IdRoleCode = $('#FormJueSe [name="RoleCode"]').prop('checked');//角色id码
+            var RoleName = $('#FormJueSe [name="RoleName"]').val();//角色名
+            var RoleDescribe = $('#FormJueSe [name="RoleDescribe"]').val();//角色描述
+            if (RoleName != '' && RoleDescribe !='') {
+                if ($('#IdRoleCode').prop('checked') == true) {
+                    var RoleCode = $('#IdRoleCode').val();//审核角色
+                } else if ($('#IdRoleCodeb').prop('checked') == true) {
+                    var RoleCode = $('#IdRoleCodeb').val();//评委会办事机构
+                } else if ($('#IdRoleCodec').prop('checked') == true) {
+                    var RoleCode = $('#IdRoleCodec').val();//上报角色
+                } else if ($('#IdRoleCoded').prop('checked') == true) {
+                    var RoleCode = $('#IdRoleCoded').val();//评委会工作人员
+                }
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $.getJSON("/UnitHome/UnitLogin/InsertRole", {
+                    RoleCode: RoleCode,
+                    RoleName: RoleName,
+                    RoleDescribe: RoleDescribe,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("角色新增成功", { icon: 1, title: '提示' });
+                        $('#FormJueSe [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("角色新增失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //角色删除
+        $("#btnJueSeShanChu").click(function () {
+            var rowIndex = tabJueSeLB.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var RoleID = tabJueSeLB.getColumnValue(rowIndex, "RoleID");
+                layer.confirm("确认要删除该角色信息吗？", {//提示是否确认
+                    icon: 3,
+                    btn: ['确定', '取消']
+                }, function (layerIndex) {
+                    layer.close(layerIndex);//关闭提示框
+                    $.post("/UnitHome/UnitLogin/DeleteRole", { RoleID: RoleID }, function (msg) {
+                        tabYongHuLB.refreshPage();//刷新
+                        layer.msg(msg, { icon: 1, title: '提示' });//提示是否删除成功
+                    })
+                })
+            }
+            else {
+                layer.alert('请选择需要删除的角色信息', { icon: 0, title: '提示' });
+            }
+        });
+
+        //绑定角色名
+        $(document).ready(function () {
+            $.getJSON("/UnitHome/UnitLogin/SelectCheckName", function (data) {
+                $("#RoleName").val(data);
+            })
+        });
+
+        //角色返回
+        $("#btnJueSeFanHui").click(function () {
+            $("#JueSeChuangTi").addClass("hidden");//隐藏
+            $("#ShenHeChuangTi").removeClass("hidden");//打开
+        });
+
+        //清空条件
+        $("#QingKongTJ").click(function () {
+            $('#FormTiaoJianChaXun [type="reset"]').click();//重置
+        });
+
+        //条件查询
+        $("#ShenHeChaXun").click(function () {
+            searchUser();
+        });
+        function searchUser() {
+            var checkName = $("#Name").val();
+            if (checkName == undefined) {
+                checkName = "";
+            }
+            var checkUserName = $("#Username").val();
+            if (checkUserName == undefined) {
+                checkUserName = "";
+            }
+            var sexId = $("#SexID").val();
+            if (sexId == "" || sexId == undefined) {
+                sexId = 0;
+            }
+            tabYongHuLB.search({ checkName: checkName, checkUserName: checkUserName, sexId: sexId })
+        }
+
+        //新增手机号正则验证
+        $("#PhoneCode").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#PhoneCode").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#PhoneCode').css("border-color", "green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#PhoneCode').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+
+        //修改手机号正则验证
+        $("#PhoneCodes").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#PhoneCodes").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#PhoneCodes').css("border-color", "green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#PhoneCodes').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+    </script>
+</body>
+</html>

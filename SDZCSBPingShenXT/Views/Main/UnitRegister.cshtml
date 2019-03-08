@@ -1,0 +1,393 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>单位注册</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/validate.css" rel="stylesheet" />
+    <style>
+        .tuot {
+            background-color: #74abd4;
+            /*-webkit- google*/
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+            /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="rowUnit">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 tuot" style="height:50px;">
+                <h4 style="color:white;"><i class="glyphicon glyphicon-plus-sign" style="color:green"></i>单位注册</h4>
+            </div>
+        </div> 
+        <div class="row" style="height:800px;border:2px solid #e1edee">
+            <div class="col-md-12 col-sm-12" style="height:900px;background-color:#e5f6e2">
+                <form class="form-horizontal" id="FormDWTiJiao" action="/Main/InsertUnit">
+                    <div class="form-group" style="margin-top:20px;">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;"><i style="color:red">*</i>单位名称</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdUnitIDCide" name="UnitIDCide" placeholder="请输入..." style="height:38px;" />
+                        </div>
+                        <h5 style="color:darkgray;">单位名称为单位用户名，用户名使用字符、数字等有效字符</h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;"><i style="color:red">*</i>登录密码</label>
+                        <div class="col-md-4">
+                            <input type="password" class="form-control" id="IdRegisterCode" name="RegisterCode" placeholder="请输入登录密码" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;"><i style="color:red">*</i>确认密码</label>
+                        <div class="col-md-4">
+                            <input type="password" class="form-control" id="IdAffirmCode" name="AffirmCode" placeholder="请输入确认密码" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;padding-right:2px;padding-left:0;padding-top:7px;"><i style="color:red">*</i>单位法定全称</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdStatutoryCall" name="StatutoryCall" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:20px;">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter; padding-top:7px;padding-right:0;"><i style="color:red">*</i>组织机构代码</label>
+                        <div class="col-md-4" style="padding:0;">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" style="padding-left:5px;height:38px;" id="IdTissueOrganization" name="TissueOrganization" maxlength="5" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                            </div>
+                            <span class="col-md-1" style="padding:0;margin-right:-80px;">-</span>
+                            <div class="col-md-3 " style="margin-left:32px;">
+                                <input type="text" class="form-control" id="IdTissueOrganizationCode" name="TissueOrganizationCode"  style="height:38px;" maxlength="1" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;padding:0px;">使用动态令牌</label>
+                        <div class="col-md-2">
+                            <label style="font-weight:lighter;">
+                                <input type="radio" name="UseDynamicOrder" id="IdUseDynamicOrder" value="true" checked>
+                                使用
+                            </label>
+                            <label style="font-weight:lighter;">
+                                <input type="radio" name="UseDynamicOrder" id="IdUseDynamicOrders" value="false">
+                                不使用
+                            </label>
+                        </div>
+                        <h5 style="color:darkgray">如果选择使用则登录的时间需要输入动态口令</h5>
+                    </div>
+                    <div class="form-group">
+                        <div id="OrderCode">
+                            <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">动态令牌号</label>
+                            <div class="col-md-4 reset">
+                                <input type="text" class="form-control" id="IdDynamicOrderCode" name="DynamicOrderCode" style="height:38px;" maxlength="8" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                            </div>
+                        </div>
+                        <h5 style="color:darkgray">请输入已购买的动态口令的令牌号，如需购买请联系主办单位</h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">所属行政区</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdAdministrative" name="Administrative" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">通信地址</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdCorrespondenceSite" name="CorrespondenceSite" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">联系人</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdContact" name="Contact" style="height:38px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">电话</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdContactPhone" name="ContactPhone" style="height:38px;" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding" style="font-weight:lighter;">邮政编码</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="IdMailCode" name="MailCode" style="height:38px;" maxlength="6" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding fontcolor" style="font-weight:lighter;"><i style="color:red">*</i>单位性质</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="IdUnitNatureID" name="UnitNatureID" style="height:38px;"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding fontcolor" style="font-weight:lighter; padding-right:2px;padding-left:0;padding-top:7px;"><i style="color:red">*</i>单位隶属关系</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="IdSubjectionID" name="SubjectionID" style="height:38px;"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 reset-padding fontcolor" style="font-weight:lighter; padding-right:2px;padding-left:0;padding-top:7px;"><i style="color:red">*</i>单位所属行业</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="IdBelongIndustryID" name="BelongIndustryID" style="height:38px;"></select>
+                        </div>
+                    </div>
+                    <button type="reset" hidden>重置</button>
+                </form>
+                <div class="text-center" style="height:50px;">
+                    <button class="btn btn-info" id="btnUnitTiJiao" style=" background-color:#dfeffc;color:#34759b;font-weight:bold;width:80px;">注 册<span class="glyphicon glyphicon-arrow-right"></span></button>
+                    <button class="btn btn-info" id="btnFanHui" style=" background-color:#dfeffc;color:#34759b;font-weight:bold;width:80px;">返 回<span class="glyphicon glyphicon-share-alt"></span></button>
+                    <button class="btn btn-info" id="btnGoMai" style=" background-color:#dfeffc;color:#34759b;font-weight:bold;width:120px;">购买动态口令<span class="glyphicon glyphicon-phone-alt"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--注册成功窗体-->
+    <div class="container hidden" id="rowUnitCG" style="background-color:darkgrey; height:340px;border:5px solid #e1edee;padding:0px;margin-top:100px;">
+        <!--窗体头部行-->
+        <div class="col-lg-12 col-md-12 col-sm-12 tuot" style="height:50px;">
+            <h4 style="font-weight:bold;color:white;"><i class="glyphicon glyphicon-user" style="color:green;"></i>单位员工登录</h4>
+        </div>
+        <!--用户登录显示行-->
+        <div class="rowWenXiTiShi" style="height:50px;background-color:darkgrey; margin-top:100px;">
+            <h3 id="DWZCsuccess" class="text-center" style="margin:0; text-align:center; padding-top:30px;font-family:KaiTi;color:green"></h3>
+        </div>
+        <!--按钮行-->
+        <div class="rowTree" style="height:50px;background-color:darkgrey; margin-top:100px;">
+            <div class="text-center">
+                <input type="button" style="width:200px;font-family:KaiTi;font-size:25px;font-weight:bold;background-color:darkgrey;" id="btnUnitShouYe" value="首页">
+            </div>
+        </div>
+    </div>
+    <!--注册成功窗体-->
+
+    <!--购买动态口令模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modPurchaseDynamic">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">购买动态口令</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormDynamic" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2 text-right">
+                                <label class="control-label" for="exampleInputName2">手机号码</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="phone" title="请输入手机号码" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="" />
+                            </div>
+                            <button type="button" class="btn btn-danger" id="verification" style="padding:6px; width:80px;">购买</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2 text-right">
+                                <label class="control-label" for="exampleInputEmail2">动态口令</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="JudgmentCode" maxlength="6" title="请输入动态口令" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" placeholder="" />                          
+                            </div>
+                            <button type="button" class="btn btn-success" id="register" style="padding:6px; width:80px;">验证</button>
+                        </div>                       
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-7 col-md-7 col-sm-7 pull-right">
+                                <button class="btn btn-primary" type="reset">重置</button>
+                                <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--购买动态口令模态窗体-->
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+
+        //APIID：C09783861
+        //APIKEY：995c642c8aa6f1e0bf5d88da80778e7f  
+
+        //下拉框
+        $(function () {
+            createSelect("IdUnitNatureID", "/Main/SelectUnitXZ");//DW单位性质
+            createSelect("IdSubjectionID", "/Main/SelectLiShuGX");//DW单位隶属关系
+            createSelect("IdBelongIndustryID", "/Main/SelectSuoShuHY");//DW单位所属行业
+        });
+
+        //单位返回按钮
+        $("#btnFanHui").click(function () {
+            window.close("/Main/UnitRegister");//关闭单位注册页面
+        });
+
+        //单位注册成功首页按钮
+        $("#btnUnitShouYe").click(function () {
+            window.close("/Main/UnitRegister");
+        });
+
+        //单位注册按钮
+        $("#btnUnitTiJiao").click(function () {
+            var IdUnitIDCide = $('#FormDWTiJiao [name="UnitIDCide"]').val();//单位ID
+            var IdRegisterCode = $('#FormDWTiJiao [name="RegisterCode"]').val();//登录密码
+            var IdAffirmCode = $('#FormDWTiJiao [name="AffirmCode"]').val();//确认密码
+            var IdStatutoryCall = $('#FormDWTiJiao [name="StatutoryCall"]').val();//单位法定全称
+            var IdTissueOrganization = $('#FormDWTiJiao [name="TissueOrganization"]').val();//组织机构代码
+            var IdTissueOrganizationCode = $('#FormDWTiJiao [name="TissueOrganizationCode"]').val();//组织机构代码证
+            var IdUseDynamicOrder = $('#FormDWTiJiao [name="UseDynamicOrder"]').prop('checked');//是否使用动态令牌
+            var IdDynamicOrderCode = $('#FormDWTiJiao [name="DynamicOrderCode"]').val();//动态令牌号
+            var IdAdministrative = $('#FormDWTiJiao [name="Administrative"]').val();//所属行政区
+            var IdCorrespondenceSite = $('#FormDWTiJiao [name="CorrespondenceSite"]').val();//通信地址
+            var IdContact = $('#FormDWTiJiao [name="Contact"]').val();//联系人
+            var IdContactPhone = $('#FormDWTiJiao [name="ContactPhone"]').val();//联系电话
+            var IdMailCode = $('#FormDWTiJiao [name="MailCode"]').val();//邮政编码
+            var IdUnitNatureID = $('#FormDWTiJiao [name="UnitNatureID"]').val();//单位性质ID
+            var IdSubjectionID = $('#FormDWTiJiao [name="SubjectionID"]').val();//单位隶属关系ID
+            var IdBelongIndustryID = $('#FormDWTiJiao [name="BelongIndustryID"]').val();//单位所属行业ID
+            if (IdUnitNatureID > 0 && IdSubjectionID > 0 && IdBelongIndustryID > 0 && IdUnitIDCide != '' && IdRegisterCode != ''
+                && IdAffirmCode != '' && IdStatutoryCall != '' && IdTissueOrganization != '' && IdTissueOrganizationCode != ''
+                 && IdAdministrative != '' && IdCorrespondenceSite != '' && IdContact != '' && IdContactPhone != '' && IdMailCode != '') {
+                if (IdUseDynamicOrder == true) {
+                    IdUseDynamicOrder = "使用"
+                } else {
+                    IdUseDynamicOrder = "不使用"
+                }
+                var layerIndex = layer.load(0);//显示 加载层
+                //提交表单
+                $.getJSON("/Main/InsertUnit", {
+                    UnitIDCide: IdUnitIDCide,
+                    RegisterCode: IdRegisterCode,
+                    AffirmCode: IdAffirmCode,
+                    StatutoryCall: IdStatutoryCall,
+                    TissueOrganization: IdTissueOrganization,
+                    TissueOrganizationCode: IdTissueOrganizationCode,
+                    UseDynamicOrder: IdUseDynamicOrder,
+                    DynamicOrderCode: IdDynamicOrderCode,
+                    Administrative: IdAdministrative,
+                    CorrespondenceSite: IdCorrespondenceSite,
+                    Contact: IdContact,
+                    ContactPhone: IdContactPhone,
+                    MailCode: IdMailCode,
+                    UnitNatureID: IdUnitNatureID,
+                    SubjectionID: IdSubjectionID,
+                    BelongIndustryID: IdBelongIndustryID
+                }, function (msg) {
+                    if (msg == "success") {
+                        $("#rowUnit").addClass("hidden");//隐藏
+                        $("#rowUnitCG").removeClass("hidden");//打开
+                        $("#DWZCsuccess").html("温馨提示：" + "" + IdUnitIDCide + " " + "你已注册成功，请耐心等待系统管理员审核认证。");
+                        //layer.alert("注册成功", { icon: 1, title: '提示' });
+                        $('#FormDWTiJiao [type="reset"]').click();//重置
+                        layer.close(layerIndex);//关闭 加载层                       
+                    } else {
+                        layer.alert("注册失败", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);//关闭 加载层  
+                    }
+                })
+            } else {
+                layer.alert('信息还没填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //单位注册手机号正则验证
+        $("#IdContactPhone").blur(function () {
+            if ((/^1[34578]\d{9}$/).test($("#IdContactPhone").val())) {
+                layer.alert("输入正确", { icon: 1 });
+                $('#IdContactPhone').css("border-color", "green");
+                Mobile_Boolean = true;
+            } else {
+                layer.alert("请输入正确的手机号码", { icon: 2 });
+                $('#IdContactPhone').css("border-color", "red");
+                Mobile_Boolean = false;
+            }
+        })
+
+        //单位注册是否使用动态令牌号
+        $("#IdUseDynamicOrder").change(function () {
+            if ($("#IdUseDynamicOrder").is(":checked") == true) {
+                $("#IdDynamicOrderCode").removeAttr("disabled", "disabled");
+            }
+            else {
+                $("#IdDynamicOrderCode").attr("disabled", "disabled");
+            }//使用
+        });
+        $("#IdUseDynamicOrders").change(function () {
+            if ($("#IdUseDynamicOrders").is(":checked") == true) {
+                $("#IdDynamicOrderCode").attr("disabled", "disabled");
+            }
+            else {
+                $("#IdDynamicOrderCode").removeAttr("disabled", "disabled");
+            }//不使用
+        });
+
+        //界面动态口令，根据用户单位注册是否使用动态令牌号而确定是否输入
+        $("#IdUseDynamicOrder").change(function () {
+            if ($("#IdUseDynamicOrder").is(":checked") == true) {
+                $("#DLDynamicOrderCode").removeAttr("disabled", "disabled");
+            }
+            else {
+                $("#DLDynamicOrderCode").attr("disabled", "disabled");
+            }//使用
+        });
+        $("#IdUseDynamicOrders").change(function () {
+            if ($("#IdUseDynamicOrders").is(":checked") == true) {
+                $("#DLDynamicOrderCode").attr("disabled", "disabled");
+            }
+            else {
+                $("#DLDynamicOrderCode").removeAttr("disabled", "disabled");
+            }//不使用
+        });
+
+        //购买动态口令
+        $("#btnGoMai").click(function () {
+            $('#FormDynamic [type="reset"]').click();//重置表单
+            $("#modPurchaseDynamic").modal("show");//打开购买界面
+        });
+
+        //发送短信验证码
+        window.onload = function () {
+            $("#verification").click(function () {
+                var phone = $("#phone").val();
+                $.post("/Main/Page_Load", { phone: phone }, function (msg) {
+                    if (msg == true) {
+                        layer.alert("已发送", { icon: 1, title: '提示' });
+                    } else {
+                        layer.alert("已发送", { icon: 1, title: '提示' });
+                    }
+                });
+            });
+            //验证码验证是否匹配
+            $("#register").click(function () {
+                var JudgmentCode = $("#JudgmentCode").val();
+                $.post("/Main/take", function (msg) {
+                    if (JudgmentCode.toString().trim() == msg.trim()) {
+                        layer.alert("动态口令正确", { icon: 1, title: '提示' });
+                    } else {
+                        layer.alert("请输入或不正确", { icon: 2, title: '提示' });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

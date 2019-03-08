@@ -1,0 +1,1638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SDZCSBPingShenXTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="B_Achievement">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar(max)" />
+          <Property Name="Timers" Type="date" />
+          <Property Name="SituateNextrs" Type="nvarchar(max)" />
+          <Property Name="AchievementGradeID" Type="int" />
+          <Property Name="RatifySection" Type="nvarchar(max)" />
+          <Property Name="Accessoryrs" Type="nvarchar(max)" />
+          <Property Name="Abstractrs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditOpinion" Type="nvarchar(max)" />
+          <Property Name="AuditPass" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_AuditAppear">
+          <Key>
+            <PropertyRef Name="AuditAppearID" />
+          </Key>
+          <Property Name="AuditAppearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationCondition" Type="nvarchar(max)" />
+          <Property Name="LanguageCondition" Type="nvarchar(max)" />
+          <Property Name="ComputerCondition" Type="nvarchar(max)" />
+          <Property Name="SpecialCondition" Type="nvarchar(max)" />
+          <Property Name="ProductionFake" Type="nvarchar(max)" />
+          <Property Name="AchievementFake" Type="nvarchar(max)" />
+          <Property Name="CertificateFake" Type="nvarchar(max)" />
+          <Property Name="Other" Type="nvarchar(max)" />
+          <Property Name="OtherCause" Type="nvarchar(max)" />
+          <Property Name="AuditPass" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_Basic">
+          <Key>
+            <PropertyRef Name="BasicID" />
+          </Key>
+          <Property Name="BasicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareGradeID" Type="int" />
+          <Property Name="DeclareSeriesID" Type="int" />
+          <Property Name="DeclareQualificationID" Type="int" />
+          <Property Name="FormTime" Type="date" />
+          <Property Name="TakeOfficeTime" Type="date" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SexID" Type="int" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="PlaceUnit" Type="nvarchar(max)" />
+          <Property Name="EducationID" Type="int" />
+          <Property Name="JudgeEducationID" Type="int" />
+          <Property Name="MajorsPostID" Type="int" />
+          <Property Name="GainedQualificationTime" Type="date" />
+          <Property Name="EngageTime" Type="date" />
+          <Property Name="EngageYear" Type="nvarchar(max)" />
+          <Property Name="TakeOffice" Type="nvarchar(max)" />
+          <Property Name="Major" Type="nvarchar(max)" />
+          <Property Name="MajorYear" Type="nvarchar(max)" />
+          <Property Name="JoinWorkTime" Type="date" />
+          <Property Name="ForeignLanguage" Type="nvarchar(max)" />
+          <Property Name="ForeignLanguageRankID" Type="int" />
+          <Property Name="ForeignLanguageResult" Type="nvarchar(max)" />
+          <Property Name="ExamCaseID" Type="int" />
+          <Property Name="ExamineResultID" Type="int" />
+          <Property Name="ExamineResultID1" Type="int" />
+          <Property Name="ExamineResultID2" Type="int" />
+          <Property Name="ExamineResultID3" Type="int" />
+          <Property Name="ExamineResultID4" Type="int" />
+          <Property Name="ExamineResultID5" Type="int" />
+          <Property Name="ExamineResultID6" Type="int" />
+          <Property Name="DeclareYearID" Type="int" />
+          <Property Name="DeclareYearID1" Type="int" />
+          <Property Name="DeclareYearID2" Type="int" />
+          <Property Name="DeclareYearID3" Type="int" />
+          <Property Name="DeclareYearID4" Type="int" />
+          <Property Name="DeclareYearID5" Type="int" />
+          <Property Name="DeclarePicture" Type="image" />
+          <Property Name="DeclareModeID" Type="int" />
+          <Property Name="QuantityScore" Type="nvarchar(max)" />
+          <Property Name="ExamResult" Type="nvarchar(max)" />
+          <Property Name="ContactPhone" Type="nvarchar(max)" />
+          <Property Name="DeclareStatusID" Type="int" />
+          <Property Name="GraduateTime" Type="date" />
+          <Property Name="GraduateTime1" Type="date" />
+          <Property Name="GraduateSchool" Type="nvarchar(max)" />
+          <Property Name="GraduateSchool1" Type="nvarchar(max)" />
+          <Property Name="MajorID" Type="int" />
+          <Property Name="MajorID1" Type="int" />
+        </EntityType>
+        <EntityType Name="B_Basis">
+          <Key>
+            <PropertyRef Name="BasisID" />
+          </Key>
+          <Property Name="BasisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityCode" Type="nvarchar(max)" />
+          <Property Name="TissueOrganization" Type="nvarchar(max)" />
+          <Property Name="TissueOrganizationCode" Type="nvarchar(max)" />
+          <Property Name="UnitNatureID" Type="int" />
+          <Property Name="BelongIndustryID" Type="int" />
+          <Property Name="Mailbox" Type="nvarchar(max)" />
+          <Property Name="DeclareBelongID" Type="int" />
+          <Property Name="StatutoryCall" Type="nvarchar(max)" />
+          <Property Name="SubjectionID" Type="int" />
+          <Property Name="ContactPhone" Type="nvarchar(max)" />
+          <Property Name="RecordUnit" Type="nvarchar(max)" />
+          <Property Name="ExemptCondition" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_CheckPersonnel">
+          <Key>
+            <PropertyRef Name="CheckPersonnelID" />
+          </Key>
+          <Property Name="CheckPersonnelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserStateID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="CheckName" Type="nvarchar(max)" />
+          <Property Name="CheckUserName" Type="nvarchar(max)" />
+          <Property Name="SexID" Type="int" />
+          <Property Name="MaillSite" Type="nvarchar(max)" />
+          <Property Name="PhoneCode" Type="nvarchar(max)" />
+          <Property Name="RegisterTime" Type="date" />
+          <Property Name="FinallyEnterTime" Type="date" />
+        </EntityType>
+        <EntityType Name="B_Declare">
+          <Key>
+            <PropertyRef Name="DeclareID" />
+          </Key>
+          <Property Name="DeclareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MajorsGradeID" Type="int" />
+          <Property Name="MajorsSeriesID" Type="int" />
+          <Property Name="MajorsPostID" Type="int" />
+          <Property Name="DeclareYearID" Type="int" />
+          <Property Name="DeclareGradeID" Type="int" />
+          <Property Name="DeclareSeriesID" Type="int" />
+          <Property Name="DeclarePostID" Type="int" />
+          <Property Name="Have" Type="bit" />
+          <Property Name="Explain" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_DeclarePath">
+          <Key>
+            <PropertyRef Name="DeclarePathID" />
+          </Key>
+          <Property Name="DeclarePathID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareSeriesID" Type="int" />
+          <Property Name="DeclareGradeID" Type="int" />
+          <Property Name="CommittedStateID" Type="int" />
+          <Property Name="ControlUnit" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_Experience">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Experience" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_File">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileTypeID" Type="int" />
+          <Property Name="NoticeID" Type="int" />
+          <Property Name="Files" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_Notice">
+          <Key>
+            <PropertyRef Name="NoticeID" />
+          </Key>
+          <Property Name="NoticeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeTypeID" Type="int" Nullable="false" />
+          <Property Name="PromulgatorUnitID" Type="int" />
+          <Property Name="NoticeName" Type="nvarchar(max)" />
+          <Property Name="NoticeContent" Type="nvarchar(max)" />
+          <Property Name="ReleaseTimeStr" Type="date" />
+          <Property Name="Effective" Type="date" />
+          <Property Name="Correlation" Type="image" />
+        </EntityType>
+        <EntityType Name="B_Production">
+          <Key>
+            <PropertyRef Name="ProductionID" />
+          </Key>
+          <Property Name="ProductionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Timery" Type="date" />
+          <Property Name="SituateNextry" Type="nvarchar(max)" />
+          <Property Name="PeriodicalPublishing" Type="nvarchar(max)" />
+          <Property Name="Accessoryry" Type="nvarchar(max)" />
+          <Property Name="Abstractry" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleCode" Type="nvarchar(max)" />
+          <Property Name="RoleName" Type="nvarchar(max)" />
+          <Property Name="RoleDescribe" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="B_UnitDeclare">
+          <Key>
+            <PropertyRef Name="UnitDeclareID" />
+          </Key>
+          <Property Name="UnitDeclareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareSeriesID" Type="int" />
+          <Property Name="DeclareGradeID" Type="int" />
+          <Property Name="DeclareYearID" Type="int" />
+          <Property Name="Explain" Type="nvarchar(max)" />
+          <Property Name="ToVoidNo" Type="bit" />
+        </EntityType>
+        <EntityType Name="B_WorkPersonnel">
+          <Key>
+            <PropertyRef Name="WorkPersonnelID" />
+          </Key>
+          <Property Name="WorkPersonnelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SexID" Type="int" />
+          <Property Name="UserStateID" Type="int" />
+          <Property Name="Workname" Type="nvarchar(max)" />
+          <Property Name="WorkLoginName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="MaillSite" Type="nvarchar(max)" />
+          <Property Name="PhoneCode" Type="nvarchar(max)" />
+          <Property Name="RegisterTime" Type="date" />
+          <Property Name="FinallyEnterTime" Type="date" />
+        </EntityType>
+        <EntityType Name="B_WorkResult">
+          <Key>
+            <PropertyRef Name="WorkResultID" />
+          </Key>
+          <Property Name="WorkResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkResult" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_AchievementGrade">
+          <Key>
+            <PropertyRef Name="AchievementGradeID" />
+          </Key>
+          <Property Name="AchievementGradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AchievementGrade" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_BelongIndustry">
+          <Key>
+            <PropertyRef Name="BelongIndustryID" />
+          </Key>
+          <Property Name="BelongIndustryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BelongIndustry" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_CodeAnswer">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="AnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="CodeAnswer" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_CommittedState">
+          <Key>
+            <PropertyRef Name="CommittedStateID" />
+          </Key>
+          <Property Name="CommittedStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommittedState" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareBelong">
+          <Key>
+            <PropertyRef Name="DeclareBelongID" />
+          </Key>
+          <Property Name="DeclareBelongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareBelong" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareGrade">
+          <Key>
+            <PropertyRef Name="DeclareGradeID" />
+          </Key>
+          <Property Name="DeclareGradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareGrade" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareMode">
+          <Key>
+            <PropertyRef Name="DeclareModeID" />
+          </Key>
+          <Property Name="DeclareModeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareMode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclarePost">
+          <Key>
+            <PropertyRef Name="DeclarePostID" />
+          </Key>
+          <Property Name="DeclarePostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclarePost" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareQualification">
+          <Key>
+            <PropertyRef Name="DeclareQualificationID" />
+          </Key>
+          <Property Name="DeclareQualificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareQualification" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareSeries">
+          <Key>
+            <PropertyRef Name="DeclareSeriesID" />
+          </Key>
+          <Property Name="DeclareSeriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareSeries" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareStatus">
+          <Key>
+            <PropertyRef Name="DeclareStatusID" />
+          </Key>
+          <Property Name="DeclareStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareStatus" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_DeclareYear">
+          <Key>
+            <PropertyRef Name="DeclareYearID" />
+          </Key>
+          <Property Name="DeclareYearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeclareYear" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Education">
+          <Key>
+            <PropertyRef Name="EducationID" />
+          </Key>
+          <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Education" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_ExamCase">
+          <Key>
+            <PropertyRef Name="ExamCaseID" />
+          </Key>
+          <Property Name="ExamCaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamCase" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_ExamineResult">
+          <Key>
+            <PropertyRef Name="ExamineResultID" />
+          </Key>
+          <Property Name="ExamineResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamineResult" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_FileType">
+          <Key>
+            <PropertyRef Name="FileTypeID" />
+          </Key>
+          <Property Name="FileTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileTypeName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_ForeignLanguageRank">
+          <Key>
+            <PropertyRef Name="ForeignLanguageRankID" />
+          </Key>
+          <Property Name="ForeignLanguageRankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForeignLanguageRank" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Major">
+          <Key>
+            <PropertyRef Name="MajorID" />
+          </Key>
+          <Property Name="MajorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Major" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_MajorsGrade">
+          <Key>
+            <PropertyRef Name="MajorsGradeID" />
+          </Key>
+          <Property Name="MajorsGradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MajorsGrade" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_MajorsPost">
+          <Key>
+            <PropertyRef Name="MajorsPostID" />
+          </Key>
+          <Property Name="MajorsPostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MajorsPost" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_MajorsSeries">
+          <Key>
+            <PropertyRef Name="MajorsSeriesID" />
+          </Key>
+          <Property Name="MajorsSeriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MajorsSeries" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_NoticeType">
+          <Key>
+            <PropertyRef Name="NoticeTypeID" />
+          </Key>
+          <Property Name="NoticeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeType" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_PromulgatorUnit">
+          <Key>
+            <PropertyRef Name="PromulgatorUnitID" />
+          </Key>
+          <Property Name="PromulgatorUnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromulgatorUnit" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_SeriesGrade">
+          <Key>
+            <PropertyRef Name="SeriesGradeID" />
+          </Key>
+          <Property Name="SeriesGradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeriesGrade" Type="nvarchar(max)" />
+          <Property Name="ControlUnit" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Sex">
+          <Key>
+            <PropertyRef Name="SexID" />
+          </Key>
+          <Property Name="SexID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Sortlevel">
+          <Key>
+            <PropertyRef Name="SortlevelID" />
+          </Key>
+          <Property Name="SortlevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sortlevel" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_Subjection">
+          <Key>
+            <PropertyRef Name="SubjectionID" />
+          </Key>
+          <Property Name="SubjectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subjection" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_UnitNature">
+          <Key>
+            <PropertyRef Name="UnitNatureID" />
+          </Key>
+          <Property Name="UnitNatureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitNature" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_UnitRegister">
+          <Key>
+            <PropertyRef Name="UnitRegisterID" />
+          </Key>
+          <Property Name="UnitRegisterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitIDCide" Type="nvarchar(max)" />
+          <Property Name="RegisterCode" Type="nvarchar(max)" />
+          <Property Name="AffirmCode" Type="nvarchar(max)" />
+          <Property Name="StatutoryCall" Type="nvarchar(max)" />
+          <Property Name="TissueOrganization" Type="nvarchar(max)" />
+          <Property Name="TissueOrganizationCode" Type="nvarchar(max)" />
+          <Property Name="UseDynamicOrder" Type="nvarchar(max)" />
+          <Property Name="DynamicOrderCode" Type="nvarchar(max)" />
+          <Property Name="Administrative" Type="nvarchar(max)" />
+          <Property Name="CorrespondenceSite" Type="nvarchar(max)" />
+          <Property Name="Contact" Type="nvarchar(max)" />
+          <Property Name="ContactPhone" Type="nvarchar(max)" />
+          <Property Name="MailCode" Type="nvarchar(max)" />
+          <Property Name="UnitNatureID" Type="int" />
+          <Property Name="SubjectionID" Type="int" />
+          <Property Name="BelongIndustryID" Type="int" />
+        </EntityType>
+        <EntityType Name="S_UserRegister">
+          <Key>
+            <PropertyRef Name="UserRegisterID" />
+          </Key>
+          <Property Name="UserRegisterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SexID" Type="int" />
+          <Property Name="RegisterCode" Type="nvarchar(max)" />
+          <Property Name="AffirmCode" Type="nvarchar(max)" />
+          <Property Name="IdentityCode" Type="nvarchar(max)" />
+          <Property Name="PhoneCode" Type="nvarchar(max)" />
+          <Property Name="Mailbox" Type="nvarchar(max)" />
+          <Property Name="AnswerID" Type="int" />
+          <Property Name="CodeAnswer" Type="nvarchar(max)" />
+          <Property Name="VerifyCode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="S_UserState">
+          <Key>
+            <PropertyRef Name="UserStateID" />
+          </Key>
+          <Property Name="UserStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserState" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SDZCSBPingShenXTModelStoreContainer">
+          <EntitySet Name="B_Achievement" EntityType="Self.B_Achievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Audit" EntityType="Self.B_Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_AuditAppear" EntityType="Self.B_AuditAppear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Basic" EntityType="Self.B_Basic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Basis" EntityType="Self.B_Basis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_CheckPersonnel" EntityType="Self.B_CheckPersonnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Declare" EntityType="Self.B_Declare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_DeclarePath" EntityType="Self.B_DeclarePath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Experience" EntityType="Self.B_Experience" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_File" EntityType="Self.B_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Notice" EntityType="Self.B_Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Production" EntityType="Self.B_Production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_Role" EntityType="Self.B_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_UnitDeclare" EntityType="Self.B_UnitDeclare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_WorkPersonnel" EntityType="Self.B_WorkPersonnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B_WorkResult" EntityType="Self.B_WorkResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_AchievementGrade" EntityType="Self.S_AchievementGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_BelongIndustry" EntityType="Self.S_BelongIndustry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Category" EntityType="Self.S_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_CodeAnswer" EntityType="Self.S_CodeAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_CommittedState" EntityType="Self.S_CommittedState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareBelong" EntityType="Self.S_DeclareBelong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareGrade" EntityType="Self.S_DeclareGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareMode" EntityType="Self.S_DeclareMode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclarePost" EntityType="Self.S_DeclarePost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareQualification" EntityType="Self.S_DeclareQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareSeries" EntityType="Self.S_DeclareSeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareStatus" EntityType="Self.S_DeclareStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_DeclareYear" EntityType="Self.S_DeclareYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Education" EntityType="Self.S_Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_ExamCase" EntityType="Self.S_ExamCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_ExamineResult" EntityType="Self.S_ExamineResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_FileType" EntityType="Self.S_FileType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_ForeignLanguageRank" EntityType="Self.S_ForeignLanguageRank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Major" EntityType="Self.S_Major" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_MajorsGrade" EntityType="Self.S_MajorsGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_MajorsPost" EntityType="Self.S_MajorsPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_MajorsSeries" EntityType="Self.S_MajorsSeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_NoticeType" EntityType="Self.S_NoticeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_PromulgatorUnit" EntityType="Self.S_PromulgatorUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_SeriesGrade" EntityType="Self.S_SeriesGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Sex" EntityType="Self.S_Sex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Sortlevel" EntityType="Self.S_Sortlevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Subjection" EntityType="Self.S_Subjection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_UnitNature" EntityType="Self.S_UnitNature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_UnitRegister" EntityType="Self.S_UnitRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_UserRegister" EntityType="Self.S_UserRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_UserState" EntityType="Self.S_UserState" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SDZCSBPingShenXTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="B_Basis">
+          <Key>
+            <PropertyRef Name="BasisID" />
+          </Key>
+          <Property Name="BasisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TissueOrganization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TissueOrganizationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitNatureID" Type="Int32" />
+          <Property Name="BelongIndustryID" Type="Int32" />
+          <Property Name="Mailbox" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeclareBelongID" Type="Int32" />
+          <Property Name="StatutoryCall" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectionID" Type="Int32" />
+          <Property Name="ContactPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecordUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExemptCondition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Declare">
+          <Key>
+            <PropertyRef Name="DeclareID" />
+          </Key>
+          <Property Name="DeclareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MajorsGradeID" Type="Int32" />
+          <Property Name="MajorsSeriesID" Type="Int32" />
+          <Property Name="MajorsPostID" Type="Int32" />
+          <Property Name="DeclareYearID" Type="Int32" />
+          <Property Name="DeclareGradeID" Type="Int32" />
+          <Property Name="DeclareSeriesID" Type="Int32" />
+          <Property Name="DeclarePostID" Type="Int32" />
+          <Property Name="Have" Type="Boolean" />
+          <Property Name="Explain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Experience">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_WorkResult">
+          <Key>
+            <PropertyRef Name="WorkResultID" />
+          </Key>
+          <Property Name="WorkResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_AchievementGrade">
+          <Key>
+            <PropertyRef Name="AchievementGradeID" />
+          </Key>
+          <Property Name="AchievementGradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AchievementGrade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_BelongIndustry">
+          <Key>
+            <PropertyRef Name="BelongIndustryID" />
+          </Key>
+          <Property Name="BelongIndustryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BelongIndustry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_CodeAnswer">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CodeAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareBelong">
+          <Key>
+            <PropertyRef Name="DeclareBelongID" />
+          </Key>
+          <Property Name="DeclareBelongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareBelong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareGrade">
+          <Key>
+            <PropertyRef Name="DeclareGradeID" />
+          </Key>
+          <Property Name="DeclareGradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareGrade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareMode">
+          <Key>
+            <PropertyRef Name="DeclareModeID" />
+          </Key>
+          <Property Name="DeclareModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareMode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclarePost">
+          <Key>
+            <PropertyRef Name="DeclarePostID" />
+          </Key>
+          <Property Name="DeclarePostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclarePost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareQualification">
+          <Key>
+            <PropertyRef Name="DeclareQualificationID" />
+          </Key>
+          <Property Name="DeclareQualificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareQualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareSeries">
+          <Key>
+            <PropertyRef Name="DeclareSeriesID" />
+          </Key>
+          <Property Name="DeclareSeriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareSeries" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareStatus">
+          <Key>
+            <PropertyRef Name="DeclareStatusID" />
+          </Key>
+          <Property Name="DeclareStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_DeclareYear">
+          <Key>
+            <PropertyRef Name="DeclareYearID" />
+          </Key>
+          <Property Name="DeclareYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Education">
+          <Key>
+            <PropertyRef Name="EducationID" />
+          </Key>
+          <Property Name="EducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_ExamCase">
+          <Key>
+            <PropertyRef Name="ExamCaseID" />
+          </Key>
+          <Property Name="ExamCaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamCase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_ExamineResult">
+          <Key>
+            <PropertyRef Name="ExamineResultID" />
+          </Key>
+          <Property Name="ExamineResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamineResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_ForeignLanguageRank">
+          <Key>
+            <PropertyRef Name="ForeignLanguageRankID" />
+          </Key>
+          <Property Name="ForeignLanguageRankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForeignLanguageRank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_MajorsGrade">
+          <Key>
+            <PropertyRef Name="MajorsGradeID" />
+          </Key>
+          <Property Name="MajorsGradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MajorsGrade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_MajorsPost">
+          <Key>
+            <PropertyRef Name="MajorsPostID" />
+          </Key>
+          <Property Name="MajorsPostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MajorsPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_MajorsSeries">
+          <Key>
+            <PropertyRef Name="MajorsSeriesID" />
+          </Key>
+          <Property Name="MajorsSeriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MajorsSeries" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Sortlevel">
+          <Key>
+            <PropertyRef Name="SortlevelID" />
+          </Key>
+          <Property Name="SortlevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sortlevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Subjection">
+          <Key>
+            <PropertyRef Name="SubjectionID" />
+          </Key>
+          <Property Name="SubjectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subjection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_UnitNature">
+          <Key>
+            <PropertyRef Name="UnitNatureID" />
+          </Key>
+          <Property Name="UnitNatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitNature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_UserRegister">
+          <Key>
+            <PropertyRef Name="UserRegisterID" />
+          </Key>
+          <Property Name="UserRegisterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SexID" Type="Int32" />
+          <Property Name="RegisterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AffirmCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mailbox" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerID" Type="Int32" />
+          <Property Name="CodeAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VerifyCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_UserState">
+          <Key>
+            <PropertyRef Name="UserStateID" />
+          </Key>
+          <Property Name="UserStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SDZCSBPingShenXTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="B_Basis" EntityType="Self.B_Basis" />
+          <EntitySet Name="B_Declare" EntityType="Self.B_Declare" />
+          <EntitySet Name="B_Experience" EntityType="Self.B_Experience" />
+          <EntitySet Name="B_WorkResult" EntityType="Self.B_WorkResult" />
+          <EntitySet Name="S_AchievementGrade" EntityType="Self.S_AchievementGrade" />
+          <EntitySet Name="S_BelongIndustry" EntityType="Self.S_BelongIndustry" />
+          <EntitySet Name="S_Category" EntityType="Self.S_Category" />
+          <EntitySet Name="S_CodeAnswer" EntityType="Self.S_CodeAnswer" />
+          <EntitySet Name="S_DeclareBelong" EntityType="Self.S_DeclareBelong" />
+          <EntitySet Name="S_DeclareGrade" EntityType="Self.S_DeclareGrade" />
+          <EntitySet Name="S_DeclareMode" EntityType="Self.S_DeclareMode" />
+          <EntitySet Name="S_DeclarePost" EntityType="Self.S_DeclarePost" />
+          <EntitySet Name="S_DeclareQualification" EntityType="Self.S_DeclareQualification" />
+          <EntitySet Name="S_DeclareSeries" EntityType="Self.S_DeclareSeries" />
+          <EntitySet Name="S_DeclareStatus" EntityType="Self.S_DeclareStatus" />
+          <EntitySet Name="S_DeclareYear" EntityType="Self.S_DeclareYear" />
+          <EntitySet Name="S_Education" EntityType="Self.S_Education" />
+          <EntitySet Name="S_ExamCase" EntityType="Self.S_ExamCase" />
+          <EntitySet Name="S_ExamineResult" EntityType="Self.S_ExamineResult" />
+          <EntitySet Name="S_ForeignLanguageRank" EntityType="Self.S_ForeignLanguageRank" />
+          <EntitySet Name="S_MajorsGrade" EntityType="Self.S_MajorsGrade" />
+          <EntitySet Name="S_MajorsPost" EntityType="Self.S_MajorsPost" />
+          <EntitySet Name="S_MajorsSeries" EntityType="Self.S_MajorsSeries" />
+          <EntitySet Name="S_Sortlevel" EntityType="Self.S_Sortlevel" />
+          <EntitySet Name="S_Subjection" EntityType="Self.S_Subjection" />
+          <EntitySet Name="S_UnitNature" EntityType="Self.S_UnitNature" />
+          <EntitySet Name="S_UserRegister" EntityType="Self.S_UserRegister" />
+          <EntitySet Name="S_UserState" EntityType="Self.S_UserState" />
+          <EntitySet Name="S_Major" EntityType="SDZCSBPingShenXTModel.S_Major" />
+          <EntitySet Name="B_Achievement" EntityType="SDZCSBPingShenXTModel.B_Achievement" />
+          <EntitySet Name="B_Production" EntityType="SDZCSBPingShenXTModel.B_Production" />
+          <EntitySet Name="S_UnitRegister" EntityType="SDZCSBPingShenXTModel.S_UnitRegister" />
+          <EntitySet Name="B_Basic" EntityType="SDZCSBPingShenXTModel.B_Basic" />
+          <EntitySet Name="B_CheckPersonnel" EntityType="SDZCSBPingShenXTModel.B_CheckPersonnel" />
+          <EntitySet Name="B_Role" EntityType="SDZCSBPingShenXTModel.B_Role" />
+          <EntitySet Name="S_Sex" EntityType="SDZCSBPingShenXTModel.S_Sex" />
+          <EntitySet Name="B_WorkPersonnel" EntityType="SDZCSBPingShenXTModel.B_WorkPersonnel" />
+          <EntitySet Name="B_UnitDeclare" EntityType="SDZCSBPingShenXTModel.B_UnitDeclare" />
+          <EntitySet Name="B_DeclarePath" EntityType="SDZCSBPingShenXTModel.B_DeclarePath" />
+          <EntitySet Name="S_CommittedState" EntityType="SDZCSBPingShenXTModel.S_CommittedState" />
+          <EntitySet Name="B_Audit" EntityType="SDZCSBPingShenXTModel.B_Audit" />
+          <EntitySet Name="B_AuditAppear" EntityType="SDZCSBPingShenXTModel.B_AuditAppear" />
+          <EntitySet Name="S_SeriesGrade" EntityType="SDZCSBPingShenXTModel.S_SeriesGrade" />
+          <EntitySet Name="B_Notice" EntityType="SDZCSBPingShenXTModel.B_Notice" />
+          <EntitySet Name="S_NoticeType" EntityType="SDZCSBPingShenXTModel.S_NoticeType" />
+          <EntitySet Name="S_PromulgatorUnit" EntityType="SDZCSBPingShenXTModel.S_PromulgatorUnit" />
+          <EntitySet Name="B_File" EntityType="SDZCSBPingShenXTModel.B_File" />
+          <EntitySet Name="S_FileType" EntityType="SDZCSBPingShenXTModel.S_FileType" />
+        </EntityContainer>
+        <EntityType Name="S_Major">
+          <Key>
+            <PropertyRef Name="MajorID" />
+          </Key>
+          <Property Name="MajorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Achievement">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Timers" Type="DateTime" Precision="0" />
+          <Property Name="SituateNextrs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AchievementGradeID" Type="Int32" />
+          <Property Name="RatifySection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Accessoryrs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Abstractrs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Production">
+          <Key>
+            <PropertyRef Name="ProductionID" />
+          </Key>
+          <Property Name="ProductionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Timery" Type="DateTime" Precision="0" />
+          <Property Name="SituateNextry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodicalPublishing" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Accessoryry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Abstractry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_UnitRegister">
+          <Key>
+            <PropertyRef Name="UnitRegisterID" />
+          </Key>
+          <Property Name="UnitRegisterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitIDCide" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AffirmCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatutoryCall" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TissueOrganization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TissueOrganizationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UseDynamicOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DynamicOrderCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Administrative" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorrespondenceSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MailCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitNatureID" Type="Int32" />
+          <Property Name="SubjectionID" Type="Int32" />
+          <Property Name="BelongIndustryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="B_Basic">
+          <Key>
+            <PropertyRef Name="BasicID" />
+          </Key>
+          <Property Name="BasicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareGradeID" Type="Int32" />
+          <Property Name="DeclareSeriesID" Type="Int32" />
+          <Property Name="DeclareQualificationID" Type="Int32" />
+          <Property Name="FormTime" Type="DateTime" Precision="0" />
+          <Property Name="TakeOfficeTime" Type="DateTime" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SexID" Type="Int32" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="PlaceUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EducationID" Type="Int32" />
+          <Property Name="JudgeEducationID" Type="Int32" />
+          <Property Name="MajorsPostID" Type="Int32" />
+          <Property Name="GainedQualificationTime" Type="DateTime" Precision="0" />
+          <Property Name="EngageTime" Type="DateTime" Precision="0" />
+          <Property Name="EngageYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TakeOffice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MajorYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JoinWorkTime" Type="DateTime" Precision="0" />
+          <Property Name="ForeignLanguage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ForeignLanguageRankID" Type="Int32" />
+          <Property Name="ForeignLanguageResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExamCaseID" Type="Int32" />
+          <Property Name="ExamineResultID" Type="Int32" />
+          <Property Name="ExamineResultID1" Type="Int32" />
+          <Property Name="ExamineResultID2" Type="Int32" />
+          <Property Name="ExamineResultID3" Type="Int32" />
+          <Property Name="ExamineResultID4" Type="Int32" />
+          <Property Name="ExamineResultID5" Type="Int32" />
+          <Property Name="ExamineResultID6" Type="Int32" />
+          <Property Name="DeclareYearID" Type="Int32" />
+          <Property Name="DeclareYearID1" Type="Int32" />
+          <Property Name="DeclareYearID2" Type="Int32" />
+          <Property Name="DeclareYearID3" Type="Int32" />
+          <Property Name="DeclareYearID4" Type="Int32" />
+          <Property Name="DeclareYearID5" Type="Int32" />
+          <Property Name="DeclarePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DeclareModeID" Type="Int32" />
+          <Property Name="QuantityScore" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExamResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeclareStatusID" Type="Int32" />
+          <Property Name="GraduateTime" Type="DateTime" Precision="0" />
+          <Property Name="GraduateTime1" Type="DateTime" Precision="0" />
+          <Property Name="GraduateSchool" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateSchool1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MajorID" Type="Int32" />
+          <Property Name="MajorID1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="B_CheckPersonnel">
+          <Key>
+            <PropertyRef Name="CheckPersonnelID" />
+          </Key>
+          <Property Name="CheckPersonnelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserStateID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="CheckName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SexID" Type="Int32" />
+          <Property Name="MaillSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterTime" Type="DateTime" Precision="0" />
+          <Property Name="FinallyEnterTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="B_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Sex">
+          <Key>
+            <PropertyRef Name="SexID" />
+          </Key>
+          <Property Name="SexID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_WorkPersonnel">
+          <Key>
+            <PropertyRef Name="WorkPersonnelID" />
+          </Key>
+          <Property Name="WorkPersonnelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SexID" Type="Int32" />
+          <Property Name="UserStateID" Type="Int32" />
+          <Property Name="Workname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WorkLoginName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaillSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterTime" Type="DateTime" Precision="0" />
+          <Property Name="FinallyEnterTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="B_UnitDeclare">
+          <Key>
+            <PropertyRef Name="UnitDeclareID" />
+          </Key>
+          <Property Name="UnitDeclareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareSeriesID" Type="Int32" />
+          <Property Name="DeclareGradeID" Type="Int32" />
+          <Property Name="DeclareYearID" Type="Int32" />
+          <Property Name="Explain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ToVoidNo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="B_DeclarePath">
+          <Key>
+            <PropertyRef Name="DeclarePathID" />
+          </Key>
+          <Property Name="DeclarePathID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeclareSeriesID" Type="Int32" />
+          <Property Name="DeclareGradeID" Type="Int32" />
+          <Property Name="CommittedStateID" Type="Int32" />
+          <Property Name="ControlUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_CommittedState">
+          <Key>
+            <PropertyRef Name="CommittedStateID" />
+          </Key>
+          <Property Name="CommittedStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommittedState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditOpinion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AuditPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_AuditAppear">
+          <Key>
+            <PropertyRef Name="AuditAppearID" />
+          </Key>
+          <Property Name="AuditAppearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationCondition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageCondition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerCondition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialCondition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionFake" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AchievementFake" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CertificateFake" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherCause" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AuditPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_SeriesGrade">
+          <Key>
+            <PropertyRef Name="SeriesGradeID" />
+          </Key>
+          <Property Name="SeriesGradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeriesGrade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControlUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_Notice">
+          <Key>
+            <PropertyRef Name="NoticeID" />
+          </Key>
+          <Property Name="NoticeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PromulgatorUnitID" Type="Int32" />
+          <Property Name="NoticeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseTimeStr" Type="DateTime" Precision="0" />
+          <Property Name="Effective" Type="DateTime" Precision="0" />
+          <Property Name="Correlation" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="S_NoticeType">
+          <Key>
+            <PropertyRef Name="NoticeTypeID" />
+          </Key>
+          <Property Name="NoticeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_PromulgatorUnit">
+          <Key>
+            <PropertyRef Name="PromulgatorUnitID" />
+          </Key>
+          <Property Name="PromulgatorUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromulgatorUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="B_File">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileTypeID" Type="Int32" />
+          <Property Name="NoticeID" Type="Int32" />
+          <Property Name="Files" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_FileType">
+          <Key>
+            <PropertyRef Name="FileTypeID" />
+          </Key>
+          <Property Name="FileTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SDZCSBPingShenXTModelStoreContainer" CdmEntityContainer="SDZCSBPingShenXTEntities">
+          <EntitySetMapping Name="B_Basis">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Basis">
+              <MappingFragment StoreEntitySet="B_Basis">
+                <ScalarProperty Name="BasisID" ColumnName="BasisID" />
+                <ScalarProperty Name="IdentityCode" ColumnName="IdentityCode" />
+                <ScalarProperty Name="TissueOrganization" ColumnName="TissueOrganization" />
+                <ScalarProperty Name="TissueOrganizationCode" ColumnName="TissueOrganizationCode" />
+                <ScalarProperty Name="UnitNatureID" ColumnName="UnitNatureID" />
+                <ScalarProperty Name="BelongIndustryID" ColumnName="BelongIndustryID" />
+                <ScalarProperty Name="Mailbox" ColumnName="Mailbox" />
+                <ScalarProperty Name="DeclareBelongID" ColumnName="DeclareBelongID" />
+                <ScalarProperty Name="StatutoryCall" ColumnName="StatutoryCall" />
+                <ScalarProperty Name="SubjectionID" ColumnName="SubjectionID" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="RecordUnit" ColumnName="RecordUnit" />
+                <ScalarProperty Name="ExemptCondition" ColumnName="ExemptCondition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Declare">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Declare">
+              <MappingFragment StoreEntitySet="B_Declare">
+                <ScalarProperty Name="DeclareID" ColumnName="DeclareID" />
+                <ScalarProperty Name="MajorsGradeID" ColumnName="MajorsGradeID" />
+                <ScalarProperty Name="MajorsSeriesID" ColumnName="MajorsSeriesID" />
+                <ScalarProperty Name="MajorsPostID" ColumnName="MajorsPostID" />
+                <ScalarProperty Name="DeclareYearID" ColumnName="DeclareYearID" />
+                <ScalarProperty Name="DeclareGradeID" ColumnName="DeclareGradeID" />
+                <ScalarProperty Name="DeclareSeriesID" ColumnName="DeclareSeriesID" />
+                <ScalarProperty Name="DeclarePostID" ColumnName="DeclarePostID" />
+                <ScalarProperty Name="Have" ColumnName="Have" />
+                <ScalarProperty Name="Explain" ColumnName="Explain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Experience">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Experience">
+              <MappingFragment StoreEntitySet="B_Experience">
+                <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_WorkResult">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_WorkResult">
+              <MappingFragment StoreEntitySet="B_WorkResult">
+                <ScalarProperty Name="WorkResultID" ColumnName="WorkResultID" />
+                <ScalarProperty Name="WorkResult" ColumnName="WorkResult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_AchievementGrade">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_AchievementGrade">
+              <MappingFragment StoreEntitySet="S_AchievementGrade">
+                <ScalarProperty Name="AchievementGradeID" ColumnName="AchievementGradeID" />
+                <ScalarProperty Name="AchievementGrade" ColumnName="AchievementGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_BelongIndustry">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_BelongIndustry">
+              <MappingFragment StoreEntitySet="S_BelongIndustry">
+                <ScalarProperty Name="BelongIndustryID" ColumnName="BelongIndustryID" />
+                <ScalarProperty Name="BelongIndustry" ColumnName="BelongIndustry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Category">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Category">
+              <MappingFragment StoreEntitySet="S_Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_CodeAnswer">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_CodeAnswer">
+              <MappingFragment StoreEntitySet="S_CodeAnswer">
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="CodeAnswer" ColumnName="CodeAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareBelong">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareBelong">
+              <MappingFragment StoreEntitySet="S_DeclareBelong">
+                <ScalarProperty Name="DeclareBelongID" ColumnName="DeclareBelongID" />
+                <ScalarProperty Name="DeclareBelong" ColumnName="DeclareBelong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareGrade">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareGrade">
+              <MappingFragment StoreEntitySet="S_DeclareGrade">
+                <ScalarProperty Name="DeclareGradeID" ColumnName="DeclareGradeID" />
+                <ScalarProperty Name="DeclareGrade" ColumnName="DeclareGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareMode">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareMode">
+              <MappingFragment StoreEntitySet="S_DeclareMode">
+                <ScalarProperty Name="DeclareModeID" ColumnName="DeclareModeID" />
+                <ScalarProperty Name="DeclareMode" ColumnName="DeclareMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclarePost">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclarePost">
+              <MappingFragment StoreEntitySet="S_DeclarePost">
+                <ScalarProperty Name="DeclarePostID" ColumnName="DeclarePostID" />
+                <ScalarProperty Name="DeclarePost" ColumnName="DeclarePost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareQualification">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareQualification">
+              <MappingFragment StoreEntitySet="S_DeclareQualification">
+                <ScalarProperty Name="DeclareQualificationID" ColumnName="DeclareQualificationID" />
+                <ScalarProperty Name="DeclareQualification" ColumnName="DeclareQualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareSeries">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareSeries">
+              <MappingFragment StoreEntitySet="S_DeclareSeries">
+                <ScalarProperty Name="DeclareSeriesID" ColumnName="DeclareSeriesID" />
+                <ScalarProperty Name="DeclareSeries" ColumnName="DeclareSeries" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareStatus">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareStatus">
+              <MappingFragment StoreEntitySet="S_DeclareStatus">
+                <ScalarProperty Name="DeclareStatusID" ColumnName="DeclareStatusID" />
+                <ScalarProperty Name="DeclareStatus" ColumnName="DeclareStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_DeclareYear">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_DeclareYear">
+              <MappingFragment StoreEntitySet="S_DeclareYear">
+                <ScalarProperty Name="DeclareYearID" ColumnName="DeclareYearID" />
+                <ScalarProperty Name="DeclareYear" ColumnName="DeclareYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Education">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Education">
+              <MappingFragment StoreEntitySet="S_Education">
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_ExamCase">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_ExamCase">
+              <MappingFragment StoreEntitySet="S_ExamCase">
+                <ScalarProperty Name="ExamCaseID" ColumnName="ExamCaseID" />
+                <ScalarProperty Name="ExamCase" ColumnName="ExamCase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_ExamineResult">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_ExamineResult">
+              <MappingFragment StoreEntitySet="S_ExamineResult">
+                <ScalarProperty Name="ExamineResultID" ColumnName="ExamineResultID" />
+                <ScalarProperty Name="ExamineResult" ColumnName="ExamineResult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_ForeignLanguageRank">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_ForeignLanguageRank">
+              <MappingFragment StoreEntitySet="S_ForeignLanguageRank">
+                <ScalarProperty Name="ForeignLanguageRankID" ColumnName="ForeignLanguageRankID" />
+                <ScalarProperty Name="ForeignLanguageRank" ColumnName="ForeignLanguageRank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_MajorsGrade">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_MajorsGrade">
+              <MappingFragment StoreEntitySet="S_MajorsGrade">
+                <ScalarProperty Name="MajorsGradeID" ColumnName="MajorsGradeID" />
+                <ScalarProperty Name="MajorsGrade" ColumnName="MajorsGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_MajorsPost">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_MajorsPost">
+              <MappingFragment StoreEntitySet="S_MajorsPost">
+                <ScalarProperty Name="MajorsPostID" ColumnName="MajorsPostID" />
+                <ScalarProperty Name="MajorsPost" ColumnName="MajorsPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_MajorsSeries">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_MajorsSeries">
+              <MappingFragment StoreEntitySet="S_MajorsSeries">
+                <ScalarProperty Name="MajorsSeriesID" ColumnName="MajorsSeriesID" />
+                <ScalarProperty Name="MajorsSeries" ColumnName="MajorsSeries" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Sortlevel">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Sortlevel">
+              <MappingFragment StoreEntitySet="S_Sortlevel">
+                <ScalarProperty Name="SortlevelID" ColumnName="SortlevelID" />
+                <ScalarProperty Name="Sortlevel" ColumnName="Sortlevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Subjection">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Subjection">
+              <MappingFragment StoreEntitySet="S_Subjection">
+                <ScalarProperty Name="SubjectionID" ColumnName="SubjectionID" />
+                <ScalarProperty Name="Subjection" ColumnName="Subjection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_UnitNature">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_UnitNature">
+              <MappingFragment StoreEntitySet="S_UnitNature">
+                <ScalarProperty Name="UnitNatureID" ColumnName="UnitNatureID" />
+                <ScalarProperty Name="UnitNature" ColumnName="UnitNature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_UserRegister">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_UserRegister">
+              <MappingFragment StoreEntitySet="S_UserRegister">
+                <ScalarProperty Name="UserRegisterID" ColumnName="UserRegisterID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+                <ScalarProperty Name="AffirmCode" ColumnName="AffirmCode" />
+                <ScalarProperty Name="IdentityCode" ColumnName="IdentityCode" />
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+                <ScalarProperty Name="Mailbox" ColumnName="Mailbox" />
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="CodeAnswer" ColumnName="CodeAnswer" />
+                <ScalarProperty Name="VerifyCode" ColumnName="VerifyCode" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_UserState">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_UserState">
+              <MappingFragment StoreEntitySet="S_UserState">
+                <ScalarProperty Name="UserStateID" ColumnName="UserStateID" />
+                <ScalarProperty Name="UserState" ColumnName="UserState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Major">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Major">
+              <MappingFragment StoreEntitySet="S_Major">
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="MajorID" ColumnName="MajorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Achievement">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Achievement">
+              <MappingFragment StoreEntitySet="B_Achievement">
+                <ScalarProperty Name="Abstractrs" ColumnName="Abstractrs" />
+                <ScalarProperty Name="Accessoryrs" ColumnName="Accessoryrs" />
+                <ScalarProperty Name="RatifySection" ColumnName="RatifySection" />
+                <ScalarProperty Name="AchievementGradeID" ColumnName="AchievementGradeID" />
+                <ScalarProperty Name="SituateNextrs" ColumnName="SituateNextrs" />
+                <ScalarProperty Name="Timers" ColumnName="Timers" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Production">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Production">
+              <MappingFragment StoreEntitySet="B_Production">
+                <ScalarProperty Name="Abstractry" ColumnName="Abstractry" />
+                <ScalarProperty Name="Accessoryry" ColumnName="Accessoryry" />
+                <ScalarProperty Name="PeriodicalPublishing" ColumnName="PeriodicalPublishing" />
+                <ScalarProperty Name="SituateNextry" ColumnName="SituateNextry" />
+                <ScalarProperty Name="Timery" ColumnName="Timery" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductionID" ColumnName="ProductionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_UnitRegister">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_UnitRegister">
+              <MappingFragment StoreEntitySet="S_UnitRegister">
+                <ScalarProperty Name="BelongIndustryID" ColumnName="BelongIndustryID" />
+                <ScalarProperty Name="SubjectionID" ColumnName="SubjectionID" />
+                <ScalarProperty Name="UnitNatureID" ColumnName="UnitNatureID" />
+                <ScalarProperty Name="MailCode" ColumnName="MailCode" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CorrespondenceSite" ColumnName="CorrespondenceSite" />
+                <ScalarProperty Name="Administrative" ColumnName="Administrative" />
+                <ScalarProperty Name="DynamicOrderCode" ColumnName="DynamicOrderCode" />
+                <ScalarProperty Name="UseDynamicOrder" ColumnName="UseDynamicOrder" />
+                <ScalarProperty Name="TissueOrganizationCode" ColumnName="TissueOrganizationCode" />
+                <ScalarProperty Name="TissueOrganization" ColumnName="TissueOrganization" />
+                <ScalarProperty Name="StatutoryCall" ColumnName="StatutoryCall" />
+                <ScalarProperty Name="AffirmCode" ColumnName="AffirmCode" />
+                <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+                <ScalarProperty Name="UnitIDCide" ColumnName="UnitIDCide" />
+                <ScalarProperty Name="UnitRegisterID" ColumnName="UnitRegisterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Basic">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Basic">
+              <MappingFragment StoreEntitySet="B_Basic">
+                <ScalarProperty Name="MajorID1" ColumnName="MajorID1" />
+                <ScalarProperty Name="MajorID" ColumnName="MajorID" />
+                <ScalarProperty Name="GraduateSchool1" ColumnName="GraduateSchool1" />
+                <ScalarProperty Name="GraduateSchool" ColumnName="GraduateSchool" />
+                <ScalarProperty Name="GraduateTime1" ColumnName="GraduateTime1" />
+                <ScalarProperty Name="GraduateTime" ColumnName="GraduateTime" />
+                <ScalarProperty Name="DeclareStatusID" ColumnName="DeclareStatusID" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ExamResult" ColumnName="ExamResult" />
+                <ScalarProperty Name="QuantityScore" ColumnName="QuantityScore" />
+                <ScalarProperty Name="DeclareModeID" ColumnName="DeclareModeID" />
+                <ScalarProperty Name="DeclarePicture" ColumnName="DeclarePicture" />
+                <ScalarProperty Name="DeclareYearID5" ColumnName="DeclareYearID5" />
+                <ScalarProperty Name="DeclareYearID4" ColumnName="DeclareYearID4" />
+                <ScalarProperty Name="DeclareYearID3" ColumnName="DeclareYearID3" />
+                <ScalarProperty Name="DeclareYearID2" ColumnName="DeclareYearID2" />
+                <ScalarProperty Name="DeclareYearID1" ColumnName="DeclareYearID1" />
+                <ScalarProperty Name="DeclareYearID" ColumnName="DeclareYearID" />
+                <ScalarProperty Name="ExamineResultID6" ColumnName="ExamineResultID6" />
+                <ScalarProperty Name="ExamineResultID5" ColumnName="ExamineResultID5" />
+                <ScalarProperty Name="ExamineResultID4" ColumnName="ExamineResultID4" />
+                <ScalarProperty Name="ExamineResultID3" ColumnName="ExamineResultID3" />
+                <ScalarProperty Name="ExamineResultID2" ColumnName="ExamineResultID2" />
+                <ScalarProperty Name="ExamineResultID1" ColumnName="ExamineResultID1" />
+                <ScalarProperty Name="ExamineResultID" ColumnName="ExamineResultID" />
+                <ScalarProperty Name="ExamCaseID" ColumnName="ExamCaseID" />
+                <ScalarProperty Name="ForeignLanguageResult" ColumnName="ForeignLanguageResult" />
+                <ScalarProperty Name="ForeignLanguageRankID" ColumnName="ForeignLanguageRankID" />
+                <ScalarProperty Name="ForeignLanguage" ColumnName="ForeignLanguage" />
+                <ScalarProperty Name="JoinWorkTime" ColumnName="JoinWorkTime" />
+                <ScalarProperty Name="MajorYear" ColumnName="MajorYear" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="TakeOffice" ColumnName="TakeOffice" />
+                <ScalarProperty Name="EngageYear" ColumnName="EngageYear" />
+                <ScalarProperty Name="EngageTime" ColumnName="EngageTime" />
+                <ScalarProperty Name="GainedQualificationTime" ColumnName="GainedQualificationTime" />
+                <ScalarProperty Name="MajorsPostID" ColumnName="MajorsPostID" />
+                <ScalarProperty Name="JudgeEducationID" ColumnName="JudgeEducationID" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="PlaceUnit" ColumnName="PlaceUnit" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TakeOfficeTime" ColumnName="TakeOfficeTime" />
+                <ScalarProperty Name="FormTime" ColumnName="FormTime" />
+                <ScalarProperty Name="DeclareQualificationID" ColumnName="DeclareQualificationID" />
+                <ScalarProperty Name="DeclareSeriesID" ColumnName="DeclareSeriesID" />
+                <ScalarProperty Name="DeclareGradeID" ColumnName="DeclareGradeID" />
+                <ScalarProperty Name="BasicID" ColumnName="BasicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_CheckPersonnel">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_CheckPersonnel">
+              <MappingFragment StoreEntitySet="B_CheckPersonnel">
+                <ScalarProperty Name="FinallyEnterTime" ColumnName="FinallyEnterTime" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+                <ScalarProperty Name="MaillSite" ColumnName="MaillSite" />
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="CheckUserName" ColumnName="CheckUserName" />
+                <ScalarProperty Name="CheckName" ColumnName="CheckName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserStateID" ColumnName="UserStateID" />
+                <ScalarProperty Name="CheckPersonnelID" ColumnName="CheckPersonnelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Role">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Role">
+              <MappingFragment StoreEntitySet="B_Role">
+                <ScalarProperty Name="RoleDescribe" ColumnName="RoleDescribe" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Sex">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_Sex">
+              <MappingFragment StoreEntitySet="S_Sex">
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_WorkPersonnel">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_WorkPersonnel">
+              <MappingFragment StoreEntitySet="B_WorkPersonnel">
+                <ScalarProperty Name="FinallyEnterTime" ColumnName="FinallyEnterTime" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+                <ScalarProperty Name="MaillSite" ColumnName="MaillSite" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="WorkLoginName" ColumnName="WorkLoginName" />
+                <ScalarProperty Name="Workname" ColumnName="Workname" />
+                <ScalarProperty Name="UserStateID" ColumnName="UserStateID" />
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="WorkPersonnelID" ColumnName="WorkPersonnelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_UnitDeclare">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_UnitDeclare">
+              <MappingFragment StoreEntitySet="B_UnitDeclare">
+                <ScalarProperty Name="ToVoidNo" ColumnName="ToVoidNo" />
+                <ScalarProperty Name="Explain" ColumnName="Explain" />
+                <ScalarProperty Name="DeclareYearID" ColumnName="DeclareYearID" />
+                <ScalarProperty Name="DeclareGradeID" ColumnName="DeclareGradeID" />
+                <ScalarProperty Name="DeclareSeriesID" ColumnName="DeclareSeriesID" />
+                <ScalarProperty Name="UnitDeclareID" ColumnName="UnitDeclareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_DeclarePath">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_DeclarePath">
+              <MappingFragment StoreEntitySet="B_DeclarePath">
+                <ScalarProperty Name="ControlUnit" ColumnName="ControlUnit" />
+                <ScalarProperty Name="CommittedStateID" ColumnName="CommittedStateID" />
+                <ScalarProperty Name="DeclareGradeID" ColumnName="DeclareGradeID" />
+                <ScalarProperty Name="DeclareSeriesID" ColumnName="DeclareSeriesID" />
+                <ScalarProperty Name="DeclarePathID" ColumnName="DeclarePathID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_CommittedState">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_CommittedState">
+              <MappingFragment StoreEntitySet="S_CommittedState">
+                <ScalarProperty Name="CommittedState" ColumnName="CommittedState" />
+                <ScalarProperty Name="CommittedStateID" ColumnName="CommittedStateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Audit">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Audit">
+              <MappingFragment StoreEntitySet="B_Audit">
+                <ScalarProperty Name="AuditPass" ColumnName="AuditPass" />
+                <ScalarProperty Name="AuditOpinion" ColumnName="AuditOpinion" />
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_AuditAppear">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_AuditAppear">
+              <MappingFragment StoreEntitySet="B_AuditAppear">
+                <ScalarProperty Name="AuditPass" ColumnName="AuditPass" />
+                <ScalarProperty Name="OtherCause" ColumnName="OtherCause" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="CertificateFake" ColumnName="CertificateFake" />
+                <ScalarProperty Name="AchievementFake" ColumnName="AchievementFake" />
+                <ScalarProperty Name="ProductionFake" ColumnName="ProductionFake" />
+                <ScalarProperty Name="SpecialCondition" ColumnName="SpecialCondition" />
+                <ScalarProperty Name="ComputerCondition" ColumnName="ComputerCondition" />
+                <ScalarProperty Name="LanguageCondition" ColumnName="LanguageCondition" />
+                <ScalarProperty Name="EducationCondition" ColumnName="EducationCondition" />
+                <ScalarProperty Name="AuditAppearID" ColumnName="AuditAppearID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_SeriesGrade">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_SeriesGrade">
+              <MappingFragment StoreEntitySet="S_SeriesGrade">
+                <ScalarProperty Name="ControlUnit" ColumnName="ControlUnit" />
+                <ScalarProperty Name="SeriesGrade" ColumnName="SeriesGrade" />
+                <ScalarProperty Name="SeriesGradeID" ColumnName="SeriesGradeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_Notice">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_Notice">
+              <MappingFragment StoreEntitySet="B_Notice">
+                <ScalarProperty Name="Correlation" ColumnName="Correlation" />
+                <ScalarProperty Name="Effective" ColumnName="Effective" />
+                <ScalarProperty Name="ReleaseTimeStr" ColumnName="ReleaseTimeStr" />
+                <ScalarProperty Name="NoticeContent" ColumnName="NoticeContent" />
+                <ScalarProperty Name="NoticeName" ColumnName="NoticeName" />
+                <ScalarProperty Name="PromulgatorUnitID" ColumnName="PromulgatorUnitID" />
+                <ScalarProperty Name="NoticeTypeID" ColumnName="NoticeTypeID" />
+                <ScalarProperty Name="NoticeID" ColumnName="NoticeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_NoticeType">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_NoticeType">
+              <MappingFragment StoreEntitySet="S_NoticeType">
+                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
+                <ScalarProperty Name="NoticeTypeID" ColumnName="NoticeTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_PromulgatorUnit">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_PromulgatorUnit">
+              <MappingFragment StoreEntitySet="S_PromulgatorUnit">
+                <ScalarProperty Name="PromulgatorUnit" ColumnName="PromulgatorUnit" />
+                <ScalarProperty Name="PromulgatorUnitID" ColumnName="PromulgatorUnitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_File">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.B_File">
+              <MappingFragment StoreEntitySet="B_File">
+                <ScalarProperty Name="Files" ColumnName="Files" />
+                <ScalarProperty Name="NoticeID" ColumnName="NoticeID" />
+                <ScalarProperty Name="FileTypeID" ColumnName="FileTypeID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_FileType">
+            <EntityTypeMapping TypeName="SDZCSBPingShenXTModel.S_FileType">
+              <MappingFragment StoreEntitySet="S_FileType">
+                <ScalarProperty Name="FileTypeName" ColumnName="FileTypeName" />
+                <ScalarProperty Name="FileTypeID" ColumnName="FileTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

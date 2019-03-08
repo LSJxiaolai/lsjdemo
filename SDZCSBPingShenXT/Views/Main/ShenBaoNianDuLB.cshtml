@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>可申报年度列表</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/style.css" rel="stylesheet" />
+    <style>
+        .container{width:100%;}
+        .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="position: fixed; top: 0; z-index: 9999; height: 80px;">
+            <img src="~/image/TouT.png" style="width:100%;" />
+            <div class="col-md-2 col-xs-2" style="padding-right:6px;">
+                <input id="keywords" name="keywords" class="form-control" style="position:relative;margin-top:-68px;margin-left:910px;" type="text" />
+            </div>
+            <div class="col-md-1 col-xs-1" style="padding-left:1px;padding-right:0;">
+                <input class="btn btn-default" type="submit" style="border-radius:5px; width:90px;position:relative;margin-top:-124px;margin-left:907px;" onclick="SiteSearch();" value="搜索" />
+            </div>
+        </div>
+        <div class="col-lg-12" id="rowDec">              
+                <div class="col-md-12" style=" height:330px;margin-top:80px;border:2px solid #e1edee; padding:0;">
+                    <div class="col-lg-12 tuot" style="height:40px;">
+                        <h4 style="color:white;"><i class="glyphicon glyphicon-plus-sign" style="color:green"></i>可申报年度系列列表</h4>
+                    </div>
+                    <div class="col-md-12" style="height:40px;margin-top:10px;">
+                        <h4 style="font-weight:bold">现专业技术职称：</h4>
+                    </div>
+                    <div class="col-md-12" style="height:50px;margin-top:10px; background-color:#f2f9ff;">
+                        <from class="form-horizontal" id="FromKSBND" action="/Main/BCShenBaoNianDu">
+                            <div class="form-group" style="margin-top:10px;">
+                                <div class="col-md-3">
+                                    <label style="font-weight:lighter;">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        无
+                                    </label>
+                                    <label style="font-weight:lighter;">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked>
+                                        有
+                                    </label>
+                                </div>
+                                <!--单选控制下拉框能否选-->
+                                <div id="SuoYouXL">
+                                    <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;">现专业等级：</label>
+                                    <div class="col-md-2 reset">
+                                        <select class="form-control" id="MajorsGradeID" name="MajorsGradeID"></select>
+                                    </div>
+                                    <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;">现专业系列：</label>
+                                    <div class="col-md-2 reset">
+                                        <select class="form-control" id="MajorsSeriesID" name="MajorsSeriesID"></select>
+                                    </div>
+                                    <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;">现专业职称：</label>
+                                    <div class="col-md-2 reset">
+                                        <select class="form-control" id="MajorsPostID" name="MajorsPostID"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </from>
+                    </div>
+                    <div class="col-md-12" style="height:40px;margin-top:10px;">
+                        <h4 style="font-weight:bold">拟申报专业技术职称：</h4>
+                    </div>
+                    <div class="col-md-12" style="height:50px;margin-top:10px; background-color:#f2f9ff;">
+                        <from class="form-horizontal" role="form" id="FromKSBLB" action="/Main/BCShenBaoNianDu">
+                            <div class="form-group" style="margin-top:10px;">
+                                <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0; "><i style="color:red">*</i> 拟申报年度：</label>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="DeclareYearID" name="DeclareYearID"></select>
+                                </div>
+                                <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;"><i style="color:red">*</i>拟申报等级：</label>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="DeclareGradeID" name="DeclareGradeID"></select>
+                                </div>
+                                <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;"><i style="color:red">*</i>拟申报系列：</label>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="DeclareSeriesID" name="DeclareSeriesID"></select>
+                                </div>
+                                <label class="control-label col-md-1" style="font-weight:lighter;padding-top:7px;padding-right:0;"><i style="color:red">*</i>拟申报职称：</label>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="DeclarePostID" name="DeclarePostID"></select>
+                                </div>
+                            </div>
+                        </from>
+                    </div>
+                    <div class="col-md-12" style="height:50px;margin-top:10px;">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-info btn-sm" style=" background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnBaoCun">保存</button>
+                            <button type="button" class="btn btn-info btn-sm" style=" background-color:#dfeffc;color:#34759b;font-weight:bold;" id="btnWYShenBao">我要申报</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        //我要申报点击事件
+        $("#btnWYShenBao").click(function () {
+            window.location.href = "/Main/Declare";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DanWeiShenBaoXiLie</title>
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.bsgrid-1.37/css/skins/grid_bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+        }
+         .tuot {
+            background-color: #74abd4;
+               /*-webkit- google*/  
+            background: -webkit-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-moz- 火狐*/
+            background: -moz-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+              /*-o- OPERA*/
+            background: -o-linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background: linear-gradient(top,#86b6dc 0,#8ab5d5 30%,#72a7d1 50%,#68a6d5 100%);
+            background-repeat: repeat-x;
+           /*IE*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#86b6dc,endColorstr=#68a6d5,GradientType=0);
+        }
+
+        #FormDanWeiShenBaoXL select,#FormDanWeiShenBaoXL input{
+            height:38px;
+        }
+        #FormDanWeiShenBaoXL label{
+            padding:9px;
+        }
+        /*.div-page {
+            width: auto;
+            height: 600px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            border: 1px solid #f1f1f1;
+            box-shadow: 3px 3px 7px #888888; /*阴影:右边阴影像素 下边阴影像素  阴影柔和度 颜色
+        }*/
+        /*在container下 <div class="div-page"></div>*/
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="DanWeiShenBaoXLChuangTi">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:2px solid #e1edee;padding:0; height:600px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:50px;">
+                    <h4><i class="glyphicon glyphicon-tree-conifer" style="color:green;"></i>单位申报系列</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="height:50px;border-top:2px solid #e1edee;border-bottom:2px solid #e1edee;">
+                    <div class="text-right" style="margin-top:8px;">
+                        <button class="btn btn-info" id="btnKaiGuan" style="background-color:#dfeffc;color:#34759b;font-weight:bold;"><span class="glyphicon glyphicon-zoom-in"></span>增加</button>
+                        <button class="btn btn-info" id="delete" style="background-color:#dfeffc;color:#34759b;font-weight:bold;" onclick="saveDelete()"><span class="glyphicon glyphicon-trash"></span>删除</button>
+                        <button class="btn btn-info" id="toVoid" style="background-color:#dfeffc;color:#34759b;font-weight:bold;" onclick="saveTitleState(false)"><span class="glyphicon glyphicon-lock"></span>关闭</button>
+                        <button class="btn btn-info" id="enable" style="background-color:#dfeffc;color:#34759b;font-weight:bold;" onclick="saveTitleState(true)"><span class="glyphicon glyphicon-folder-open"></span>开启</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-left tuot" style="height:30px;background-color:#64b6ed;">
+                        <h5>本单位申报系列表</h5>
+                    </div>
+                    <table id="tabDanWeiShenBaoXL" style="width:100%;">
+                        <tr>
+                            <th w_num="total_line" width="5%">序号</th>
+                            <th w_index="UnitDeclareID" w_hidden="true">单位申报系列ID</th>
+                            <th w_index="DeclareSeries">系列名称</th>
+                            <th w_index="DeclareGrade">系列等级</th>
+                            <th w_index="Explain">说明情况</th>
+                            <th w_index="DeclareYear">年度系列</th>
+                            <th w_render="bsgridSetSate">状态</th>
+                            <th w_index="ToVoidNo" w_hidden="true">状态</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--开启关闭模态窗体-->
+    <div class="modal  bs-example-modal-sm" id="modInsertExaminee">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header tuot">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">开启关闭年度系列表</h5>
+                </div>
+                <div class="modal-body" style="background-color:#ccd3d2">
+                    <form class="form-horizontal" role="form" id="FormDanWeiShenBaoXL" action="/UnitHome/UnitLogin/InsertUnitDeclare" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">系列名称:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="DeclareSeriesID" name="DeclareSeriesID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">系列等级:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="DeclareGradeID" name="DeclareGradeID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">说明情况:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <input type="text" class="form-control" id="Explain" name="Explain" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3 text-right">
+                                <label class="control-label">年度系列:</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 reset">
+                                <select type="text" class="form-control" id="DeclareYearID" name="DeclareYearID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding:10px;">
+                            <div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+                                <button class="btn btn-primary hidden" type="reset">重置</button>
+                                <button class="btn btn-success" type="button" id="btnKaiQi">确定</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--开启关闭模态窗体-->
+
+
+    <script src="~/Content/bootstrap-3.3.7-dist/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/js/lang/grid.zh-CN.min.js"></script>
+    <script src="~/Content/jquery.bsgrid-1.37/merged/bsgrid.all.min.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/customfunction.js"></script>
+    <script src="~/Content/layer/layer.js"></script>
+    <script>
+        var tabDanWeiShenBaoXL;
+        //下拉框
+        $(function () {
+            createSelect("DeclareSeriesID", "/UnitHome/UnitLogin/SelectSBXiLie");//申报系列
+            createSelect("DeclareGradeID", "/UnitHome/UnitLogin/SelectSBDengJi");//系列等级
+            createSelect("DeclareYearID", "/UnitHome/UnitLogin/SelectSBNianDu");//年度系列
+        });
+
+        //打开开始关闭年度系列新增
+        $("#btnKaiGuan").click(function () {
+            $("#modInsertExaminee").modal("show");
+        });
+
+        //开始关闭年度系列新增
+        $("#btnKaiQi").click(function () {
+            var DeclareSeriesID = $('#FormDanWeiShenBaoXL [name="DeclareSeriesID"]').val();//系列名称
+            var DeclareGradeID = $('#FormDanWeiShenBaoXL [name="DeclareGradeID"]').val();//系列等级
+            var Explain = $('#FormDanWeiShenBaoXL [name="Explain"]').val();//说明情况
+            var DeclareYearID = $('#FormDanWeiShenBaoXL [name="DeclareYearID"]').val();//年度系列
+            if (DeclareSeriesID > 0 && DeclareGradeID > 0 && DeclareYearID > 0 && Explain != '') {
+                var layerIndex = layer.load(0);
+                $.getJSON("/UnitHome/UnitLogin/InsertUnitDeclare", {
+                    DeclareSeriesID: DeclareSeriesID,
+                    DeclareGradeID: DeclareGradeID,
+                    Explain: Explain,
+                    DeclareYearID: DeclareYearID,
+                }, function (msg) {
+                    if (msg == "success") {
+                        layer.alert("success", { icon: 1, title: '提示' });
+                        $('#FormDanWeiShenBaoXL [type="reset"]').click();
+                        layer.close(layerIndex);
+                    } else {
+                        layer.alert("fail", { icon: 0, title: '提示' });
+                        layer.close(layerIndex);
+                    }
+                })
+            } else {
+                layer.alert('请填写完整', { icon: 0, title: '提示' });
+            }
+        });
+
+        //单位申报系列表
+        $(function () {
+            tabDanWeiShenBaoXL = $.fn.bsgrid.init('tabDanWeiShenBaoXL', {
+                url: '/UnitHome/UnitLogin/SelectUnitDeclare',
+                autoLoad: true,
+                stripeRows: true,//隔行变色
+                rowHoverColor: true,//划过行变色
+                rowSelectedColor: true,//是否显示选中行背景色
+                pageSize: 5,
+                pageSizeSelect: false,//是否选择分页页数下拉框
+                pagingLittleToolbar: true,//精简的图标按钮分页工具条
+                pagingToolbarAlign: "left",//分页工具条的显示位置
+            });
+        });
+
+        //设置状态
+        function bsgridSetSate(record, rowIndex, colIndex, opions) {
+            var toVoidNo = tabDanWeiShenBaoXL.getRecordIndexValue(record, "ToVoidNo");
+            if (toVoidNo == true || toVoidNo == "true") {
+                return '<span style="color:cornflowerblue">已开启</span>';
+            } else {
+                return '<span style="color:red">已关闭</span>';
+            }
+        }
+
+        //修改状态
+        function saveTitleState(state) {
+            var rowIndex = tabDanWeiShenBaoXL.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var unitDeclareId = tabDanWeiShenBaoXL.getColumnValue(rowIndex, "UnitDeclareID");
+                var oldState = tabDanWeiShenBaoXL.getColumnValue(rowIndex, "ToVoidNo");
+                if (oldState == state.toString() && state == true) {
+                    layer.msg("该数据已经开启，无需重复操作。", { icon: 0, skin: "layui-layer-molv" });
+                }
+                else if (oldState == state.toString() && state == false) {
+                    layer.msg("该数据已经关闭，无需重复操作。", { icon: 0, skin: "layui-layer-molv" });
+                } else {
+                    $.getJSON("/UnitHome/UnitLogin/UpdateUnitDeclareState",
+                        { unitDeclareId: unitDeclareId, state: state },
+                        function (message) {
+                            if (message.State == true || message.State == "true") {
+                                tabDanWeiShenBaoXL.refreshPage();
+                            }
+                        });
+                }
+            } else {
+                layer.msg("请选择需要操作的数据", { icon: 0, skin: "layui-layer-molv" });
+            }
+        }
+
+        //删除
+        function saveDelete() {
+            var rowIndex = tabDanWeiShenBaoXL.getSelectedRowIndex();
+            if (rowIndex > -1) {
+                var unitDeclareId = tabDanWeiShenBaoXL.getColumnValue(rowIndex, "UnitDeclareID");
+                var oldState = tabDanWeiShenBaoXL.getColumnValue(rowIndex, "ToVoidNo");
+                if (oldState == true || oldState == "true") {
+                    layer.msg("已经启用的系列数据不能删除", { icon: 0, skin: "layui-layer-molv" });
+                } else {
+                    layer.confirm("您确定要删除该数据？",
+                        {
+                            icon: 3,
+                            //按钮
+                            btn: ['确定', '取消']
+                        },
+                        function (index) {
+                            layer.close(index);
+                            $.ajax({
+                                type: "POST",
+                                url: "/UnitHome/UnitLogin/DeleteUnitDeclareState?unitDeclareId=" + unitDeclareId,
+                                success: function (message) {
+                                    tabDanWeiShenBaoXL.refreshPage();
+                                    //提示是否成功
+                                    layer.msg(message.Text, { icon: 0, skin: "layui-layer-molv" });
+                                }
+                            });
+                        });
+                }
+            } else {
+                layer.msg("请选择需要删除的数据", { icon: 0, skin: "layui-layer-molv" });
+            }
+        }
+    </script>
+</body>
+</html>
